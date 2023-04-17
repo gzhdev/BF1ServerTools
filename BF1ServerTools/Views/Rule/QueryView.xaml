@@ -12,22 +12,28 @@
 
     <DataGrid
         Margin="5"
-        ItemsSource="{Binding DataGrid_RuleLogs}"
-        Style="{StaticResource DataGridStyle_RuleLog}">
+        ItemsSource="{Binding DataGrid_RuleInfos}"
+        Style="{StaticResource DataGridStyle_RuleInfo}">
         <DataGrid.Columns>
             <DataGridTextColumn
+                MinWidth="100"
+                Binding="{Binding Type}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_RuleInfo}"
+                Header="类型" />
+            <DataGridTextColumn
+                MinWidth="200"
                 Binding="{Binding Name}"
-                ElementStyle="{StaticResource DataGridTextColumnStyle_RuleLog}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_RuleInfo}"
                 Header="名称" />
             <DataGridTextColumn
                 Width="*"
                 Binding="{Binding T1Value}"
-                ElementStyle="{StaticResource DataGridTextColumnStyle_RuleLog}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_RuleInfo}"
                 Header="队伍1" />
             <DataGridTextColumn
                 Width="*"
                 Binding="{Binding T2Value}"
-                ElementStyle="{StaticResource DataGridTextColumnStyle_RuleLog}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_RuleInfo}"
                 Header="队伍2" />
         </DataGrid.Columns>
     </DataGrid>

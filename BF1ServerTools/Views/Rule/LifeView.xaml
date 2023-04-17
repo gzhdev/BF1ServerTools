@@ -18,26 +18,26 @@
                     Title="最高生涯KD"
                     Maximum="10"
                     Style="{StaticResource SliderStyle_DOUBLE}"
-                    Value="{Binding RuleTeam1Model.LifeMaxKD}" />
+                    Value="{Binding RuleLife1Model.LifeMaxKD}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高生涯KPM"
                     Maximum="10"
                     Style="{StaticResource SliderStyle_DOUBLE}"
-                    Value="{Binding RuleTeam1Model.LifeMaxKPM}" />
+                    Value="{Binding RuleLife1Model.LifeMaxKPM}" />
                 <TextBlock />
 
                 <ui:UiSliderIcon
                     Title="最高生涯武器星数"
                     Maximum="100"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam1Model.LifeMaxWeaponStar}" />
+                    Value="{Binding RuleLife1Model.LifeMaxWeaponStar}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高生涯载具星数"
                     Maximum="100"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam1Model.LifeMaxVehicleStar}" />
+                    Value="{Binding RuleLife1Model.LifeMaxVehicleStar}" />
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     说明：生涯武器、载具星数只有使用或者携带才会检测违规
@@ -52,26 +52,26 @@
                     Title="最高生涯KD"
                     Maximum="10"
                     Style="{StaticResource SliderStyle_DOUBLE}"
-                    Value="{Binding RuleTeam2Model.LifeMaxKD}" />
+                    Value="{Binding RuleLife2Model.LifeMaxKD}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高生涯KPM"
                     Maximum="10"
                     Style="{StaticResource SliderStyle_DOUBLE}"
-                    Value="{Binding RuleTeam2Model.LifeMaxKPM}" />
+                    Value="{Binding RuleLife2Model.LifeMaxKPM}" />
                 <TextBlock />
 
                 <ui:UiSliderIcon
                     Title="最高生涯武器星数"
                     Maximum="100"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam2Model.LifeMaxWeaponStar}" />
+                    Value="{Binding RuleLife2Model.LifeMaxWeaponStar}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高生涯载具星数"
                     Maximum="100"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam2Model.LifeMaxVehicleStar}" />
+                    Value="{Binding RuleLife2Model.LifeMaxVehicleStar}" />
             </StackPanel>
         </StackPanel>
     </UniformGrid>

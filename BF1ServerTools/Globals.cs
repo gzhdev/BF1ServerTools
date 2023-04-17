@@ -1,4 +1,6 @@
-﻿namespace BF1ServerTools;
+﻿using BF1ServerTools.Data;
+
+namespace BF1ServerTools;
 
 public static class Globals
 {
@@ -179,14 +181,14 @@ public static class Globals
 
     /////////////////////////////////////////////////////////
 
-    ///// <summary>
-    ///// 服务器规则 队伍1
-    ///// </summary>
-    //public static ServerRule ServerRule_Team1 = new();
-    ///// <summary>
-    ///// 服务器规则 队伍2
-    ///// </summary>
-    //public static ServerRule ServerRule_Team2 = new();
+    /// <summary>
+    /// 服务器规则 队伍1
+    /// </summary>
+    public static ServerRule ServerRule_Team1 = new();
+    /// <summary>
+    /// 服务器规则 队伍2
+    /// </summary>
+    public static ServerRule ServerRule_Team2 = new();
 
     /// <summary>
     /// 保存队伍1限制武器名称列表

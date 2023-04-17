@@ -18,46 +18,46 @@
                     Title="最高击杀"
                     Maximum="100"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam1Model.MaxKill}" />
+                    Value="{Binding RuleGeneral1Model.MaxKill}" />
                 <TextBlock />
 
                 <ui:UiSliderIcon
                     Title="计算KD的最低击杀数"
                     Maximum="100"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam1Model.FlagKD}" />
+                    Value="{Binding RuleGeneral1Model.FlagKD}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高KD"
                     Maximum="10"
                     Style="{StaticResource SliderStyle_DOUBLE}"
-                    Value="{Binding RuleTeam1Model.MaxKD}" />
+                    Value="{Binding RuleGeneral1Model.MaxKD}" />
                 <TextBlock />
 
                 <ui:UiSliderIcon
                     Title="计算KPM的最低击杀数"
                     Maximum="100"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam1Model.FlagKPM}" />
+                    Value="{Binding RuleGeneral1Model.FlagKPM}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高KPM"
                     Maximum="10"
                     Style="{StaticResource SliderStyle_DOUBLE}"
-                    Value="{Binding RuleTeam1Model.MaxKPM}" />
+                    Value="{Binding RuleGeneral1Model.MaxKPM}" />
                 <TextBlock />
 
                 <ui:UiSliderIcon
                     Title="最低等级"
                     Maximum="150"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam1Model.MinRank}" />
+                    Value="{Binding RuleGeneral1Model.MinRank}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高等级"
                     Maximum="150"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam1Model.MaxRank}" />
+                    Value="{Binding RuleGeneral1Model.MaxRank}" />
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     说明：设置为0代表忽略该规则
@@ -76,46 +76,46 @@
                     Title="最高击杀"
                     Maximum="100"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam2Model.MaxKill}" />
+                    Value="{Binding RuleGeneral2Model.MaxKill}" />
                 <TextBlock />
 
                 <ui:UiSliderIcon
                     Title="计算KD的最低击杀数"
                     Maximum="100"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam2Model.FlagKD}" />
+                    Value="{Binding RuleGeneral2Model.FlagKD}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高KD"
                     Maximum="10"
                     Style="{StaticResource SliderStyle_DOUBLE}"
-                    Value="{Binding RuleTeam2Model.MaxKD}" />
+                    Value="{Binding RuleGeneral2Model.MaxKD}" />
                 <TextBlock />
 
                 <ui:UiSliderIcon
                     Title="计算KPM的最低击杀数"
                     Maximum="100"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam2Model.FlagKPM}" />
+                    Value="{Binding RuleGeneral2Model.FlagKPM}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高KPM"
                     Maximum="10"
                     Style="{StaticResource SliderStyle_DOUBLE}"
-                    Value="{Binding RuleTeam2Model.MaxKPM}" />
+                    Value="{Binding RuleGeneral2Model.MaxKPM}" />
                 <TextBlock />
 
                 <ui:UiSliderIcon
                     Title="最低等级"
                     Maximum="150"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam2Model.MinRank}" />
+                    Value="{Binding RuleGeneral2Model.MinRank}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高等级"
                     Maximum="150"
                     Style="{StaticResource SliderStyle_INT}"
-                    Value="{Binding RuleTeam2Model.MaxRank}" />
+                    Value="{Binding RuleGeneral2Model.MaxRank}" />
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                     说明：可拖动滑块、点击指定位置调整，方向键左右可微调
