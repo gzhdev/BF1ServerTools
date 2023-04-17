@@ -1,0 +1,55 @@
+﻿<UserControl
+    x:Class="BF1ServerTools.Views.Detail.AdminView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+    <ListBox
+        x:Name="ListBox_Admin"
+        Margin="5"
+        SelectionChanged="ListBox_Admin_SelectionChanged"
+        Style="{StaticResource ListBoxStyle_Admin}">
+        <ListBox.ContextMenu>
+            <ContextMenu>
+                <MenuItem
+                    Name="MenuItem_SelectedInfo"
+                    Header="[Admin]  当前未选中"
+                    IsEnabled="False" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_Admin_AddNewPlayer"
+                    Click="MenuItem_Admin_AddNewPlayer_Click"
+                    Header="添加新Admin玩家"
+                    Icon="&#xeb89;" />
+                <MenuItem
+                    Name="MenuItem_Admin_RemoveSelectedPlayer"
+                    Click="MenuItem_Admin_RemoveSelectedPlayer_Click"
+                    Header="移除选中Admin玩家"
+                    Icon="&#xe628;" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_Admin_CopyPlayerName"
+                    Click="MenuItem_Admin_CopyPlayerName_Click"
+                    Header="复制玩家ID"
+                    Icon="&#xe600;" />
+                <MenuItem
+                    Name="MenuItem_Admin_CopyPlayerPersonaId"
+                    Click="MenuItem_Admin_CopyPlayerPersonaId_Click"
+                    Header="复制玩家数字ID" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_Admin_QueryPlayerRecord"
+                    Click="MenuItem_Admin_QueryPlayerRecord_Click"
+                    Header="查询玩家数据"
+                    Icon="&#xe7d2;" />
+            </ContextMenu>
+        </ListBox.ContextMenu>
+    </ListBox>
+
+</UserControl>

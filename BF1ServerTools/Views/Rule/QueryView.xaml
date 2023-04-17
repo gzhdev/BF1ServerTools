@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="BF1ServerTools.Views.Rule.QueryView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+    <DataGrid
+        Margin="5"
+        ItemsSource="{Binding DataGrid_RuleLogs}"
+        Style="{StaticResource DataGridStyle_RuleLog}">
+        <DataGrid.Columns>
+            <DataGridTextColumn
+                Binding="{Binding Name}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_RuleLog}"
+                Header="名称" />
+            <DataGridTextColumn
+                Width="*"
+                Binding="{Binding T1Value}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_RuleLog}"
+                Header="队伍1" />
+            <DataGridTextColumn
+                Width="*"
+                Binding="{Binding T2Value}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_RuleLog}"
+                Header="队伍2" />
+        </DataGrid.Columns>
+    </DataGrid>
+
+</UserControl>

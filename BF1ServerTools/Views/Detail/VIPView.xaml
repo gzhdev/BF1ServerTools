@@ -1,0 +1,55 @@
+﻿<UserControl
+    x:Class="BF1ServerTools.Views.Detail.VIPView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+    <ListBox
+        x:Name="ListBox_VIP"
+        Margin="5"
+        SelectionChanged="ListBox_VIP_SelectionChanged"
+        Style="{StaticResource ListBoxStyle_Admin}">
+        <ListBox.ContextMenu>
+            <ContextMenu>
+                <MenuItem
+                    Name="MenuItem_SelectedInfo"
+                    Header="[VIP]  当前未选中"
+                    IsEnabled="False" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_VIP_AddNewPlayer"
+                    Click="MenuItem_VIP_AddNewPlayer_Click"
+                    Header="添加新VIP玩家"
+                    Icon="&#xeb89;" />
+                <MenuItem
+                    Name="MenuItem_VIP_RemoveSelectedPlayer"
+                    Click="MenuItem_VIP_RemoveSelectedPlayer_Click"
+                    Header="移除选中VIP玩家"
+                    Icon="&#xe628;" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_VIP_CopyPlayerName"
+                    Click="MenuItem_VIP_CopyPlayerName_Click"
+                    Header="复制玩家ID"
+                    Icon="&#xe600;" />
+                <MenuItem
+                    Name="MenuItem_VIP_CopyPlayerPersonaId"
+                    Click="MenuItem_VIP_CopyPlayerPersonaId_Click"
+                    Header="复制玩家数字ID" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_VIP_QueryPlayerRecord"
+                    Click="MenuItem_VIP_QueryPlayerRecord_Click"
+                    Header="查询玩家数据"
+                    Icon="&#xe7d2;" />
+            </ContextMenu>
+        </ListBox.ContextMenu>
+    </ListBox>
+
+</UserControl>

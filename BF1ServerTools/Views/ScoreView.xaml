@@ -1,0 +1,1007 @@
+﻿<UserControl
+    x:Class="BF1ServerTools.Views.ScoreView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="Color_Admin" Color="#FFA400" />
+        <SolidColorBrush x:Key="Color_VIP" Color="#0AA344" />
+        <SolidColorBrush x:Key="Color_White" Color="#801DAE" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="80" />
+        </Grid.RowDefinitions>
+        <!--  /////////////////////////  -->
+        <StackPanel Grid.Row="0">
+            <Border
+                Margin="5,0,5,3"
+                BorderBrush="Gray"
+                BorderThickness="0,0,0,0.6">
+                <Grid>
+                    <StackPanel>
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                            <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                FontFamily="等线"
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Text="{Binding ScoreServerModel.Name, FallbackValue='服务器名称'}" />
+                            <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Foreground="Orange"
+                                Text="|" />
+                            <TextBlock
+                                Margin="5"
+                                VerticalAlignment="Center"
+                                FontFamily="等线"
+                                FontSize="16"
+                                FontWeight="Bold">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} - {1}">
+                                        <Binding FallbackValue="游戏模式" Path="ScoreServerModel.GameMode" />
+                                        <Binding FallbackValue="地图名称" Path="ScoreServerModel.MapName" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </StackPanel>
+                        <!--  //////////////  -->
+                        <StackPanel
+                            Margin="0,0,0,7"
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+                            <!--  //////////////  -->
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="FontSize" Value="14" />
+                                        <Setter Property="Foreground" Value="{StaticResource Color_BF1_Blue}" />
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </StackPanel.Resources>
+                                <TextBlock
+                                    Margin="5"
+                                    FontFamily="等线"
+                                    FontWeight="Bold"
+                                    Text="{Binding ScoreTeam1Model.ScoreFlag, StringFormat='旗帜得分 : {0:0}'}" />
+                                <TextBlock
+                                    FontSize="14"
+                                    Foreground="{StaticResource Color_BF1_Blue}"
+                                    Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                                    Text="&#xe9f5;" />
+                                <TextBlock Margin="10,0,5,0" Text="|" />
+                                <TextBlock
+                                    Margin="5"
+                                    FontFamily="等线"
+                                    FontWeight="Bold"
+                                    Text="{Binding ScoreTeam1Model.ScoreKill, StringFormat='击杀得分 : {0:0}'}" />
+                                <TextBlock
+                                    FontSize="14"
+                                    Foreground="{StaticResource Color_BF1_Blue}"
+                                    Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                                    Text="&#xe629;" />
+                            </StackPanel>
+                            <!--  //////////////  -->
+                            <StackPanel
+                                Margin="20,0,20,0"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <!--  队伍1 进度条  -->
+                                <ui:UiProgressBarScore
+                                    Score="{Binding ScoreTeam1Model.AllScore}"
+                                    Style="{StaticResource ProgressBarScoreStyle_Team1}"
+                                    Team="{Binding ScoreTeam1Model.TeamImg}"
+                                    Value="{Binding ScoreTeam1Model.ScoreWidth, FallbackValue='0'}" />
+                                <!--  时间  -->
+                                <Border
+                                    Margin="5,0,5,0"
+                                    Background="{StaticResource Color_BF1_Green}"
+                                    SnapsToDevicePixels="True">
+                                    <TextBlock
+                                        Width="45"
+                                        Margin="5,0,5,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="14"
+                                        Foreground="White"
+                                        Text="{Binding ScoreServerModel.GameTime, FallbackValue='99:99'}"
+                                        TextAlignment="Center" />
+                                </Border>
+                                <!--  队伍2 进度条  -->
+                                <ui:UiProgressBarScore
+                                    Score="{Binding ScoreTeam2Model.AllScore}"
+                                    Style="{StaticResource ProgressBarScoreStyle_Team2}"
+                                    Team="{Binding ScoreTeam2Model.TeamImg}"
+                                    Value="{Binding ScoreTeam2Model.ScoreWidth, FallbackValue='0'}" />
+                            </StackPanel>
+                            <!--  //////////////  -->
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="FontSize" Value="14" />
+                                        <Setter Property="Foreground" Value="{StaticResource Color_BF1_Red}" />
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </StackPanel.Resources>
+                                <TextBlock
+                                    Margin="5"
+                                    FontFamily="等线"
+                                    FontWeight="Bold"
+                                    Text="{Binding ScoreTeam2Model.ScoreFlag, StringFormat='旗帜得分 : {0:0}'}" />
+                                <TextBlock
+                                    FontSize="14"
+                                    Foreground="{StaticResource Color_BF1_Red}"
+                                    Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                                    Text="&#xe9f5;" />
+                                <TextBlock Margin="10,0,5,0" Text="|" />
+                                <TextBlock
+                                    Margin="5"
+                                    FontFamily="等线"
+                                    FontWeight="Bold"
+                                    Text="{Binding ScoreTeam2Model.ScoreKill, StringFormat='击杀得分 : {0:0}'}" />
+                                <TextBlock
+                                    FontSize="14"
+                                    Foreground="{StaticResource Color_BF1_Red}"
+                                    Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                                    Text="&#xe629;" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <ComboBox
+                            x:Name="ComboBox_ScoreSortRule"
+                            Margin="0"
+                            SelectedIndex="0"
+                            SelectionChanged="ComboBox_ScoreSortRule_SelectionChanged">
+                            <ComboBoxItem Content="得分" />
+                            <ComboBoxItem Content="等级" />
+                            <ComboBoxItem Content="战队" />
+                            <ComboBoxItem Content="玩家ID" />
+                            <ComboBoxItem Content="小队" />
+                            <ComboBoxItem Content="击杀" />
+                            <ComboBoxItem Content="死亡" />
+                            <ComboBoxItem Content="KD" />
+                            <ComboBoxItem Content="KPM" />
+                            <ComboBoxItem Content="生涯KD" />
+                            <ComboBoxItem Content="生涯KPM" />
+                            <ComboBoxItem Content="时长" />
+                            <ComboBoxItem Content="兵种" />
+                            <ComboBoxItem Content="主武器" />
+                        </ComboBox>
+                        <TextBlock
+                            Margin="10,0,0,0"
+                            VerticalAlignment="Center"
+                            Text="{Binding ScoreServerModel.AllPlayerCount, StringFormat='总人数 : {0}', FallbackValue='总人数 : 0'}" />
+                    </StackPanel>
+                    <ui:UiImage
+                        Height="50"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        ImageUrl="{Binding ScoreServerModel.MapImg}" />
+                </Grid>
+            </Border>
+            <!--  //////////////  -->
+            <UniformGrid Columns="2">
+                <StackPanel Margin="5,5,5,3" Orientation="Horizontal">
+                    <TextBlock
+                        Margin="0,0,5,0"
+                        FontSize="17"
+                        Foreground="{StaticResource Color_BF1_Blue}"
+                        Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                        Text="&#xe62f;" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource Color_BF1_Blue}"
+                        Text="{Binding ScoreTeam1Model.TeamName, StringFormat='{}{0}  |  '}" />
+                    <!--  //////////////  -->
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource Color_BF1_Blue}">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="队伍人数 : {0} / {1}  |  150人数 : {2}  |  ">
+                                <Binding Path="ScoreTeam1Model.PlayerCount" />
+                                <Binding Path="ScoreTeam1Model.MaxPlayerCount" />
+                                <Binding Path="ScoreTeam1Model.Rank150PlayerCount" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <!--  //////////////  -->
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <!--  队伍1 突击兵人数  -->
+                        <TextBlock
+                            FontSize="17"
+                            Foreground="{StaticResource Color_BF1_Blue}"
+                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                            Text="&#xe620;" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource Color_BF1_Blue}"
+                            Text="{Binding ScoreTeam1Model.AssaultKitCount, StringFormat=' : {0}  |  '}" />
+                        <!--  队伍1 医疗兵人数  -->
+                        <TextBlock
+                            FontSize="17"
+                            Foreground="{StaticResource Color_BF1_Blue}"
+                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                            Text="&#xe61e;" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource Color_BF1_Blue}"
+                            Text="{Binding ScoreTeam1Model.MedicKitCount, StringFormat=' : {0}  |  '}" />
+                        <!--  队伍1 支援兵人数  -->
+                        <TextBlock
+                            FontSize="17"
+                            Foreground="{StaticResource Color_BF1_Blue}"
+                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                            Text="&#xe627;" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource Color_BF1_Blue}"
+                            Text="{Binding ScoreTeam1Model.SupportKitCount, StringFormat=' : {0}  |  '}" />
+                        <!--  队伍1 侦查兵人数  -->
+                        <TextBlock
+                            FontSize="17"
+                            Foreground="{StaticResource Color_BF1_Blue}"
+                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                            Text="&#xe61f;" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource Color_BF1_Blue}"
+                            Text="{Binding ScoreTeam1Model.ScoutKitCount, StringFormat=' : {0}  |  '}" />
+                    </StackPanel>
+                    <!--  //////////////  -->
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource Color_BF1_Blue}">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="总击杀数 : {0}  |  总死亡数 : {1}">
+                                <Binding Path="ScoreTeam1Model.AllKillCount" />
+                                <Binding Path="ScoreTeam1Model.AllDeadCount" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </StackPanel>
+                <!--  //////////////////////////////////////////  -->
+                <StackPanel Margin="5,5,5,3" Orientation="Horizontal">
+                    <TextBlock
+                        Margin="0,0,5,0"
+                        FontSize="17"
+                        Foreground="{StaticResource Color_BF1_Red}"
+                        Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                        Text="&#xe62f;" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource Color_BF1_Red}"
+                        Text="{Binding ScoreTeam2Model.TeamName, StringFormat='{}{0}  |  '}" />
+                    <!--  //////////////  -->
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource Color_BF1_Red}">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="队伍人数 : {0} / {1}  |  150人数 : {2}  |  ">
+                                <Binding Path="ScoreTeam2Model.PlayerCount" />
+                                <Binding Path="ScoreTeam2Model.MaxPlayerCount" />
+                                <Binding Path="ScoreTeam2Model.Rank150PlayerCount" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <!--  //////////////  -->
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <!--  队伍1 突击兵人数  -->
+                        <TextBlock
+                            FontSize="17"
+                            Foreground="{StaticResource Color_BF1_Red}"
+                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                            Text="&#xe620;" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource Color_BF1_Red}"
+                            Text="{Binding ScoreTeam2Model.AssaultKitCount, StringFormat=' : {0}  |  '}" />
+                        <!--  队伍1 医疗兵人数  -->
+                        <TextBlock
+                            FontSize="17"
+                            Foreground="{StaticResource Color_BF1_Red}"
+                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                            Text="&#xe61e;" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource Color_BF1_Red}"
+                            Text="{Binding ScoreTeam2Model.MedicKitCount, StringFormat=' : {0}  |  '}" />
+                        <!--  队伍1 支援兵人数  -->
+                        <TextBlock
+                            FontSize="17"
+                            Foreground="{StaticResource Color_BF1_Red}"
+                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                            Text="&#xe627;" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource Color_BF1_Red}"
+                            Text="{Binding ScoreTeam2Model.SupportKitCount, StringFormat=' : {0}  |  '}" />
+                        <!--  队伍1 侦查兵人数  -->
+                        <TextBlock
+                            FontSize="17"
+                            Foreground="{StaticResource Color_BF1_Red}"
+                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                            Text="&#xe61f;" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource Color_BF1_Red}"
+                            Text="{Binding ScoreTeam2Model.ScoutKitCount, StringFormat=' : {0}  |  '}" />
+                    </StackPanel>
+                    <!--  //////////////  -->
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource Color_BF1_Red}">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="总击杀数 : {0}  |  总死亡数 : {1}">
+                                <Binding Path="ScoreTeam2Model.AllKillCount" />
+                                <Binding Path="ScoreTeam2Model.AllDeadCount" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </StackPanel>
+            </UniformGrid>
+        </StackPanel>
+        <!--  /////////////////////////  -->
+        <UniformGrid Grid.Row="1" Columns="2">
+            <ListView
+                x:Name="ListView_Team1"
+                Margin="5,5,2.5,5"
+                ItemsSource="{Binding ListView_PlayerList_Team1}"
+                SelectionChanged="ListView_Team1_SelectionChanged"
+                Style="{StaticResource ListViewStyle_Team1}">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem
+                            Name="MenuItem_Team1"
+                            Header="[队伍1]  当前未选中"
+                            IsEnabled="False" />
+                        <Separator />
+                        <MenuItem Header="管理员操作" Icon="&#xe62a;">
+                            <MenuItem
+                                Name="MenuItem_Team1_ChangePlayerTeam"
+                                Click="MenuItem_Team1_ChangePlayerTeam_Click"
+                                Header="更换玩家队伍"
+                                Icon="&#xe646;" />
+                            <Separator />
+                            <MenuItem
+                                Name="MenuItem_Team1_KickPlayerCustom"
+                                Click="MenuItem_Team1_KickPlayerCustom_Click"
+                                Header="踢出玩家 - 自定义理由" />
+                            <Separator />
+                            <MenuItem
+                                Name="MenuItem_Team1_KickPlayerOffensiveBehavior"
+                                Click="MenuItem_Team1_KickPlayerOffensiveBehavior_Click"
+                                Header="踢出玩家 - 攻击性行为" />
+                            <MenuItem
+                                Name="MenuItem_Team1_KickPlayerLatency"
+                                Click="MenuItem_Team1_KickPlayerLatency_Click"
+                                Header="踢出玩家 - 延迟" />
+                            <MenuItem
+                                Name="MenuItem_Team1_KickPlayerRuleViolation"
+                                Click="MenuItem_Team1_KickPlayerRuleViolation_Click"
+                                Header="踢出玩家 - 违反规则" />
+                            <MenuItem
+                                Name="MenuItem_Team1_KickPlayerGeneral"
+                                Click="MenuItem_Team1_KickPlayerGeneral_Click"
+                                Header="踢出玩家 - 其他" />
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem
+                            Name="MenuItem_Team1_CopyPlayerName"
+                            Click="MenuItem_Team1_CopyPlayerName_Click"
+                            Header="复制玩家ID"
+                            Icon="&#xe600;" />
+                        <MenuItem
+                            Name="MenuItem_Team1_CopyPlayerPersonaId"
+                            Click="MenuItem_Team1_CopyPlayerPersonaId_Click"
+                            Header="复制玩家数字ID" />
+                        <MenuItem
+                            Name="MenuItem_Team1_CopyPlayerAllData"
+                            Click="MenuItem_Team1_CopyPlayerAllData_Click"
+                            Header="复制玩家全部数据" />
+                        <Separator />
+                        <MenuItem
+                            Name="MenuItem_Team1_QueryPlayerRecord"
+                            Click="MenuItem_Team1_QueryPlayerRecord_Click"
+                            Header="查询玩家数据"
+                            Icon="&#xe7d2;" />
+                    </ContextMenu>
+                </ListView.ContextMenu>
+                <ListView.View>
+                    <GridView
+                        x:Name="GridView_Team1"
+                        AllowsColumnReorder="False"
+                        ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle_Team1}">
+                        <GridViewColumn Header="序号">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontWeight="Bold" Text="{Binding Index}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Rank}" Header="等级" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Clan}" Header="战队" />
+                        <GridViewColumn Header="玩家ID">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding IsAdmin}" Value="False" />
+                                                            <Condition Binding="{Binding IsVIP}" Value="False" />
+                                                            <Condition Binding="{Binding IsWhite}" Value="True" />
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Foreground" Value="{StaticResource Color_White}" />
+                                                        <Setter Property="FontWeight" Value="Bold" />
+                                                    </MultiDataTrigger>
+                                                    <DataTrigger Binding="{Binding IsVIP}" Value="True">
+                                                        <Setter Property="Foreground" Value="{StaticResource Color_VIP}" />
+                                                        <Setter Property="FontWeight" Value="Bold" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding IsAdmin}" Value="True">
+                                                        <Setter Property="Foreground" Value="{StaticResource Color_Admin}" />
+                                                        <Setter Property="FontWeight" Value="Bold" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding SquadName}" Header="小队" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Kill}" Header="击杀" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Dead}" Header="死亡" />
+                        <GridViewColumn DisplayMemberBinding="{Binding KD, StringFormat={}{0:0.00}}" Header="KD" />
+                        <GridViewColumn DisplayMemberBinding="{Binding KPM, StringFormat={}{0:0.00}}" Header="KPM" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Score}" Header="得分" />
+                        <GridViewColumn DisplayMemberBinding="{Binding LifeKD, StringFormat={}{0:0.00}}" Header="LKD" />
+                        <GridViewColumn DisplayMemberBinding="{Binding LifeKPM, StringFormat={}{0:0.00}}" Header="LKPM" />
+                        <GridViewColumn DisplayMemberBinding="{Binding LifeTime}" Header="时长" />
+                        <GridViewColumn Header="兵种">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ui:UiImage Height="16" ImageUrl="{Binding KitImg}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS0}" Header="主要武器" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS1}" Header="配枪" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS2}" Header="配备一" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS5}" Header="配备二" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS3}" Header="特殊" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS6}" Header="手榴弹" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS7}" Header="近战" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <!--  //////////////  -->
+            <ListView
+                x:Name="ListView_Team2"
+                Margin="2.5,5,5,5"
+                ItemsSource="{Binding ListView_PlayerList_Team2}"
+                SelectionChanged="ListView_Team2_SelectionChanged"
+                Style="{StaticResource ListViewStyle_Team2}">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem
+                            Name="MenuItem_Team2"
+                            Header="[队伍2]  当前未选中"
+                            IsEnabled="False" />
+                        <Separator />
+                        <MenuItem Header="管理员操作" Icon="&#xe62a;">
+                            <MenuItem
+                                Name="MenuItem_Team2_ChangePlayerTeam"
+                                Click="MenuItem_Team2_ChangePlayerTeam_Click"
+                                Header="更换玩家队伍"
+                                Icon="&#xe646;" />
+                            <Separator />
+                            <MenuItem
+                                Name="MenuItem_Team2_KickPlayerCustom"
+                                Click="MenuItem_Team2_KickPlayerCustom_Click"
+                                Header="踢出玩家 - 自定义理由" />
+                            <Separator />
+                            <MenuItem
+                                Name="MenuItem_Team2_KickPlayerOffensiveBehavior"
+                                Click="MenuItem_Team2_KickPlayerOffensiveBehavior_Click"
+                                Header="踢出玩家 - 攻击性行为" />
+                            <MenuItem
+                                Name="MenuItem_Team2_KickPlayerLatency"
+                                Click="MenuItem_Team2_KickPlayerLatency_Click"
+                                Header="踢出玩家 - 延迟" />
+                            <MenuItem
+                                Name="MenuItem_Team2_KickPlayerRuleViolation"
+                                Click="MenuItem_Team2_KickPlayerRuleViolation_Click"
+                                Header="踢出玩家 - 违反规则" />
+                            <MenuItem
+                                Name="MenuItem_Team2_KickPlayerGeneral"
+                                Click="MenuItem_Team2_KickPlayerGeneral_Click"
+                                Header="踢出玩家 - 其他" />
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem
+                            Name="MenuItem_Team2_CopyPlayerName"
+                            Click="MenuItem_Team2_CopyPlayerName_Click"
+                            Header="复制玩家ID"
+                            Icon="&#xe600;" />
+                        <MenuItem
+                            Name="MenuItem_Team2_CopyPlayerPersonaId"
+                            Click="MenuItem_Team2_CopyPlayerPersonaId_Click"
+                            Header="复制玩家数字ID" />
+                        <MenuItem
+                            Name="MenuItem_Team2_CopyPlayerAllData"
+                            Click="MenuItem_Team2_CopyPlayerAllData_Click"
+                            Header="复制玩家全部数据" />
+                        <Separator />
+                        <MenuItem
+                            Name="MenuItem_Team2_QueryPlayerRecord"
+                            Click="MenuItem_Team2_QueryPlayerRecord_Click"
+                            Header="查询玩家数据"
+                            Icon="&#xe7d2;" />
+                    </ContextMenu>
+                </ListView.ContextMenu>
+                <ListView.View>
+                    <GridView
+                        x:Name="GridView_Team2"
+                        AllowsColumnReorder="False"
+                        ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle_Team2}">
+                        <GridViewColumn Header="序号">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontWeight="Bold" Text="{Binding Index}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Rank}" Header="等级" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Clan}" Header="战队" />
+                        <GridViewColumn Header="玩家ID">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding IsAdmin}" Value="False" />
+                                                            <Condition Binding="{Binding IsVIP}" Value="False" />
+                                                            <Condition Binding="{Binding IsWhite}" Value="True" />
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Foreground" Value="{StaticResource Color_White}" />
+                                                        <Setter Property="FontWeight" Value="Bold" />
+                                                    </MultiDataTrigger>
+                                                    <DataTrigger Binding="{Binding IsVIP}" Value="True">
+                                                        <Setter Property="Foreground" Value="{StaticResource Color_VIP}" />
+                                                        <Setter Property="FontWeight" Value="Bold" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding IsAdmin}" Value="True">
+                                                        <Setter Property="Foreground" Value="{StaticResource Color_Admin}" />
+                                                        <Setter Property="FontWeight" Value="Bold" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding SquadName}" Header="小队" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Kill}" Header="击杀" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Dead}" Header="死亡" />
+                        <GridViewColumn DisplayMemberBinding="{Binding KD, StringFormat={}{0:0.00}}" Header="KD" />
+                        <GridViewColumn DisplayMemberBinding="{Binding KPM, StringFormat={}{0:0.00}}" Header="KPM" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Score}" Header="得分" />
+                        <GridViewColumn DisplayMemberBinding="{Binding LifeKD, StringFormat={}{0:0.00}}" Header="LKD" />
+                        <GridViewColumn DisplayMemberBinding="{Binding LifeKPM, StringFormat={}{0:0.00}}" Header="LKPM" />
+                        <GridViewColumn DisplayMemberBinding="{Binding LifeTime}" Header="时长" />
+                        <GridViewColumn Header="兵种">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ui:UiImage Height="16" ImageUrl="{Binding KitImg}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS0}" Header="主要武器" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS1}" Header="配枪" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS2}" Header="配备一" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS5}" Header="配备二" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS3}" Header="特殊" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS6}" Header="手榴弹" />
+                        <GridViewColumn DisplayMemberBinding="{Binding WeaponS7}" Header="近战" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </UniformGrid>
+        <!--  /////////////////////////  -->
+        <UniformGrid Grid.Row="2" Columns="2">
+            <DockPanel>
+                <Border
+                    Margin="5,0,0,5"
+                    Padding="5"
+                    BorderBrush="#4285F4"
+                    BorderThickness="1,5,1,1"
+                    DockPanel.Dock="Left">
+                    <StackPanel>
+                        <TextBlock FontWeight="Bold" Text="观&#x0a;战" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontSize="10"
+                            Text="{Binding ElementName=ListBox_Team01, Path=Items.Count}" />
+                    </StackPanel>
+                </Border>
+                <ListBox
+                    x:Name="ListBox_Team01"
+                    Width="255"
+                    Margin="5,0,5,5"
+                    DockPanel.Dock="Left"
+                    ItemsSource="{Binding ListBox_PlayerList_Team01}"
+                    SelectionChanged="ListBox_Team01_SelectionChanged"
+                    Style="{StaticResource ListBoxStyle_Team0}">
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                Name="MenuItem_Team01"
+                                Header="[观战]  当前未选中"
+                                IsEnabled="False" />
+                            <Separator />
+                            <MenuItem Header="管理员操作" Icon="&#xe62a;">
+                                <MenuItem
+                                    Name="MenuItem_Team01_KickPlayerCustom"
+                                    Click="MenuItem_Team01_KickPlayerCustom_Click"
+                                    Header="踢出玩家 - 自定义理由" />
+                                <Separator />
+                                <MenuItem
+                                    Name="MenuItem_Team01_KickPlayerOffensiveBehavior"
+                                    Click="MenuItem_Team01_KickPlayerOffensiveBehavior_Click"
+                                    Header="踢出玩家 - 攻击性行为" />
+                                <MenuItem
+                                    Name="MenuItem_Team01_KickPlayerLatency"
+                                    Click="MenuItem_Team01_KickPlayerLatency_Click"
+                                    Header="踢出玩家 - 延迟" />
+                                <MenuItem
+                                    Name="MenuItem_Team01_KickPlayerRuleViolation"
+                                    Click="MenuItem_Team01_KickPlayerRuleViolation_Click"
+                                    Header="踢出玩家 - 违反规则" />
+                                <MenuItem
+                                    Name="MenuItem_Team01_KickPlayerGeneral"
+                                    Click="MenuItem_Team01_KickPlayerGeneral_Click"
+                                    Header="踢出玩家 - 其他" />
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem
+                                Name="MenuItem_Team01_CopyPlayerName"
+                                Click="MenuItem_Team01_CopyPlayerName_Click"
+                                Header="复制玩家ID"
+                                Icon="&#xe600;" />
+                            <MenuItem
+                                Name="MenuItem_Team01_CopyPlayerPersonaId"
+                                Click="MenuItem_Team01_CopyPlayerPersonaId_Click"
+                                Header="复制玩家数字ID" />
+                            <Separator />
+                            <MenuItem
+                                Name="MenuItem_Team01_QueryPlayerRecord"
+                                Click="MenuItem_Team01_QueryPlayerRecord_Click"
+                                Header="查询玩家数据"
+                                Icon="&#xe7d2;" />
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel VerticalAlignment="Center" ToolTip="{Binding Name}">
+                                <TextBlock
+                                    Text="{Binding Name}"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+                                <TextBlock
+                                    FontSize="9"
+                                    Text="{Binding PersonaId}"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Border
+                    Margin="0,0,0,5"
+                    Padding="5"
+                    BorderBrush="#4285F4"
+                    BorderThickness="1,5,1,1"
+                    DockPanel.Dock="Left">
+                    <StackPanel>
+                        <TextBlock FontWeight="Bold" Text="载&#x0a;入&#x0a;中" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontSize="10"
+                            Text="{Binding ElementName=ListBox_Team02, Path=Items.Count}" />
+                    </StackPanel>
+                </Border>
+                <ListBox
+                    x:Name="ListBox_Team02"
+                    Margin="5,0,2.5,5"
+                    DockPanel.Dock="Right"
+                    ItemsSource="{Binding ListBox_PlayerList_Team02}"
+                    SelectionChanged="ListBox_Team02_SelectionChanged"
+                    Style="{StaticResource ListBoxStyle_Team0}">
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem
+                                Name="MenuItem_Team02"
+                                Header="[载入中]  当前未选中"
+                                IsEnabled="False" />
+                            <Separator />
+                            <MenuItem Header="管理员操作" Icon="&#xe62a;">
+                                <MenuItem
+                                    Name="MenuItem_Team02_KickPlayerCustom"
+                                    Click="MenuItem_Team02_KickPlayerCustom_Click"
+                                    Header="踢出玩家 - 自定义理由" />
+                                <Separator />
+                                <MenuItem
+                                    Name="MenuItem_Team02_KickPlayerOffensiveBehavior"
+                                    Click="MenuItem_Team02_KickPlayerOffensiveBehavior_Click"
+                                    Header="踢出玩家 - 攻击性行为" />
+                                <MenuItem
+                                    Name="MenuItem_Team02_KickPlayerLatency"
+                                    Click="MenuItem_Team02_KickPlayerLatency_Click"
+                                    Header="踢出玩家 - 延迟" />
+                                <MenuItem
+                                    Name="MenuItem_Team02_KickPlayerRuleViolation"
+                                    Click="MenuItem_Team02_KickPlayerRuleViolation_Click"
+                                    Header="踢出玩家 - 违反规则" />
+                                <MenuItem
+                                    Name="MenuItem_Team02_KickPlayerGeneral"
+                                    Click="MenuItem_Team02_KickPlayerGeneral_Click"
+                                    Header="踢出玩家 - 其他" />
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem
+                                Name="MenuItem_Team02_CopyPlayerName"
+                                Click="MenuItem_Team02_CopyPlayerName_Click"
+                                Header="复制玩家ID"
+                                Icon="&#xe600;" />
+                            <MenuItem
+                                Name="MenuItem_Team02_CopyPlayerPersonaId"
+                                Click="MenuItem_Team02_CopyPlayerPersonaId_Click"
+                                Header="复制玩家数字ID" />
+                            <Separator />
+                            <MenuItem
+                                Name="MenuItem_Team02_QueryPlayerRecord"
+                                Click="MenuItem_Team02_QueryPlayerRecord_Click"
+                                Header="查询玩家数据"
+                                Icon="&#xe7d2;" />
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel VerticalAlignment="Center" ToolTip="{Binding Name}">
+                                <TextBlock
+                                    Text="{Binding Name}"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+                                <TextBlock
+                                    FontSize="9"
+                                    Text="{Binding PersonaId}"
+                                    TextTrimming="CharacterEllipsis"
+                                    TextWrapping="NoWrap" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+            <!--  //////////////  -->
+            <Grid Margin="2.5,0,5,5">
+                <StackPanel>
+                    <WrapPanel>
+                        <Button
+                            x:Name="Button_AutoColumWidth"
+                            Margin="0,0,5,3"
+                            Click="Button_AutoColumWidth_Click"
+                            Content="自动调整列宽" />
+                        <Grid>
+                            <ToggleButton
+                                x:Name="ToggleButton_PopupOpen"
+                                Margin="0,0,5,3"
+                                Content="自定义显示列"
+                                Style="{StaticResource ToggleButtonStyle_Popup}" />
+                            <Popup
+                                AllowsTransparency="True"
+                                FocusManager.IsFocusScope="False"
+                                Focusable="False"
+                                IsOpen="{Binding ElementName=ToggleButton_PopupOpen, Path=IsChecked}"
+                                Placement="Top"
+                                PlacementTarget="{Binding ElementName=ToggleButton_PopupOpen}"
+                                PopupAnimation="Slide"
+                                StaysOpen="False"
+                                VerticalOffset="-3">
+                                <Border
+                                    MaxWidth="500"
+                                    Margin="0,0,7,7"
+                                    Padding="5"
+                                    Background="White"
+                                    BorderBrush="Gray"
+                                    BorderThickness="1">
+                                    <Border.Effect>
+                                        <DropShadowEffect
+                                            BlurRadius="5"
+                                            Direction="315"
+                                            Opacity="0.5"
+                                            ShadowDepth="5"
+                                            Color="Black" />
+                                    </Border.Effect>
+                                    <WrapPanel>
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header0"
+                                            Click="CheckBox_GridView_Header0_Click"
+                                            Content="序号"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header1"
+                                            Click="CheckBox_GridView_Header1_Click"
+                                            Content="等级"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header2"
+                                            Click="CheckBox_GridView_Header2_Click"
+                                            Content="战队"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header3"
+                                            Click="CheckBox_GridView_Header3_Click"
+                                            Content="玩家ID"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header4"
+                                            Click="CheckBox_GridView_Header4_Click"
+                                            Content="小队"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header5"
+                                            Click="CheckBox_GridView_Header5_Click"
+                                            Content="击杀"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header6"
+                                            Click="CheckBox_GridView_Header6_Click"
+                                            Content="死亡"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header7"
+                                            Click="CheckBox_GridView_Header7_Click"
+                                            Content="KD"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header8"
+                                            Click="CheckBox_GridView_Header8_Click"
+                                            Content="KPM"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header9"
+                                            Click="CheckBox_GridView_Header9_Click"
+                                            Content="得分"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header10"
+                                            Click="CheckBox_GridView_Header10_Click"
+                                            Content="LKD"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header11"
+                                            Click="CheckBox_GridView_Header11_Click"
+                                            Content="LKPM"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header12"
+                                            Click="CheckBox_GridView_Header12_Click"
+                                            Content="时长"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header13"
+                                            Click="CheckBox_GridView_Header13_Click"
+                                            Content="兵种"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header14"
+                                            Click="CheckBox_GridView_Header14_Click"
+                                            Content="主要武器"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header15"
+                                            Click="CheckBox_GridView_Header15_Click"
+                                            Content="配枪"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header16"
+                                            Click="CheckBox_GridView_Header16_Click"
+                                            Content="配备一"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header17"
+                                            Click="CheckBox_GridView_Header17_Click"
+                                            Content="配备二"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header18"
+                                            Click="CheckBox_GridView_Header18_Click"
+                                            Content="特殊"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header19"
+                                            Click="CheckBox_GridView_Header19_Click"
+                                            Content="手榴弹"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header20"
+                                            Click="CheckBox_GridView_Header20_Click"
+                                            Content="近战"
+                                            IsChecked="True" />
+                                    </WrapPanel>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                    </WrapPanel>
+                </StackPanel>
+                <!--  //////////////  -->
+                <StackPanel
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Orientation="Horizontal">
+                    <Border
+                        Width="10"
+                        Height="10"
+                        Margin="5,0,5,0"
+                        Background="{StaticResource Color_Admin}" />
+                    <TextBlock Text="管理员" />
+                    <Border
+                        Width="10"
+                        Height="10"
+                        Margin="5,0,5,0"
+                        Background="{StaticResource Color_VIP}" />
+                    <TextBlock Text="VIP" />
+                    <Border
+                        Width="10"
+                        Height="10"
+                        Margin="5,0,5,0"
+                        Background="{StaticResource Color_White}" />
+                    <TextBlock Text="白名单" />
+                </StackPanel>
+            </Grid>
+        </UniformGrid>
+    </Grid>
+
+</UserControl>

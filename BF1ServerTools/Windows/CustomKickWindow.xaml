@@ -1,0 +1,74 @@
+﻿<ui:UiWindow
+    x:Class="BF1ServerTools.Windows.CustomKickWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    x:Name="Window_CustomKick"
+    Title="自定义踢人理由"
+    Width="400"
+    Height="220"
+    Closing="Window_CustomKick_Closing"
+    Loaded="Window_CustomKick_Loaded"
+    ResizeMode="NoResize"
+    Style="{StaticResource UiSystemWindowStyle}"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+
+    <ui:UiWindow.TitleContent>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <Image
+                Height="20"
+                Margin="5"
+                Source="\Assets\Images\Favicon.ico" />
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="14"
+                FontWeight="Bold"
+                Text="{Binding ElementName=Window_CustomKick, Path=Title}" />
+        </StackPanel>
+    </ui:UiWindow.TitleContent>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            x:Name="TextBlock_PlayerName"
+            Grid.Row="0"
+            Margin="5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="24"
+            FontWeight="Bold"
+            Text="{Binding PlayerName, FallbackValue='你要踢出的玩家名字'}"
+            TextTrimming="WordEllipsis"
+            TextWrapping="NoWrap" />
+        <StackPanel Grid.Row="1">
+            <WrapPanel>
+                <RadioButton
+                    x:Name="RadioButton_Reson0"
+                    Content="自定义内容"
+                    IsChecked="True" />
+                <RadioButton x:Name="RadioButton_Reson1" Content="FF封禁" />
+                <RadioButton x:Name="RadioButton_Reson2" Content="FF踢出" />
+                <RadioButton x:Name="RadioButton_Reson3" Content="错误代码1" />
+                <RadioButton x:Name="RadioButton_Reson4" Content="连线中断" />
+                <RadioButton x:Name="RadioButton_Reson5" Content="游戏不存在" />
+                <RadioButton x:Name="RadioButton_Reson6" Content="被管理挤出" />
+            </WrapPanel>
+            <ui:UiTextBoxHint
+                x:Name="TextBox_CustomReason"
+                Hint="请输入踢出理由，可为空"
+                InputLanguageManager.InputLanguage="zh-CN" />
+            <Button
+                x:Name="Button_KickPlayer"
+                Margin="5,0,5,5"
+                Click="Button_KickPlayer_Click"
+                Content="踢出该玩家" />
+        </StackPanel>
+    </Grid>
+
+</ui:UiWindow>

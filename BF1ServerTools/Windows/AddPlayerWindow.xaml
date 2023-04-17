@@ -1,0 +1,50 @@
+﻿<ui:UiWindow
+    x:Class="BF1ServerTools.Windows.AddPlayerWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    x:Name="Window_AddPlayer"
+    Title="添加新玩家到列表"
+    Width="400"
+    Height="140"
+    Closing="Window_AddPlayer_Closing"
+    Loaded="Window_AddPlayer_Loaded"
+    ResizeMode="NoResize"
+    Style="{StaticResource UiSystemWindowStyle}"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+
+    <ui:UiWindow.TitleContent>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <Image
+                Height="20"
+                Margin="5"
+                Source="\Assets\Images\Favicon.ico" />
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="14"
+                FontWeight="Bold"
+                Text="{Binding ElementName=Window_AddPlayer, Path=Title}" />
+        </StackPanel>
+    </ui:UiWindow.TitleContent>
+
+    <Grid>
+        <StackPanel>
+            <ui:UiTextBoxHint
+                x:Name="TextBox_NewPlayerName"
+                Hint="请输入玩家ID"
+                InputLanguageManager.InputLanguage="en-US" />
+            <Button
+                x:Name="Button_AddNewPlayer"
+                Click="Button_AddNewPlayer_Click"
+                Content="添加新玩家到列表"
+                IsEnabled="{Binding ElementName=TextBox_NewPlayerName, Path=Text, Converter={StaticResource StringToIsEnabledConverter}}" />
+            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                提示：仅服主有权限添加/移除管理员
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+
+</ui:UiWindow>

@@ -1,0 +1,86 @@
+﻿<ui:UiWindow
+    x:Class="BF1ServerTools.Windows.ChangeMapWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    x:Name="Window_ChangeMap"
+    Title="更换地图提示"
+    Width="400"
+    Height="200"
+    Closing="Window_ChangeMap_Closing"
+    Loaded="Window_ChangeMap_Loaded"
+    ResizeMode="NoResize"
+    Style="{StaticResource UiSystemWindowStyle}"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+
+    <ui:UiWindow.TitleContent>
+        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <Image
+                Height="20"
+                Margin="5"
+                Source="\Assets\Images\Favicon.ico" />
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="14"
+                FontWeight="Bold"
+                Text="{Binding ElementName=Window_ChangeMap, Path=Title}" />
+        </StackPanel>
+    </ui:UiWindow.TitleContent>
+
+    <Grid>
+        <DockPanel>
+            <Button
+                x:Name="Button_OK"
+                Click="Button_OK_Click"
+                Content="确认"
+                DockPanel.Dock="Bottom" />
+            <Grid DockPanel.Dock="Top">
+                <ui:UiImage
+                    Height="140"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    ImageUrl="{Binding MapImage}"
+                    RenderTransformOrigin="0.5,0.5"
+                    Stretch="UniformToFill">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <BlurEffect
+                            KernelType="Gaussian"
+                            Radius="13"
+                            RenderingBias="Quality" />
+                    </Image.Effect>
+                </ui:UiImage>
+                <UniformGrid Rows="2">
+                    <TextBlock
+                        Margin="0,0,0,5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        FontFamily="等线"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="{Binding MapName, FallbackValue='地图名'}"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        Margin="0,5,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        FontFamily="等线"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="你确认要更换地图吗？"
+                        TextWrapping="Wrap" />
+                </UniformGrid>
+            </Grid>
+        </DockPanel>
+    </Grid>
+
+</ui:UiWindow>

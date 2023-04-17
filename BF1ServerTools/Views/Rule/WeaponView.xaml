@@ -1,0 +1,88 @@
+﻿<UserControl
+    x:Class="BF1ServerTools.Views.Rule.WeaponView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+    <DataGrid
+        x:Name="DataGrid_RuleWeapon"
+        Margin="5"
+        ItemsSource="{Binding DataGrid_RuleWeaponModels}"
+        Style="{StaticResource DataGridStyle_Weapon}">
+        <DataGrid.Columns>
+            <DataGridTextColumn
+                Binding="{Binding Kind}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_Weapon}"
+                Header="分类" />
+            <DataGridTextColumn
+                Width="*"
+                Binding="{Binding Name}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_Weapon}"
+                Header="名称" />
+            <DataGridTemplateColumn MinWidth="120" Header="预览">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <ui:UiImage Margin="5" ImageUrl="{Binding Image}">
+                            <Image.ToolTip>
+                                <ui:UiImage ImageUrl="{Binding Image}" />
+                            </Image.ToolTip>
+                        </ui:UiImage>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn MinWidth="80" Header="队伍1">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Border Background="Transparent">
+                            <CheckBox
+                                Name="checkbox"
+                                Margin="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsChecked="{Binding Team1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Visibility="Hidden" />
+                        </Border>
+                        <DataTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="checkbox" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                            <Trigger SourceName="checkbox" Property="IsChecked" Value="True">
+                                <Setter TargetName="checkbox" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn MinWidth="80" Header="队伍2">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Border Background="Transparent">
+                            <CheckBox
+                                Name="checkbox"
+                                Margin="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsChecked="{Binding Team2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Visibility="Hidden" />
+                        </Border>
+                        <DataTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="checkbox" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                            <Trigger SourceName="checkbox" Property="IsChecked" Value="True">
+                                <Setter TargetName="checkbox" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+
+</UserControl>

@@ -1,0 +1,128 @@
+﻿<UserControl
+    x:Class="BF1ServerTools.Views.Rule.GeneralView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+    <UniformGrid Columns="2">
+        <StackPanel>
+            <ui:UiLabelIcon Content="队伍1（进攻方）" />
+            <StackPanel Margin="5">
+                <ui:UiSliderIcon
+                    Title="最高击杀"
+                    Maximum="100"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam1Model.MaxKill}" />
+                <TextBlock />
+
+                <ui:UiSliderIcon
+                    Title="计算KD的最低击杀数"
+                    Maximum="100"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam1Model.FlagKD}" />
+                <!--  //////////////////  -->
+                <ui:UiSliderIcon
+                    Title="最高KD"
+                    Maximum="10"
+                    Style="{StaticResource SliderStyle_DOUBLE}"
+                    Value="{Binding RuleTeam1Model.MaxKD}" />
+                <TextBlock />
+
+                <ui:UiSliderIcon
+                    Title="计算KPM的最低击杀数"
+                    Maximum="100"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam1Model.FlagKPM}" />
+                <!--  //////////////////  -->
+                <ui:UiSliderIcon
+                    Title="最高KPM"
+                    Maximum="10"
+                    Style="{StaticResource SliderStyle_DOUBLE}"
+                    Value="{Binding RuleTeam1Model.MaxKPM}" />
+                <TextBlock />
+
+                <ui:UiSliderIcon
+                    Title="最低等级"
+                    Maximum="150"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam1Model.MinRank}" />
+                <!--  //////////////////  -->
+                <ui:UiSliderIcon
+                    Title="最高等级"
+                    Maximum="150"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam1Model.MaxRank}" />
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    说明：设置为0代表忽略该规则
+                </TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    说明：只有超过设置的值才会被判断违规，比如限制击杀20，则21杀及以上违规；限制最高等级100，则101级及以上违规
+                </TextBlock>
+
+            </StackPanel>
+        </StackPanel>
+        <!--  //////////////////  -->
+        <StackPanel>
+            <ui:UiLabelIcon Content="队伍2（防守方）" />
+            <StackPanel Margin="5">
+                <ui:UiSliderIcon
+                    Title="最高击杀"
+                    Maximum="100"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam2Model.MaxKill}" />
+                <TextBlock />
+
+                <ui:UiSliderIcon
+                    Title="计算KD的最低击杀数"
+                    Maximum="100"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam2Model.FlagKD}" />
+                <!--  //////////////////  -->
+                <ui:UiSliderIcon
+                    Title="最高KD"
+                    Maximum="10"
+                    Style="{StaticResource SliderStyle_DOUBLE}"
+                    Value="{Binding RuleTeam2Model.MaxKD}" />
+                <TextBlock />
+
+                <ui:UiSliderIcon
+                    Title="计算KPM的最低击杀数"
+                    Maximum="100"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam2Model.FlagKPM}" />
+                <!--  //////////////////  -->
+                <ui:UiSliderIcon
+                    Title="最高KPM"
+                    Maximum="10"
+                    Style="{StaticResource SliderStyle_DOUBLE}"
+                    Value="{Binding RuleTeam2Model.MaxKPM}" />
+                <TextBlock />
+
+                <ui:UiSliderIcon
+                    Title="最低等级"
+                    Maximum="150"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam2Model.MinRank}" />
+                <!--  //////////////////  -->
+                <ui:UiSliderIcon
+                    Title="最高等级"
+                    Maximum="150"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam2Model.MaxRank}" />
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    说明：可拖动滑块、点击指定位置调整，方向键左右可微调
+                </TextBlock>
+
+            </StackPanel>
+        </StackPanel>
+    </UniformGrid>
+
+</UserControl>

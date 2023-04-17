@@ -1,0 +1,79 @@
+﻿<UserControl
+    x:Class="BF1ServerTools.Views.Rule.LifeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+    <UniformGrid Columns="2">
+        <StackPanel>
+            <ui:UiLabelIcon Content="队伍1（进攻方）" />
+            <StackPanel Margin="5">
+                <ui:UiSliderIcon
+                    Title="最高生涯KD"
+                    Maximum="10"
+                    Style="{StaticResource SliderStyle_DOUBLE}"
+                    Value="{Binding RuleTeam1Model.LifeMaxKD}" />
+                <!--  //////////////////  -->
+                <ui:UiSliderIcon
+                    Title="最高生涯KPM"
+                    Maximum="10"
+                    Style="{StaticResource SliderStyle_DOUBLE}"
+                    Value="{Binding RuleTeam1Model.LifeMaxKPM}" />
+                <TextBlock />
+
+                <ui:UiSliderIcon
+                    Title="最高生涯武器星数"
+                    Maximum="100"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam1Model.LifeMaxWeaponStar}" />
+                <!--  //////////////////  -->
+                <ui:UiSliderIcon
+                    Title="最高生涯载具星数"
+                    Maximum="100"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam1Model.LifeMaxVehicleStar}" />
+
+                <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
+                    说明：生涯武器、载具星数只有使用或者携带才会检测违规
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <!--  //////////////////  -->
+        <StackPanel>
+            <ui:UiLabelIcon Content="队伍2（防守方）" />
+            <StackPanel Margin="5">
+                <ui:UiSliderIcon
+                    Title="最高生涯KD"
+                    Maximum="10"
+                    Style="{StaticResource SliderStyle_DOUBLE}"
+                    Value="{Binding RuleTeam2Model.LifeMaxKD}" />
+                <!--  //////////////////  -->
+                <ui:UiSliderIcon
+                    Title="最高生涯KPM"
+                    Maximum="10"
+                    Style="{StaticResource SliderStyle_DOUBLE}"
+                    Value="{Binding RuleTeam2Model.LifeMaxKPM}" />
+                <TextBlock />
+
+                <ui:UiSliderIcon
+                    Title="最高生涯武器星数"
+                    Maximum="100"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam2Model.LifeMaxWeaponStar}" />
+                <!--  //////////////////  -->
+                <ui:UiSliderIcon
+                    Title="最高生涯载具星数"
+                    Maximum="100"
+                    Style="{StaticResource SliderStyle_INT}"
+                    Value="{Binding RuleTeam2Model.LifeMaxVehicleStar}" />
+            </StackPanel>
+        </StackPanel>
+    </UniformGrid>
+
+</UserControl>

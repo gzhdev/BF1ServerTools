@@ -1,0 +1,167 @@
+﻿<ui:UiWindow
+    x:Class="BF1ServerTools.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    x:Name="Window_Main"
+    Title="战地1服务器管理工具 - 主窗口"
+    Width="1280"
+    Height="720"
+    MinWidth="1280"
+    MinHeight="720"
+    CaptionHeight="40"
+    Closing="Window_Main_Closing"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+    Loaded="Window_Main_Loaded"
+    Style="{StaticResource UiSystemWindowStyle}"
+    mc:Ignorable="d">
+
+    <ui:UiWindow.TitleContent>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                <Image
+                    Width="26"
+                    Height="26"
+                    Margin="5"
+                    Source="\Assets\Images\Favicon.ico"
+                    ToolTip="{Binding ElementName=Window_Main, Path=Title}" />
+            </StackPanel>
+            <!--  ///////////////////////////////////  -->
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                <Border
+                    Margin="0,0,5,0"
+                    Padding="5,1,5,1"
+                    VerticalAlignment="Center">
+                    <Border.Style>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="BorderBrush" Value="#008000" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding MainModel.IsUseMode1}" Value="False">
+                                    <Setter Property="BorderThickness" Value="1,1,5,1" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock
+                            FontSize="12"
+                            Text="{Binding MainModel.DisplayName2, FallbackValue='玩家昵称'}"
+                            TextAlignment="Right" />
+                        <TextBlock
+                            FontSize="10"
+                            Text="{Binding MainModel.PersonaId2, FallbackValue='玩家数字Id'}"
+                            TextAlignment="Right" />
+                    </StackPanel>
+                </Border>
+                <!--  ///////////////////////////////////  -->
+                <Border
+                    Margin="0,0,5,0"
+                    Padding="5,1,5,1"
+                    VerticalAlignment="Center">
+                    <Border.Style>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="BorderBrush" Value="#1E88E5" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding MainModel.IsUseMode1}" Value="True">
+                                    <Setter Property="BorderThickness" Value="1,1,5,1" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock
+                            FontSize="12"
+                            Text="{Binding MainModel.DisplayName1, FallbackValue='玩家昵称'}"
+                            TextAlignment="Right" />
+                        <TextBlock
+                            FontSize="10"
+                            Text="{Binding MainModel.PersonaId1, FallbackValue='玩家数字Id'}"
+                            TextAlignment="Right" />
+                    </StackPanel>
+                </Border>
+                <!--  ///////////////////////////////////  -->
+                <StackPanel Margin="5,0,5,0" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding MainModel.AppRunTime, FallbackValue='00:00:00'}" />
+                    <TextBlock FontSize="10" Text="{Binding MainModel.VersionInfo, StringFormat='v{0}', FallbackValue='1.0.0.0'}" />
+                </StackPanel>
+            </StackPanel>
+            <!--  ///////////////////////////////////  -->
+            <StackPanel
+                x:Name="StackPanel_NavMenu"
+                DockPanel.Dock="Left"
+                Orientation="Horizontal"
+                WindowChrome.IsHitTestVisibleInChrome="True">
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="HomeView"
+                    Content="主页"
+                    Icon="&#xe63b;"
+                    IsChecked="True" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="AuthView"
+                    Content="授权"
+                    Icon="&#xe63b;" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="ScoreView"
+                    Content="得分板"
+                    Icon="&#xe63b;" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="DetailView"
+                    Content="详情"
+                    Icon="&#xe63b;" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="RuleView"
+                    Content="规则"
+                    Icon="&#xe63b;" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="MonitView"
+                    Content="监控"
+                    Icon="&#xe63b;" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="LogView"
+                    Content="日志"
+                    Icon="&#xe63b;" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="ChatView"
+                    Content="聊天栏"
+                    Icon="&#xe63b;" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="RobotView"
+                    Content="机器人"
+                    Icon="&#xe63b;" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="CacheView"
+                    Content="缓存"
+                    Icon="&#xe63b;" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="ServerView"
+                    Content="服务器"
+                    Icon="&#xe63b;" />
+                <ui:UiRadioButtonIcon
+                    Command="{Binding NavigateCommand}"
+                    CommandParameter="AboutView"
+                    Content="关于"
+                    Icon="&#xe63b;" />
+            </StackPanel>
+        </DockPanel>
+    </ui:UiWindow.TitleContent>
+
+    <Grid>
+        <ContentControl x:Name="ContentControl_NavRegion" FocusVisualStyle="{x:Null}" />
+    </Grid>
+
+</ui:UiWindow>
