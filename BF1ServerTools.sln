@@ -5,7 +5,12 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BF1ServerTools", "BF1ServerTools\BF1ServerTools.csproj", "{8B9EF377-7D03-47B5-9056-28D80444F51C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualizingWrapPanel", "VirtualizingWrapPanel\VirtualizingWrapPanel.csproj", "{4518D73D-8CE0-43AC-944E-1433DE4FEFED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualizingWrapPanel", "VirtualizingWrapPanel\VirtualizingWrapPanel.csproj", "{4518D73D-8CE0-43AC-944E-1433DE4FEFED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{4AE7B010-D982-4453-A0CA-752B24691CEB}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
