@@ -62,7 +62,7 @@
             </DockPanel>
             <ComboBox x:Name="ComboBox_ConfigNames" ItemsSource="{Binding ConfigNames}" />
             <!--  //////////////  -->
-            <ui:UiLabelIcon Content="应用规则" />
+            <ui:UiLabelIcon Content="规则设置" />
             <Button x:Name="Button_ApplyAndQueryCurrentRule" Content="应用并查询当前规则" />
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                 说明：每次修改规则，都必须重新应用规则才会生效

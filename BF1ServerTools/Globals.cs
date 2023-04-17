@@ -3,13 +3,20 @@
 public static class Globals
 {
     /// <summary>
+    /// 是否使用HTTP代理
+    /// </summary>
+    public static bool IsUseProxy = false;
+
+    /// <summary>
     /// HTTP代理服务器地址
     /// </summary>
-    public static IPAddress IPAddress = IPAddress.None;
+    public static IPAddress IPAddress = default;
     /// <summary>
     /// HTTP代理端口
     /// </summary>
-    public static int Port = 0;
+    public static int Port = default;
+
+    ///////////////////////////////////////////////////////
 
     /// <summary>
     /// 玩家列表排序规则

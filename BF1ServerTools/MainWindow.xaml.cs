@@ -1,8 +1,8 @@
 ﻿using BF1ServerTools.SDK;
 using BF1ServerTools.Data;
 using BF1ServerTools.Utils;
-using BF1ServerTools.Helpers;
 using BF1ServerTools.Models;
+using BF1ServerTools.Helpers;
 using BF1ServerTools.Services;
 
 using CommunityToolkit.Mvvm.Input;
@@ -93,12 +93,15 @@ public partial class MainWindow
         Memory.UnInitialize();
         LoggerHelper.Info("释放内存模块进程句柄成功");
 
+        ConfigHelper.SaveConfig();
+        LoggerHelper.Info("保存全局配置文件成功");
+
         Application.Current.Shutdown();
         LoggerHelper.Info("程序关闭\n\n");
     }
 
     /// <summary>
-    /// 创建子页面
+    /// 创建页面
     /// </summary>
     private void CreateView()
     {

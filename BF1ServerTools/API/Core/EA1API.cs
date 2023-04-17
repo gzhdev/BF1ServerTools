@@ -11,9 +11,7 @@ public static class EA1API
     /// <summary>
     /// 初始化
     /// </summary>
-    /// <param name="ip">代理ip</param>
-    /// <param name="port">代理端口</param>
-    public static void Initialize(IPAddress ip = default, int port = default)
+    static EA1API()
     {
         if (_client != null)
             return;
@@ -28,13 +26,17 @@ public static class EA1API
         };
 
         // 判断是否使用代理
-        if (ip != default && port != default)
+        if (Globals.IsUseProxy)
         {
-            var proxy = new WebProxy()
+            // 判断代理是否配置正确
+            if (Globals.IPAddress != default && Globals.Port != default)
             {
-                Address = new Uri($"http://{ip}:{port}"),
-            };
-            options.Proxy = proxy;
+                var proxy = new WebProxy()
+                {
+                    Address = new Uri($"http://{Globals.IPAddress}:{Globals.Port}"),
+                };
+                options.Proxy = proxy;
+            }
         }
 
         _client = new RestClient(options);

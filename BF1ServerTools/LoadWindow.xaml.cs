@@ -6,6 +6,7 @@ using BF1ServerTools.Helpers;
 using BF1ServerTools.Services;
 
 using CommunityToolkit.Mvvm.Input;
+using System.Configuration;
 
 namespace BF1ServerTools;
 
@@ -64,8 +65,10 @@ public partial class LoadWindow
                 FileHelper.CreateDirectory(FileHelper.Dir_Log_NLog);
                 FileHelper.CreateDirectory(FileHelper.Dir_Log_Crash);
 
-                LoadModel.LoadState = "正在检测战地1是否运行...";
                 // 检测战地1是否运行
+                LoadModel.LoadState = "正在检测战地1是否运行...";
+                LoggerHelper.Info("正在检测战地1是否运行...");
+
                 if (!ProcessHelper.IsBf1Run())
                 {
                     LoadModel.LoadState = "未发现《战地1》游戏进程！程序即将关闭";
@@ -79,8 +82,10 @@ public partial class LoadWindow
                     return;
                 }
 
-                LoadModel.LoadState = "正在初始化战地1内存模块...";
                 // 初始化战地1内存模块
+                LoadModel.LoadState = "正在初始化战地1内存模块...";
+                LoggerHelper.Info("正在初始化战地1内存模块...");
+
                 if (!Memory.Initialize())
                 {
                     LoadModel.LoadState = $"战地1内存模块初始化失败！程序即将关闭";
@@ -109,38 +114,27 @@ public partial class LoadWindow
                 //    return;
                 //}
 
-                LoadModel.LoadState = "正在初始化战地1API模块...";
-                // 初始化战地1API模块
-                var ipAddress = IniHelper.ReadValue("WebProxy", "IPAddress");
-                var port = IniHelper.ReadValue("WebProxy", "Port");
+                // 初始化战地1 HTTP模块
+                LoadModel.LoadState = "正在初始化战地1 HTTP模块...";
+                LoggerHelper.Info("正在初始化战地1 HTTP模块...");
 
-                // 根据配置文件决定是否使用代理功能
-                if (!string.IsNullOrWhiteSpace(ipAddress) &&
-                    !string.IsNullOrWhiteSpace(port) &&
-                    IPAddress.TryParse(ipAddress, out IPAddress ipAddressValue) &&
-                    int.TryParse(port, out int portValue))
+                // 读取配置文件信息
+                Globals.IsUseProxy = ConfigHelper.ReadBool("WebProxy", "IsUseProxy");
+                var ipAddress = ConfigHelper.ReadString("WebProxy", "IPAddress");
+                var port = ConfigHelper.ReadInt("WebProxy", "Port");
+
+                // 解析配置文件格式
+                if (IPAddress.TryParse(ipAddress, out IPAddress ipAddressValue) &&
+                     port != 0)
                 {
                     Globals.IPAddress = ipAddressValue;
-                    Globals.Port = portValue;
-
-                    BF1API.Initialize(ipAddressValue, portValue);
-                    EA1API.Initialize(ipAddressValue, portValue);
-                    EA2API.Initialize(ipAddressValue, portValue);
-
-                    HttpHelper.Initialize(ipAddressValue, portValue);
-                }
-                else
-                {
-                    BF1API.Initialize();
-                    EA1API.Initialize();
-                    EA2API.Initialize();
-
-                    HttpHelper.Initialize();
+                    Globals.Port = port;
                 }
 
                 /////////////////////////////////////////////////////////////////////
 
                 LoadModel.LoadState = "正在准备最后工作...";
+                LoggerHelper.Info("正在准备最后工作...");
 
                 // 释放资源文件
                 FileHelper.ExtractResFile(FileHelper.Res_Robot_Config, FileHelper.File_Robot_Config);

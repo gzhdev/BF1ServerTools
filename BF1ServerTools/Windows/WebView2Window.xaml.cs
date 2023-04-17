@@ -23,9 +23,15 @@ public partial class WebView2Window
     {
         var options = new CoreWebView2EnvironmentOptions();
 
-        // 使用代理
-        if (Globals.IPAddress != IPAddress.None && Globals.Port != 0)
-            options.AdditionalBrowserArguments = $"--proxy-server=http://{Globals.IPAddress}:{Globals.Port}";
+        // 判断是否使用代理
+        if (Globals.IsUseProxy)
+        {
+            // 判断代理是否配置正确
+            if (Globals.IPAddress != default && Globals.Port != default)
+            {
+                options.AdditionalBrowserArguments = $"--proxy-server=http://{Globals.IPAddress}:{Globals.Port}";
+            }
+        }
 
         // 初始化WebView2环境
         var env = await CoreWebView2Environment.CreateAsync(null, FileHelper.Dir_Cache, options);

@@ -29,14 +29,14 @@ public partial class AuthView : UserControl
     ////////////////////////////////////////////////////////////
 
     /// <summary>
-    /// 配置文件路径
-    /// </summary>
-    private readonly string File_Auth_Config = Path.Combine(FileHelper.Dir_Config, "AuthConfig.json");
-
-    /// <summary>
     /// 配置文件，以json格式保存到本地
     /// </summary>
     private readonly AuthConfig AuthConfig = new();
+
+    /// <summary>
+    /// 配置文件路径
+    /// </summary>
+    private readonly string File_Auth_Config = Path.Combine(FileHelper.Dir_Config, "AuthConfig.json");
 
     public AuthView()
     {
@@ -84,13 +84,15 @@ public partial class AuthView : UserControl
         }
         #endregion
 
-        if (Globals.IPAddress != IPAddress.None && Globals.Port != 0)
-        {
-            TextBox_IPAddress.Text = Globals.IPAddress.ToString();
-            TextBox_Port.Text = Globals.Port.ToString();
-        }
+        ////////////////////////////////////////////////
 
-        /////////////////////////////////////////////////////////////////////
+        RadioButton_NoHttpProxy.IsChecked = !Globals.IsUseProxy;
+        RadioButton_UseHttpProxy.IsChecked = Globals.IsUseProxy;
+
+        TextBox_IPAddress.Text = Globals.IPAddress == default ? string.Empty : Globals.IPAddress.ToString();
+        TextBox_Port.Text = Globals.Port == default ? string.Empty : Globals.Port.ToString();
+
+        ////////////////////////////////////////////////
 
         // 用于接收WebView2传回的数据
         WeakReferenceMessenger.Default.Register<string, string>(this, "SendRemidSid", (s, e) =>
@@ -136,14 +138,18 @@ public partial class AuthView : UserControl
         var ipAddress = TextBox_IPAddress.Text.Trim();
         var port = TextBox_Port.Text.Trim();
 
+        ConfigHelper.WriteBool("WebProxy", "IsUseProxy", RadioButton_UseHttpProxy.IsChecked == true);
+
         if (!string.IsNullOrWhiteSpace(ipAddress) &&
             !string.IsNullOrWhiteSpace(port) &&
             IPAddress.TryParse(ipAddress, out IPAddress ipAddressValue) &&
             int.TryParse(port, out int portValue))
         {
-            IniHelper.WriteValue("WebProxy", "IPAddress", ipAddressValue.ToString());
-            IniHelper.WriteValue("WebProxy", "Port", portValue.ToString());
+            ConfigHelper.WriteString("WebProxy", "IPAddress", ipAddressValue.ToString());
+            ConfigHelper.WriteInt("WebProxy", "Port", portValue);
         }
+
+        ////////////////////////////////////////////////
 
         // 更新当前授权信息
         var index = ComboBox_ConfigNames.SelectedIndex;
@@ -279,11 +285,11 @@ public partial class AuthView : UserControl
             if (sessionId != string.Empty)
             {
                 Globals.SessionId1 = sessionId;
-                NotifierHelper.Show(NotifierType.Information, $"内存扫描SessionId成功 {Globals.SessionId1}");
+                NotifierHelper.Show(NotifierType.Success, $"内存扫描SessionId成功 {Globals.SessionId1}");
             }
             else
             {
-                NotifierHelper.Show(NotifierType.Information, "内存扫描SessionId失败");
+                NotifierHelper.Show(NotifierType.Error, "内存扫描SessionId失败");
             }
         }
         else
