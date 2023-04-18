@@ -13,13 +13,15 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
         <!--  ///////////////////////  -->
         <ListBox
-            x:Name="ListBox_CustomWhites"
+            x:Name="ListBox_White"
             Margin="5"
-            Style="{StaticResource ListBoxStyle_CustomWhites}">
+            ItemsSource="{Binding ListBox_WhiteInfos}"
+            SelectionChanged="ListBox_White_SelectionChanged"
+            Style="{StaticResource ListBoxStyle_White}">
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem
@@ -29,29 +31,38 @@
                     <Separator />
                     <MenuItem
                         Name="MenuItem_White_AddNewPlayer"
+                        Click="MenuItem_White_AddNewPlayer_Click"
                         Header="添加新白名单玩家"
                         Icon="&#xeb89;" />
                     <MenuItem
                         Name="MenuItem_White_RemoveSelectedPlayer"
+                        Click="MenuItem_White_RemoveSelectedPlayer_Click"
                         Header="移除选中白名单玩家"
                         Icon="&#xe628;" />
                     <Separator />
                     <MenuItem
                         Name="MenuItem_White_CopyPlayerName"
+                        Click="MenuItem_White_CopyPlayerName_Click"
                         Header="复制玩家ID"
                         Icon="&#xe600;" />
-                    <MenuItem Name="MenuItem_White_CopyPlayerPersonaId" Header="复制玩家数字ID" />
                     <Separator />
                     <MenuItem
-                        Name="MenuItem_White_QueryPlayerRecord"
-                        Header="查询玩家数据"
-                        Icon="&#xe7d2;" />
+                        Name="MenuItem_White_ImportList"
+                        Click="MenuItem_White_ImportList_Click"
+                        Header="导入白名单列表" />
+                    <MenuItem
+                        Name="MenuItem_White_ExportList"
+                        Click="MenuItem_White_ExportList_Click"
+                        Header="导出白名单列表" />
                     <Separator />
-                    <MenuItem Name="MenuItem_White_ImportList" Header="导入白名单列表" />
-                    <MenuItem Name="MenuItem_White_ExportList" Header="导出白名单列表" />
-                    <Separator />
-                    <MenuItem Name="MenuItem_White_DistinctList" Header="白名单列表去重" />
-                    <MenuItem Name="MenuItem_White_ClearList" Header="清空白名单列表" />
+                    <MenuItem
+                        Name="MenuItem_White_TrimList"
+                        Click="MenuItem_White_TrimList_Click"
+                        Header="整理白名单列表" />
+                    <MenuItem
+                        Name="MenuItem_White_ClearList"
+                        Click="MenuItem_White_ClearList_Click"
+                        Header="清空白名单列表" />
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>

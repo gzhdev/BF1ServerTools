@@ -87,7 +87,7 @@ public partial class VIPView : UserControl
     private void MenuItem_VIP_QueryPlayerRecord_Click(object sender, RoutedEventArgs e)
     {
         if (ListBox_VIP.SelectedItem is RSPInfo item)
-            ViewUtil.QueryPlayerRecord(item.DisplayName, item.PersonaId, -9);
+            ViewUtil.QueryPlayerRecord(item.DisplayName, item.PersonaId, -8);
         else
             ViewUtil.UnSelectedNotifier("VIP");
     }

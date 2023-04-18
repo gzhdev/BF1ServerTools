@@ -13,7 +13,7 @@
     <ListBox
         x:Name="ListBox_CustomBlacks"
         Margin="5"
-        Style="{StaticResource ListBoxStyle_CustomWhites}">
+        Style="{StaticResource ListBoxStyle_White}">
         <ListBox.ContextMenu>
             <ContextMenu>
                 <MenuItem

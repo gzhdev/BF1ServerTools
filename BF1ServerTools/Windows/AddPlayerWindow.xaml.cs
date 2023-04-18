@@ -8,7 +8,7 @@ namespace BF1ServerTools.Windows;
 /// </summary>
 public partial class AddPlayerWindow
 {
-    public string AddType { get; }
+    public string AddType { get; private set; }
 
     public AddPlayerWindow(string addType)
     {

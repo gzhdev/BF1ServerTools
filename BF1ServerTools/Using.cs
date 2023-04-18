@@ -26,6 +26,7 @@ global using System.Collections.Generic;
 global using System.Collections.ObjectModel;
 global using Microsoft.Win32;
 global using System.Text.Json.Serialization;
+global using System.Collections.Specialized;
 
 global using System.Text.Json;
 global using System.Text.Unicode;

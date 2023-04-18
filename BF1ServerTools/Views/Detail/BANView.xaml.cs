@@ -87,7 +87,7 @@ public partial class BANView : UserControl
     private void MenuItem_BAN_QueryPlayerRecord_Click(object sender, RoutedEventArgs e)
     {
         if (ListBox_BAN.SelectedItem is RSPInfo item)
-            ViewUtil.QueryPlayerRecord(item.DisplayName, item.PersonaId, -9);
+            ViewUtil.QueryPlayerRecord(item.DisplayName, item.PersonaId, -7);
         else
             ViewUtil.UnSelectedNotifier("BAN");
     }

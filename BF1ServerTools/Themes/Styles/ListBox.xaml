@@ -299,11 +299,10 @@
                             VerticalAlignment="Center">
                             <TextBlock
                                 Margin="0,0,0,3"
-                                VerticalAlignment="Bottom"
                                 FontSize="14"
                                 FontWeight="Bold"
                                 Text="{Binding DisplayName}" />
-                            <TextBlock VerticalAlignment="Top" Text="{Binding PersonaId}" />
+                            <TextBlock Text="{Binding PersonaId}" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -311,146 +310,26 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ListBoxStyle_Log" TargetType="{x:Type ListBox}">
+    <!--  规则信息 黑名单、白名单列表 ListBox样式  -->
+    <Style x:Key="ListBoxStyle_White" TargetType="{x:Type ListBox}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
-                    <Border BorderBrush="#808080" BorderThickness="1">
-                        <ScrollViewer>
-                            <StackPanel IsItemsHost="true" />
-                        </ScrollViewer>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="ItemContainerStyle">
-            <Setter.Value>
-                <Style TargetType="{x:Type ListBoxItem}">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                <Border
-                                    Name="border"
-                                    Padding="10,0,10,0"
-                                    Background="Transparent">
-                                    <ContentPresenter VerticalAlignment="Center" />
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="border" Property="Background" Value="#CCCCCC" />
-                                    </Trigger>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="border" Property="Background" Value="#808080" />
-                                        <Setter Property="TextElement.Foreground" Value="White" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="ListBoxStyle_PlayerData" TargetType="{x:Type ListBox}">
-        <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ListBox}">
-                    <ScrollViewer>
-                        <StackPanel IsItemsHost="true" />
-                    </ScrollViewer>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="ItemContainerStyle">
-            <Setter.Value>
-                <Style TargetType="{x:Type ListBoxItem}">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                <Grid Height="25" Background="Transparent">
-                                    <Border x:Name="border" />
-                                    <ContentPresenter Margin="5,0,0,0" VerticalAlignment="Center" />
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="border" Property="Background" Value="Gray" />
-                                        <Setter TargetName="border" Property="Opacity" Value="0.3" />
-                                    </Trigger>
-                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Content}" Value="">
-                                        <Setter TargetName="border" Property="Background" Value="Transparent" />
-                                        <Setter TargetName="border" Property="Opacity" Value="1" />
-                                    </DataTrigger>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="border" Property="Background" Value="{StaticResource ListBoxItemColor}" />
-                                        <Setter TargetName="border" Property="Opacity" Value="0.3" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="ListBoxStyle_DataTemplate" TargetType="{x:Type ListBox}">
-        <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ListBox}">
-                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                        <StackPanel IsItemsHost="true" />
-                    </ScrollViewer>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="ItemContainerStyle">
-            <Setter.Value>
-                <Style TargetType="{x:Type ListBoxItem}">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                <Grid Background="Transparent">
-                                    <Border x:Name="border" />
-                                    <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="border" Property="Background" Value="Gray" />
-                                        <Setter TargetName="border" Property="Opacity" Value="0.3" />
-                                    </Trigger>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="border" Property="Background" Value="{StaticResource ListBoxItemColor}" />
-                                        <Setter TargetName="border" Property="Opacity" Value="0.3" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="ListBoxStyle_CustomWhites" TargetType="{x:Type ListBox}">
-        <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ListBox}">
-                    <Border BorderBrush="#808080" BorderThickness="1">
+                    <Border>
                         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                            <StackPanel IsItemsHost="true" />
+                            <vwp:VirtualizingWrapPanel
+                                IsItemsHost="True"
+                                MouseWheelDelta="1"
+                                Orientation="Vertical"
+                                ScrollLineDelta="1"
+                                SpacingMode="None"
+                                VirtualizingPanel.CacheLengthUnit="Item"
+                                VirtualizingPanel.IsVirtualizing="True"
+                                VirtualizingPanel.ScrollUnit="Item"
+                                VirtualizingPanel.VirtualizationMode="Recycling" />
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>
@@ -462,26 +341,48 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                <Border
-                                    Name="border"
-                                    Height="30"
-                                    Padding="10,0,10,0"
-                                    Background="Transparent">
-                                    <ContentPresenter VerticalAlignment="Center" />
-                                </Border>
+                                <Grid Margin="1" Background="Transparent">
+                                    <Border Name="border" BorderThickness="0" />
+                                    <ContentPresenter />
+                                </Grid>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="border" Property="Background" Value="#CCCCCC" />
+                                        <Setter TargetName="border" Property="Background" Value="#EEEEEE" />
                                     </Trigger>
                                     <Trigger Property="IsSelected" Value="True">
-                                        <Setter TargetName="border" Property="Background" Value="#808080" />
-                                        <Setter Property="TextElement.Foreground" Value="White" />
+                                        <Setter TargetName="border" Property="Background" Value="#1E88E5" />
+                                        <Setter Property="Foreground" Value="White" />
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid Width="210" ToolTip="{Binding Name}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            Width="32"
+                            Height="32"
+                            Margin="3"
+                            BorderBrush="Gray"
+                            BorderThickness="1">
+                            <controls:UiImage ImageUrl="{Binding Avatar}" />
+                        </Border>
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="5,0,5,0"
+                            VerticalAlignment="Center"
+                            Text="{Binding Name}" />
+                    </Grid>
+                </DataTemplate>
             </Setter.Value>
         </Setter>
     </Style>
