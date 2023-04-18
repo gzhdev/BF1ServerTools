@@ -13,10 +13,10 @@ public static class Player
     /// 获取自己信息
     /// </summary>
     /// <returns></returns>
-    public static LocalData GetLocalPlayer()
+    public static PlayerLocal GetPlayerLocal()
     {
         var baseAddress = Obfuscation.GetLocalPlayer();
-        return new LocalData()
+        return new PlayerLocal()
         {
             DisplayName = Memory.ReadString(baseAddress + 0x40, 64),
             PersonaId = Memory.Read<long>(baseAddress + 0x38),
@@ -28,9 +28,9 @@ public static class Player
     /// 获取玩家列表缓存
     /// </summary>
     /// <returns></returns>
-    public static List<CacheData> GetPlayerCache()
+    public static List<PlayerCache> GetPlayerCache()
     {
-        var _playerCache = new List<CacheData>();
+        var _playerCache = new List<PlayerCache>();
 
         for (int i = 0; i < MaxPlayer; i++)
         {

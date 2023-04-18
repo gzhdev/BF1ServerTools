@@ -36,40 +36,23 @@ public static class SQLiteApp
     }
 
     /// <summary>
-    /// 查询生涯缓存信息
+    /// 获取生涯缓存信息
     /// </summary>
-    /// <param name="personaId"></param>
     /// <returns></returns>
-    public static List<LifeCacheDb> QueryLifeCacheDb()
+    public static List<LifeCacheDb> ReadLifeCacheDb()
     {
         return _freeSql.Select<LifeCacheDb>().ToList();
     }
 
     /// <summary>
-    /// 查询生涯缓存信息
+    /// 保持生涯缓存信息
     /// </summary>
-    /// <param name="personaId"></param>
-    /// <returns></returns>
-    public static LifeCacheDb QueryLifeCacheDb(long personaId)
+    /// <param name="lifeCacheDbs"></param>
+    public static void SaveLifeCacheDb(List<LifeCacheDb> lifeCacheDbs)
     {
-        return _freeSql.Select<LifeCacheDb>().Where(x => x.PersonaId == personaId).ToOne();
-    }
-
-    /// <summary>
-    /// 插入生涯缓存信息
-    /// </summary>
-    /// <param name="lifeCacheDb"></param>
-    public static void AddLifeCacheDb(LifeCacheDb lifeCacheDb)
-    {
-        _freeSql.Insert(lifeCacheDb).ExecuteIdentity();
-    }
-
-    /// <summary>
-    /// 删除生涯缓存信息
-    /// </summary>
-    /// <param name="lifeCacheDb"></param>
-    public static void DeleteLifeCacheDb(long personaId)
-    {
-        _freeSql.Delete<LifeCacheDb>().Where(x => x.PersonaId == personaId).ExecuteAffrows();
+        // 清空表
+        _freeSql.Delete<LifeCacheDb>().Where("1=1").ExecuteAffrows();
+        // 批量插入数据
+        _freeSql.Insert(lifeCacheDbs).ExecuteAffrows();
     }
 }

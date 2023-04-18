@@ -1,4 +1,8 @@
-﻿namespace BF1ServerTools.Services;
+﻿using BF1ServerTools.Data;
+using BF1ServerTools.Helpers;
+using BF1ServerTools.SQLite;
+
+namespace BF1ServerTools.Services;
 
 public static class ServiceApp
 {
@@ -6,6 +10,11 @@ public static class ServiceApp
     /// 是否停止线程循环
     /// </summary>
     public static bool IsDispose { get; private set; } = false;
+
+    /// <summary>
+    /// 生涯数据缓存
+    /// </summary>
+    private static readonly string File_LifeCache_Json = Path.Combine(FileHelper.Dir_Data, "LifeCache.json");
 
     private static Timer AutoRefreshTimerModel1 = null;
     private static Timer AutoRefreshTimerModel2 = null;
@@ -15,6 +24,11 @@ public static class ServiceApp
     /// </summary>
     public static void Initialize()
     {
+        // 从数据库读取生涯数据缓存
+        Globals.PlayerLifeCaches = SQLiteApp.ReadLifeCacheDb();
+
+        ////////////////////////////////////////////
+
         new Thread(MainService.UpdateMainDataThread)
         {
             Name = "UpdateMainDataThread",
@@ -75,6 +89,9 @@ public static class ServiceApp
 
         AutoRefreshTimerModel1?.Stop();
         AutoRefreshTimerModel2?.Stop();
+
+        // 保存生涯数据缓存到数据库
+        SQLiteApp.SaveLifeCacheDb(Globals.PlayerLifeCaches);
     }
 
     private static void AutoRefreshTimerModel1_Elapsed(object sender, ElapsedEventArgs e)

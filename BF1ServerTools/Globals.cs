@@ -1,4 +1,5 @@
 ﻿using BF1ServerTools.Data;
+using BF1ServerTools.SQLite;
 
 namespace BF1ServerTools;
 
@@ -163,21 +164,21 @@ public static class Globals
     /// </summary>
     public static List<long> ServerAdmins_PID = new();
     /// <summary>
-    /// 服务器VIP
+    /// 服务器VIP，PID
     /// </summary>
     public static List<long> ServerVIPs_PID = new();
 
     ///////////////////////////////////////////////////////
 
+    /// <summary>
+    /// 玩家生涯缓存数据
+    /// </summary>
+    public static List<LifeCacheDb> PlayerLifeCaches = new();
+
     ///// <summary>
     ///// 保存违规玩家列表信息
     ///// </summary>
     //public static List<BreakRuleInfo> BreakRuleInfo_PlayerList = new();
-
-    ///// <summary>
-    ///// 缓存玩家生涯数据
-    ///// </summary>
-    //public static List<LifePlayerData> LifePlayerCacheDatas = new();
 
     ///// <summary>
     ///// 踢出玩家CD缓存

@@ -18,7 +18,7 @@ public static class MainService
             if (ServiceApp.IsDispose)
                 return;
 
-            var localData = Player.GetLocalPlayer();
+            var localData = Player.GetPlayerLocal();
             Globals.DisplayName1 = localData.DisplayName;
             Globals.PersonaId1 = localData.PersonaId;
 

@@ -39,4 +39,26 @@ public static class JsonHelper
     {
         return JsonSerializer.Serialize(jsonClass, OptionsSeri);
     }
+
+    /// <summary>
+    /// 读取Json文件
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="savePath"></param>
+    /// <param name="jsonClass"></param>
+    public static T ReadFile<T>(string savePath) where T : class
+    {
+        return JsonDese<T>(File.ReadAllText(savePath));
+    }
+
+    /// <summary>
+    /// 写入Json文件
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="savePath"></param>
+    /// <param name="jsonClass"></param>
+    public static void WriteFile<T>(string savePath, T jsonClass) where T : class
+    {
+        File.WriteAllText(savePath, JsonSeri(jsonClass));
+    }
 }

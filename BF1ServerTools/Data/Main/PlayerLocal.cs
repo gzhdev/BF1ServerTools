@@ -1,6 +1,6 @@
 ﻿namespace BF1ServerTools.Data;
 
-public class LocalData
+public class PlayerLocal
 {
     public string DisplayName { get; set; }
     public long PersonaId { get; set; }

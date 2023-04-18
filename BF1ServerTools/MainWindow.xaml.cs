@@ -81,11 +81,11 @@ public partial class MainWindow
         WindowClosingEvent?.Invoke();
         LoggerHelper.Info("调用主窗口关闭事件成功");
 
-        ProcessHelper.CloseThirdProcess();
-        LoggerHelper.Info("关闭第三方进程成功");
-
         ServiceApp.Shutdown();
         LoggerHelper.Info("服务模块停止成功");
+
+        ProcessHelper.CloseThirdProcess();
+        LoggerHelper.Info("关闭第三方进程成功");
 
         Chat.FreeMemory();
         LoggerHelper.Info("释放中文聊天指针内存成功");

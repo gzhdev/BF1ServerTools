@@ -613,4 +613,8 @@
       <None Include="E:\BF1\GitHub\BF1ServerTools\BF1ServerTools\.editorconfig" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="SQLite\Data\" />
+    </ItemGroup>
+
 </Project>

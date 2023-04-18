@@ -1,11 +1,9 @@
 ﻿namespace BF1ServerTools.Data;
 
-public class LifeCacheData
+public class PlayerCache
 {
-    public DateTime Date { get; set; }
-
+    public int TeamId { get; set; }
+    public byte Spectator { get; set; }
     public string Name { get; set; }
     public long PersonaId { get; set; }
-
-
 }
