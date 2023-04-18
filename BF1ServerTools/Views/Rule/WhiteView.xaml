@@ -10,66 +10,53 @@
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
 
-    <UniformGrid Columns="3">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="0.3*" />
+        </Grid.ColumnDefinitions>
+        <!--  ///////////////////////  -->
         <ListBox
             x:Name="ListBox_CustomWhites"
             Margin="5"
             Style="{StaticResource ListBoxStyle_CustomWhites}">
             <ListBox.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Name="MenuItem_ImportCustomWhites" Header="导入白名单列表" />
-                    <MenuItem Name="MenuItem_ExportCustomWhites" Header="导出白名单列表" />
+                    <MenuItem
+                        Name="MenuItem_SelectedInfo"
+                        Header="[白名单]  当前未选中"
+                        IsEnabled="False" />
                     <Separator />
-                    <MenuItem Name="MenuItem_DistinctCustomWhites" Header="白名单列表去重" />
-                    <MenuItem Name="MenuItem_ClearCustomWhites" Header="清空白名单列表" />
+                    <MenuItem
+                        Name="MenuItem_White_AddNewPlayer"
+                        Header="添加新白名单玩家"
+                        Icon="&#xeb89;" />
+                    <MenuItem
+                        Name="MenuItem_White_RemoveSelectedPlayer"
+                        Header="移除选中白名单玩家"
+                        Icon="&#xe628;" />
+                    <Separator />
+                    <MenuItem
+                        Name="MenuItem_White_CopyPlayerName"
+                        Header="复制玩家ID"
+                        Icon="&#xe600;" />
+                    <MenuItem Name="MenuItem_White_CopyPlayerPersonaId" Header="复制玩家数字ID" />
+                    <Separator />
+                    <MenuItem
+                        Name="MenuItem_White_QueryPlayerRecord"
+                        Header="查询玩家数据"
+                        Icon="&#xe7d2;" />
+                    <Separator />
+                    <MenuItem Name="MenuItem_White_ImportList" Header="导入白名单列表" />
+                    <MenuItem Name="MenuItem_White_ExportList" Header="导出白名单列表" />
+                    <Separator />
+                    <MenuItem Name="MenuItem_White_DistinctList" Header="白名单列表去重" />
+                    <MenuItem Name="MenuItem_White_ClearList" Header="清空白名单列表" />
                 </ContextMenu>
             </ListBox.ContextMenu>
         </ListBox>
         <!--  ///////////////////////  -->
-        <StackPanel>
-            <ui:UiLabelIcon Content="选中玩家" />
-            <TextBlock
-                Margin="5"
-                FontWeight="Bold"
-                Text="玩家名称" />
-            <TextBlock Margin="20,5,5,5" Text="{Binding ElementName=ListBox_CustomWhites, Path=SelectedItem}" />
-            <TextBlock
-                Margin="5"
-                FontWeight="Bold"
-                Text="玩家索引" />
-            <TextBlock Margin="20,5,5,5" Text="{Binding ElementName=ListBox_CustomWhites, Path=SelectedIndex}" />
-            <Button x:Name="Button_RemoveSelectedWhite" Content="从白名单列表移除选中玩家">
-                <Button.Style>
-                    <Style BasedOn="{StaticResource ButtonStyle_Base}" TargetType="{x:Type Button}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=ListBox_CustomWhites, Path=SelectedIndex}" Value="-1">
-                                <Setter Property="IsEnabled" Value="False" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <!--  ///////////////////////  -->
-            <ui:UiLabelIcon Content="添加新的白名单玩家" />
-            <ui:UiTextBoxHint x:Name="TextBox_NewWhiteName" Hint="请输入玩家ID" />
-            <Button x:Name="Button_AddNewWhite" Content="添加玩家到白名单列表">
-                <Button.Style>
-                    <Style BasedOn="{StaticResource ButtonStyle_Base}" TargetType="{x:Type Button}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=TextBox_NewWhiteName, Path=Text}" Value="">
-                                <Setter Property="IsEnabled" Value="False" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <!--  ///////////////////////  -->
-            <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
-                说明：在列表处点击右键会有额外菜单选项
-            </TextBlock>
-        </StackPanel>
-        <!--  ///////////////////////  -->
-        <StackPanel>
+        <StackPanel Grid.Column="1">
             <ui:UiLabelIcon Content="白名单特权" />
             <CheckBox x:Name="CheckBox_WhiteLifeKD" Content="免疫生涯KD限制" />
             <CheckBox x:Name="CheckBox_WhiteLifeKPM" Content="免疫生涯KPM限制" />
@@ -81,6 +68,6 @@
             <CheckBox x:Name="CheckBox_WhiteRank" Content="免疫等级限制" />
             <CheckBox x:Name="CheckBox_WhiteWeapon" Content="免疫武器限制" />
         </StackPanel>
-    </UniformGrid>
+    </Grid>
 
 </UserControl>

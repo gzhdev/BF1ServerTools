@@ -29,13 +29,15 @@ public partial class GeneralView : UserControl
     public static Func<GeneralData> FuncGetTeam2GeneralData;
 
     /// <summary>
-    /// 更新队伍1当局规则数据委托
+    /// 设置队伍1当局规则数据委托
     /// </summary>
-    public static Action<GeneralData> ActionUpdateTeam1GeneralData;
+    public static Action<GeneralData> ActionSetTeam1GeneralData;
     /// <summary>
-    ///  更新队伍2当局规则数据委托
+    /// 设置新队伍2当局规则数据委托
     /// </summary>
-    public static Action<GeneralData> ActionUpdateTeam2GeneralData;
+    public static Action<GeneralData> ActionSetTeam2GeneralData;
+
+    ////////////////////////////////////////////////////////////////////
 
     public GeneralView()
     {
@@ -44,18 +46,18 @@ public partial class GeneralView : UserControl
         FuncGetTeam1GeneralData = GetTeam1GeneralData;
         FuncGetTeam2GeneralData = GetTeam2GeneralData;
 
-        ActionUpdateTeam1GeneralData = UpdateTeam1GeneralData;
-        ActionUpdateTeam2GeneralData = UpdateTeam2GeneralData;
+        ActionSetTeam1GeneralData = SetTeam1GeneralData;
+        ActionSetTeam2GeneralData = SetTeam2GeneralData;
 
-        RuleView.UpdateCurrentRuleEvent += RuleView_UpdateCurrentRuleEvent;
+        RuleView.ApplyCurrentRuleEvent += RuleView_ApplyCurrentRuleEvent;
     }
 
-    private void RuleView_UpdateCurrentRuleEvent()
+    private void RuleView_ApplyCurrentRuleEvent()
     {
-        UpdateCurrentRule();
+        ApplyCurrentRule();
     }
 
-    private void UpdateCurrentRule()
+    private void ApplyCurrentRule()
     {
         Globals.ServerRule_Team1.MaxKill = RuleGeneral1Model.MaxKill;
         Globals.ServerRule_Team1.FlagKD = RuleGeneral1Model.FlagKD;
@@ -111,10 +113,10 @@ public partial class GeneralView : UserControl
     }
 
     /// <summary>
-    /// 更新队伍1当局规则数据
+    /// 设置队伍1当局规则数据
     /// </summary>
     /// <returns></returns>
-    private void UpdateTeam1GeneralData(GeneralData generalData)
+    private void SetTeam1GeneralData(GeneralData generalData)
     {
         RuleGeneral1Model.MaxKill = generalData.MaxKill;
         RuleGeneral1Model.FlagKD = generalData.FlagKD;
@@ -126,10 +128,10 @@ public partial class GeneralView : UserControl
     }
 
     /// <summary>
-    /// 更新队伍2当局规则数据
+    /// 设置队伍2当局规则数据
     /// </summary>
     /// <returns></returns>
-    private void UpdateTeam2GeneralData(GeneralData generalData)
+    private void SetTeam2GeneralData(GeneralData generalData)
     {
         RuleGeneral2Model.MaxKill = generalData.MaxKill;
         RuleGeneral2Model.FlagKD = generalData.FlagKD;

@@ -62,28 +62,28 @@ public static class ClientUtil
     /// <summary>
     /// 获取武器对应本地图片路径
     /// </summary>
-    /// <param name="originWeaponName"></param>
+    /// <param name="english"></param>
     /// <returns></returns>
-    public static string GetWeaponImagePath(string originWeaponName)
+    public static string GetWeaponImagePath(string english)
     {
-        if (string.IsNullOrEmpty(originWeaponName))
+        if (string.IsNullOrEmpty(english))
             return string.Empty;
 
         var imageName = string.Empty;
 
-        if (originWeaponName.Contains("_KBullet"))
+        if (english.Contains("_KBullet"))
             imageName = "GadgetKBullets-0ec1f92a.png";
 
-        if (originWeaponName.Contains("_RGL_Frag"))
+        if (english.Contains("_RGL_Frag"))
             imageName = "MedicRifleLauncher_B-a712e224.png";
 
-        if (originWeaponName.Contains("_RGL_Smoke"))
+        if (english.Contains("_RGL_Smoke"))
             imageName = "MedicRifleLauncher_A-438b725e.png";
 
-        if (originWeaponName.Contains("_RGL_HE"))
+        if (english.Contains("_RGL_HE"))
             imageName = "MedicRifleLauncher_B-a712e224.png";
 
-        var index = WeaponData.AllWeaponInfo.FindIndex(var => var.English == originWeaponName);
+        var index = WeaponData.AllWeaponInfo.FindIndex(var => var.English == english);
         if (index != -1)
             imageName = WeaponData.AllWeaponInfo[index].ImageName;
         else

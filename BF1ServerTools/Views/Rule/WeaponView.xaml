@@ -17,6 +17,7 @@
         Style="{StaticResource DataGridStyle_Weapon}">
         <DataGrid.Columns>
             <DataGridTextColumn
+                MinWidth="120"
                 Binding="{Binding Kind}"
                 ElementStyle="{StaticResource DataGridTextColumnStyle_Weapon}"
                 Header="分类" />
@@ -25,17 +26,11 @@
                 Binding="{Binding Name}"
                 ElementStyle="{StaticResource DataGridTextColumnStyle_Weapon}"
                 Header="名称" />
-            <DataGridTemplateColumn MinWidth="120" Header="预览">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <ui:UiImage Margin="5" ImageUrl="{Binding Image}">
-                            <Image.ToolTip>
-                                <ui:UiImage ImageUrl="{Binding Image}" />
-                            </Image.ToolTip>
-                        </ui:UiImage>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
+            <DataGridTextColumn
+                Width="*"
+                Binding="{Binding English}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_Weapon}"
+                Header="英文" />
             <DataGridTemplateColumn MinWidth="80" Header="队伍1">
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
@@ -79,6 +74,17 @@
                                 <Setter TargetName="checkbox" Property="Visibility" Value="Visible" />
                             </Trigger>
                         </DataTemplate.Triggers>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn MinWidth="120" Header="预览">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <ui:UiImage Margin="5" ImageUrl="{Binding Image}">
+                            <Image.ToolTip>
+                                <ui:UiImage ImageUrl="{Binding Image}" />
+                            </Image.ToolTip>
+                        </ui:UiImage>
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>

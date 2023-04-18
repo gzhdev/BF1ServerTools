@@ -10,6 +10,44 @@
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
 
-    <Grid />
+    <ListBox
+        x:Name="ListBox_CustomBlacks"
+        Margin="5"
+        Style="{StaticResource ListBoxStyle_CustomWhites}">
+        <ListBox.ContextMenu>
+            <ContextMenu>
+                <MenuItem
+                    Name="MenuItem_SelectedInfo"
+                    Header="[黑名单]  当前未选中"
+                    IsEnabled="False" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_Black_AddNewPlayer"
+                    Header="添加新黑名单玩家"
+                    Icon="&#xeb89;" />
+                <MenuItem
+                    Name="MenuItem_Black_RemoveSelectedPlayer"
+                    Header="移除选中黑名单玩家"
+                    Icon="&#xe628;" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_Black_CopyPlayerName"
+                    Header="复制玩家ID"
+                    Icon="&#xe600;" />
+                <MenuItem Name="MenuItem_Black_CopyPlayerPersonaId" Header="复制玩家数字ID" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_Black_QueryPlayerRecord"
+                    Header="查询玩家数据"
+                    Icon="&#xe7d2;" />
+                <Separator />
+                <MenuItem Name="MenuItem_Black_ImportList" Header="导入黑名单列表" />
+                <MenuItem Name="MenuItem_Black_ExportList" Header="导出黑名单列表" />
+                <Separator />
+                <MenuItem Name="MenuItem_Black_DistinctList" Header="黑名单列表去重" />
+                <MenuItem Name="MenuItem_Black_ClearList" Header="清空黑名单列表" />
+            </ContextMenu>
+        </ListBox.ContextMenu>
+    </ListBox>
 
 </UserControl>

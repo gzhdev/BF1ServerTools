@@ -10,15 +10,15 @@ namespace BF1ServerTools.Views;
 public partial class RuleView : UserControl
 {
     /// <summary>
-    /// 更新当前规则事件
+    /// 应用当前规则事件
     /// </summary>
-    public static event Action UpdateCurrentRuleEvent;
+    public static event Action ApplyCurrentRuleEvent;
     /// <summary>
     /// 查询当前规则事件
     /// </summary>
     public static event Action QueryCurrentRuleEvent;
 
-    ////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
 
     /// <summary>
     ///配置文件路径
@@ -34,6 +34,8 @@ public partial class RuleView : UserControl
     /// 绑定UI 配置文件名称动态集合
     /// </summary>
     public ObservableCollection<string> ConfigNames { get; set; } = new();
+
+    ///////////////////////////////////////////////////////
 
     public RuleView()
     {
@@ -94,6 +96,7 @@ public partial class RuleView : UserControl
     /// </summary>
     private void MainWindow_WindowClosingEvent()
     {
+        // 保存配置文件
         SaveConfig();
     }
 
@@ -110,6 +113,7 @@ public partial class RuleView : UserControl
 
             var rule = RuleConfig.RuleInfos[index];
 
+            // 获取队伍1、队伍2当局规则数据
             var team1General = GeneralView.FuncGetTeam1GeneralData();
             var team2General = GeneralView.FuncGetTeam2GeneralData();
 
@@ -129,6 +133,7 @@ public partial class RuleView : UserControl
             rule.Team2Rule.MinRank = team2General.MinRank;
             rule.Team2Rule.MaxRank = team2General.MaxRank;
 
+            // 获取队伍1、队伍2生涯规则数据
             var team1Life = LifeView.FuncGetTeam1LifeData();
             var team2Life = LifeView.FuncGetTeam2LifeData();
 
@@ -141,37 +146,16 @@ public partial class RuleView : UserControl
             rule.Team2Rule.LifeMaxKPM = team2Life.LifeMaxKPM;
             rule.Team2Rule.LifeMaxWeaponStar = team2Life.LifeMaxWeaponStar;
             rule.Team2Rule.LifeMaxVehicleStar = team2Life.LifeMaxVehicleStar;
+
+            // 获取队伍1、队伍2武器规则数据
+            var team1Weapon = WeaponView.FuncGetTeam1WeaponData();
+            var team2Weapon = WeaponView.FuncGetTeam2WeaponData();
+
+            rule.Team1Weapon = team1Weapon;
+            rule.Team2Weapon = team2Weapon;
         }
 
         File.WriteAllText(File_Rule_Config, JsonHelper.JsonSeri(RuleConfig));
-    }
-
-    /// <summary>
-    /// 查询当前规则
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void Button_QueryCurrentRule_Click(object sender, RoutedEventArgs e)
-    {
-        // 切换到第一个页面
-        TabControl_RuleView.SelectedIndex = 0;
-        // 查询当前规则
-        QueryCurrentRuleEvent?.Invoke();
-    }
-
-    /// <summary>
-    /// 应用并查询当前规则
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void Button_ApplyAndQueryCurrentRule_Click(object sender, RoutedEventArgs e)
-    {
-        // 切换到第一个页面
-        TabControl_RuleView.SelectedIndex = 0;
-        // 应用当前规则
-        UpdateCurrentRuleEvent?.Invoke();
-        // 查询当前规则
-        QueryCurrentRuleEvent?.Invoke();
     }
 
     /// <summary>
@@ -187,7 +171,8 @@ public partial class RuleView : UserControl
 
         var rule = RuleConfig.RuleInfos[index];
 
-        GeneralView.ActionUpdateTeam1GeneralData(new()
+        // 设置队伍1、队伍2当局规则数据
+        GeneralView.ActionSetTeam1GeneralData(new()
         {
             MaxKill = rule.Team1Rule.MaxKill,
             FlagKD = rule.Team1Rule.FlagKD,
@@ -197,7 +182,7 @@ public partial class RuleView : UserControl
             MinRank = rule.Team1Rule.MinRank,
             MaxRank = rule.Team1Rule.MaxRank
         });
-        GeneralView.ActionUpdateTeam2GeneralData(new()
+        GeneralView.ActionSetTeam2GeneralData(new()
         {
             MaxKill = rule.Team2Rule.MaxKill,
             FlagKD = rule.Team2Rule.FlagKD,
@@ -208,20 +193,25 @@ public partial class RuleView : UserControl
             MaxRank = rule.Team2Rule.MaxRank
         });
 
-        LifeView.ActionUpdateTeam1LifeData(new()
+        // 设置队伍1、队伍2生涯规则数据
+        LifeView.ActionSetTeam1LifeData(new()
         {
             LifeMaxKD = rule.Team1Rule.LifeMaxKD,
             LifeMaxKPM = rule.Team1Rule.LifeMaxKPM,
             LifeMaxWeaponStar = rule.Team1Rule.LifeMaxWeaponStar,
             LifeMaxVehicleStar = rule.Team1Rule.LifeMaxVehicleStar
         });
-        LifeView.ActionUpdateTeam2LifeData(new()
+        LifeView.ActionSetTeam2LifeData(new()
         {
             LifeMaxKD = rule.Team2Rule.LifeMaxKD,
             LifeMaxKPM = rule.Team2Rule.LifeMaxKPM,
             LifeMaxWeaponStar = rule.Team2Rule.LifeMaxWeaponStar,
             LifeMaxVehicleStar = rule.Team2Rule.LifeMaxVehicleStar
         });
+
+        // 设置队伍1、队伍2武器规则数据
+        WeaponView.ActionSetTeam1WeaponData(rule.Team1Weapon);
+        WeaponView.ActionSetTeam2WeaponData(rule.Team2Weapon);
 
         SaveConfig();
     }
@@ -244,13 +234,6 @@ public partial class RuleView : UserControl
     /// <param name="e"></param>
     private void Button_ReNameCurrentConfig_Click(object sender, RoutedEventArgs e)
     {
-        var name = TextBox_CurrentConfigName.Text.Trim();
-        if (string.IsNullOrEmpty(name))
-        {
-            NotifierHelper.Show(NotifierType.Warning, "配置文件名称不能为空");
-            return;
-        }
-
         var index = ComboBox_ConfigNames.SelectedIndex;
         if (index == -1)
         {
@@ -258,10 +241,40 @@ public partial class RuleView : UserControl
             return;
         }
 
+        var name = TextBox_CurrentConfigName.Text.Trim();
+
         ConfigNames[index] = name;
         RuleConfig.RuleInfos[index].RuleName = name;
 
         ComboBox_ConfigNames.SelectedIndex = index;
         NotifierHelper.Show(NotifierType.Success, "当前配置文件重命名成功");
+    }
+
+    /// <summary>
+    /// 应用当前规则
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Button_ApplyCurrentRule_Click(object sender, RoutedEventArgs e)
+    {
+        // 应用当前规则
+        ApplyCurrentRuleEvent?.Invoke();
+
+        NotifierHelper.Show(NotifierType.Success, "应用当前规则成功");
+    }
+
+    /// <summary>
+    /// 查询当前规则
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Button_QueryCurrentRule_Click(object sender, RoutedEventArgs e)
+    {
+        // 切换到第一个页面
+        TabControl_RuleView.SelectedIndex = 0;
+        // 查询当前规则
+        QueryCurrentRuleEvent?.Invoke();
+
+        NotifierHelper.Show(NotifierType.Success, "查询当前规则成功");
     }
 }

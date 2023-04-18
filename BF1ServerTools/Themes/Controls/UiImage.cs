@@ -17,11 +17,15 @@ public class UiImage : Image
 
     private static async void ImageUrlPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
     {
-        var url = e.NewValue as string;
-        if (string.IsNullOrEmpty(url))
-            return;
-
         var imageObj = (Image)obj;
+        var url = e.NewValue as string;
+
+        // 判断图片路径是否为空
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            imageObj.Source = null;
+            return;
+        }
 
         // 处理其他图片
         if (!url.StartsWith("http"))

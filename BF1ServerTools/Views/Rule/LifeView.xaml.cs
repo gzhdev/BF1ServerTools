@@ -29,13 +29,15 @@ public partial class LifeView : UserControl
     public static Func<LifeData> FuncGetTeam2LifeData;
 
     /// <summary>
-    /// 更新队伍1生涯规则数据委托
+    /// 设置队伍1生涯规则数据委托
     /// </summary>
-    public static Action<LifeData> ActionUpdateTeam1LifeData;
+    public static Action<LifeData> ActionSetTeam1LifeData;
     /// <summary>
-    ///  更新队伍2生涯规则数据委托
+    /// 设置队伍2生涯规则数据委托
     /// </summary>
-    public static Action<LifeData> ActionUpdateTeam2LifeData;
+    public static Action<LifeData> ActionSetTeam2LifeData;
+
+    ////////////////////////////////////////////////////////////////////
 
     public LifeView()
     {
@@ -44,18 +46,18 @@ public partial class LifeView : UserControl
         FuncGetTeam1LifeData = GetTeam1LifeData;
         FuncGetTeam2LifeData = GetTeam2LifeData;
 
-        ActionUpdateTeam1LifeData = UpdateTeam1LifeData;
-        ActionUpdateTeam2LifeData = UpdateTeam2LifeData;
+        ActionSetTeam1LifeData = SetTeam1LifeData;
+        ActionSetTeam2LifeData = SetTeam2LifeData;
 
-        RuleView.UpdateCurrentRuleEvent += RuleView_UpdateCurrentRuleEvent;
+        RuleView.ApplyCurrentRuleEvent += RuleView_ApplyCurrentRuleEvent;
     }
 
-    private void RuleView_UpdateCurrentRuleEvent()
+    private void RuleView_ApplyCurrentRuleEvent()
     {
-        UpdateCurrentRule();
+        ApplyCurrentRule();
     }
 
-    private void UpdateCurrentRule()
+    private void ApplyCurrentRule()
     {
         Globals.ServerRule_Team1.LifeMaxKD = RuleLife1Model.LifeMaxKD;
         Globals.ServerRule_Team1.LifeMaxKPM = RuleLife1Model.LifeMaxKPM;
@@ -99,10 +101,10 @@ public partial class LifeView : UserControl
     }
 
     /// <summary>
-    /// 更新队伍1生涯规则数据
+    /// 设置队伍1生涯规则数据
     /// </summary>
     /// <returns></returns>
-    private void UpdateTeam1LifeData(LifeData LifeData)
+    private void SetTeam1LifeData(LifeData LifeData)
     {
         RuleLife1Model.LifeMaxKD = LifeData.LifeMaxKD;
         RuleLife1Model.LifeMaxKPM = LifeData.LifeMaxKPM;
@@ -111,10 +113,10 @@ public partial class LifeView : UserControl
     }
 
     /// <summary>
-    /// 更新队伍2生涯规则数据
+    /// 设置队伍2生涯规则数据
     /// </summary>
     /// <returns></returns>
-    private void UpdateTeam2LifeData(LifeData LifeData)
+    private void SetTeam2LifeData(LifeData LifeData)
     {
         RuleLife2Model.LifeMaxKD = LifeData.LifeMaxKD;
         RuleLife2Model.LifeMaxKPM = LifeData.LifeMaxKPM;

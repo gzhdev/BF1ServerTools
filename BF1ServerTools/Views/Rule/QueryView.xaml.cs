@@ -1,4 +1,5 @@
 ﻿using BF1ServerTools.Data;
+using BF1ServerTools.Services;
 
 namespace BF1ServerTools.Views.Rule;
 
@@ -47,6 +48,33 @@ public partial class QueryView : UserControl
         ////////////////////////////////
 
         AddRuleInfo();
+
+        int team1 = Globals.CustomWeapons_Team1.Count;
+        int team2 = Globals.CustomWeapons_Team2.Count;
+        for (int i = 0; i < Math.Max(team1, team2); i++)
+        {
+            if (i < team1 && i < team2)
+            {
+                // 共有禁用武器
+                AddRuleInfo("【禁用武器】", $"武器名称 {i + 1}", $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team1[i])}", $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team2[i])}");
+            }
+            else if (i < team1)
+            {
+                // 队伍1禁用武器
+                AddRuleInfo("【禁用武器】", $"武器名称 {i + 1}", $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team1[i])}", string.Empty);
+            }
+            else if (i < team2)
+            {
+                // 队伍2禁用武器
+                AddRuleInfo("【禁用武器】", $"武器名称 {i + 1}", string.Empty, $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team2[i])}");
+            }
+        }
+
+        ////////////////////////////////
+
+        AddRuleInfo();
+
+
     }
 
     /// <summary>

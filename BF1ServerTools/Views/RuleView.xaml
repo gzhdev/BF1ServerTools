@@ -55,7 +55,8 @@
                     Margin="0,5,5,5"
                     Click="Button_ReNameCurrentConfig_Click"
                     Content="重命名"
-                    DockPanel.Dock="Right" />
+                    DockPanel.Dock="Right"
+                    IsEnabled="{Binding ElementName=TextBox_CurrentConfigName, Path=Text, Converter={StaticResource StringToIsEnabledConverter}}" />
                 <Button
                     x:Name="Button_SaveConfig"
                     Click="Button_SaveConfig_Click"
@@ -69,13 +70,14 @@
             <!--  //////////////  -->
             <ui:UiLabelIcon Content="规则设置" />
             <Button
+                x:Name="Button_ApplyCurrentRule"
+                Click="Button_ApplyCurrentRule_Click"
+                Content="应用当前规则" />
+            <Button
                 x:Name="Button_QueryCurrentRule"
+                Margin="5,2,5,5"
                 Click="Button_QueryCurrentRule_Click"
                 Content="查询当前规则" />
-            <Button
-                x:Name="Button_ApplyAndQueryCurrentRule"
-                Click="Button_ApplyAndQueryCurrentRule_Click"
-                Content="应用并查询当前规则" />
 
             <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
                 说明：每次修改规则，都必须重新应用规则才会生效
