@@ -54,21 +54,15 @@ public partial class RuleView : UserControl
                 RuleConfig.RuleInfos.Add(new()
                 {
                     RuleName = $"自定义规则 {i}",
-                    WhiteLifeKD = true,
-                    WhiteLifeKPM = true,
-                    WhiteLifeWeaponStar = true,
-                    WhiteLifeVehicleStar = true,
-                    WhiteKill = true,
-                    WhiteKD = true,
-                    WhiteKPM = true,
-                    WhiteRank = true,
-                    WhiteWeapon = true,
-                    Team1Rule = new(),
-                    Team2Rule = new(),
+                    WhiteIgnore = new(),
+                    Team1General = new(),
+                    Team2General = new(),
+                    Team1Life = new(),
+                    Team2Life = new(),
                     Team1Weapon = new(),
                     Team2Weapon = new(),
-                    BlackList = new(),
-                    WhiteList = new()
+                    BlackData = new(),
+                    WhiteData = new()
                 });
             }
             // 保存配置文件
@@ -117,35 +111,35 @@ public partial class RuleView : UserControl
             var team1General = GeneralView.FuncGetTeam1GeneralData();
             var team2General = GeneralView.FuncGetTeam2GeneralData();
 
-            rule.Team1Rule.MaxKill = team1General.MaxKill;
-            rule.Team1Rule.FlagKD = team1General.FlagKD;
-            rule.Team1Rule.MaxKD = team1General.MaxKD;
-            rule.Team1Rule.FlagKPM = team1General.FlagKPM;
-            rule.Team1Rule.MaxKPM = team1General.MaxKPM;
-            rule.Team1Rule.MinRank = team1General.MinRank;
-            rule.Team1Rule.MaxRank = team1General.MaxRank;
+            rule.Team1General.MaxKill = team1General.MaxKill;
+            rule.Team1General.FlagKD = team1General.FlagKD;
+            rule.Team1General.MaxKD = team1General.MaxKD;
+            rule.Team1General.FlagKPM = team1General.FlagKPM;
+            rule.Team1General.MaxKPM = team1General.MaxKPM;
+            rule.Team1General.MinRank = team1General.MinRank;
+            rule.Team1General.MaxRank = team1General.MaxRank;
 
-            rule.Team2Rule.MaxKill = team2General.MaxKill;
-            rule.Team2Rule.FlagKD = team2General.FlagKD;
-            rule.Team2Rule.MaxKD = team2General.MaxKD;
-            rule.Team2Rule.FlagKPM = team2General.FlagKPM;
-            rule.Team2Rule.MaxKPM = team2General.MaxKPM;
-            rule.Team2Rule.MinRank = team2General.MinRank;
-            rule.Team2Rule.MaxRank = team2General.MaxRank;
+            rule.Team2General.MaxKill = team2General.MaxKill;
+            rule.Team2General.FlagKD = team2General.FlagKD;
+            rule.Team2General.MaxKD = team2General.MaxKD;
+            rule.Team2General.FlagKPM = team2General.FlagKPM;
+            rule.Team2General.MaxKPM = team2General.MaxKPM;
+            rule.Team2General.MinRank = team2General.MinRank;
+            rule.Team2General.MaxRank = team2General.MaxRank;
 
             // 获取队伍1、队伍2生涯规则数据
             var team1Life = LifeView.FuncGetTeam1LifeData();
             var team2Life = LifeView.FuncGetTeam2LifeData();
 
-            rule.Team1Rule.LifeMaxKD = team1Life.LifeMaxKD;
-            rule.Team1Rule.LifeMaxKPM = team1Life.LifeMaxKPM;
-            rule.Team1Rule.LifeMaxWeaponStar = team1Life.LifeMaxWeaponStar;
-            rule.Team1Rule.LifeMaxVehicleStar = team1Life.LifeMaxVehicleStar;
+            rule.Team1Life.LifeMaxKD = team1Life.LifeMaxKD;
+            rule.Team1Life.LifeMaxKPM = team1Life.LifeMaxKPM;
+            rule.Team1Life.LifeMaxWeaponStar = team1Life.LifeMaxWeaponStar;
+            rule.Team1Life.LifeMaxVehicleStar = team1Life.LifeMaxVehicleStar;
 
-            rule.Team2Rule.LifeMaxKD = team2Life.LifeMaxKD;
-            rule.Team2Rule.LifeMaxKPM = team2Life.LifeMaxKPM;
-            rule.Team2Rule.LifeMaxWeaponStar = team2Life.LifeMaxWeaponStar;
-            rule.Team2Rule.LifeMaxVehicleStar = team2Life.LifeMaxVehicleStar;
+            rule.Team2Life.LifeMaxKD = team2Life.LifeMaxKD;
+            rule.Team2Life.LifeMaxKPM = team2Life.LifeMaxKPM;
+            rule.Team2Life.LifeMaxWeaponStar = team2Life.LifeMaxWeaponStar;
+            rule.Team2Life.LifeMaxVehicleStar = team2Life.LifeMaxVehicleStar;
 
             // 获取队伍1、队伍2武器规则数据
             var team1Weapon = WeaponView.FuncGetTeam1WeaponData();
@@ -153,6 +147,17 @@ public partial class RuleView : UserControl
 
             rule.Team1Weapon = team1Weapon;
             rule.Team2Weapon = team2Weapon;
+
+            // 获取白名单特权规则数据
+            var whiteIgnore = WhiteView.FuncGetWhiteIgnore();
+            // 获取黑白名单规则数据
+            var whiteData = WhiteView.FuncGetWhiteData();
+            var blackData = BlackView.FuncGetBlackData();
+
+            rule.WhiteIgnore = whiteIgnore;
+
+            rule.WhiteData = whiteData;
+            rule.BlackData = blackData;
         }
 
         File.WriteAllText(File_Rule_Config, JsonHelper.JsonSeri(RuleConfig));
@@ -174,44 +179,50 @@ public partial class RuleView : UserControl
         // 设置队伍1、队伍2当局规则数据
         GeneralView.ActionSetTeam1GeneralData(new()
         {
-            MaxKill = rule.Team1Rule.MaxKill,
-            FlagKD = rule.Team1Rule.FlagKD,
-            MaxKD = rule.Team1Rule.MaxKD,
-            FlagKPM = rule.Team1Rule.FlagKPM,
-            MaxKPM = rule.Team1Rule.MaxKPM,
-            MinRank = rule.Team1Rule.MinRank,
-            MaxRank = rule.Team1Rule.MaxRank
+            MaxKill = rule.Team1General.MaxKill,
+            FlagKD = rule.Team1General.FlagKD,
+            MaxKD = rule.Team1General.MaxKD,
+            FlagKPM = rule.Team1General.FlagKPM,
+            MaxKPM = rule.Team1General.MaxKPM,
+            MinRank = rule.Team1General.MinRank,
+            MaxRank = rule.Team1General.MaxRank
         });
         GeneralView.ActionSetTeam2GeneralData(new()
         {
-            MaxKill = rule.Team2Rule.MaxKill,
-            FlagKD = rule.Team2Rule.FlagKD,
-            MaxKD = rule.Team2Rule.MaxKD,
-            FlagKPM = rule.Team2Rule.FlagKPM,
-            MaxKPM = rule.Team2Rule.MaxKPM,
-            MinRank = rule.Team2Rule.MinRank,
-            MaxRank = rule.Team2Rule.MaxRank
+            MaxKill = rule.Team2General.MaxKill,
+            FlagKD = rule.Team2General.FlagKD,
+            MaxKD = rule.Team2General.MaxKD,
+            FlagKPM = rule.Team2General.FlagKPM,
+            MaxKPM = rule.Team2General.MaxKPM,
+            MinRank = rule.Team2General.MinRank,
+            MaxRank = rule.Team2General.MaxRank
         });
 
         // 设置队伍1、队伍2生涯规则数据
         LifeView.ActionSetTeam1LifeData(new()
         {
-            LifeMaxKD = rule.Team1Rule.LifeMaxKD,
-            LifeMaxKPM = rule.Team1Rule.LifeMaxKPM,
-            LifeMaxWeaponStar = rule.Team1Rule.LifeMaxWeaponStar,
-            LifeMaxVehicleStar = rule.Team1Rule.LifeMaxVehicleStar
+            LifeMaxKD = rule.Team1Life.LifeMaxKD,
+            LifeMaxKPM = rule.Team1Life.LifeMaxKPM,
+            LifeMaxWeaponStar = rule.Team1Life.LifeMaxWeaponStar,
+            LifeMaxVehicleStar = rule.Team1Life.LifeMaxVehicleStar
         });
         LifeView.ActionSetTeam2LifeData(new()
         {
-            LifeMaxKD = rule.Team2Rule.LifeMaxKD,
-            LifeMaxKPM = rule.Team2Rule.LifeMaxKPM,
-            LifeMaxWeaponStar = rule.Team2Rule.LifeMaxWeaponStar,
-            LifeMaxVehicleStar = rule.Team2Rule.LifeMaxVehicleStar
+            LifeMaxKD = rule.Team2Life.LifeMaxKD,
+            LifeMaxKPM = rule.Team2Life.LifeMaxKPM,
+            LifeMaxWeaponStar = rule.Team2Life.LifeMaxWeaponStar,
+            LifeMaxVehicleStar = rule.Team2Life.LifeMaxVehicleStar
         });
 
         // 设置队伍1、队伍2武器规则数据
         WeaponView.ActionSetTeam1WeaponData(rule.Team1Weapon);
         WeaponView.ActionSetTeam2WeaponData(rule.Team2Weapon);
+
+        // 设置白名单特权规则数据
+        WhiteView.ActionSetWhiteIgnore(rule.WhiteIgnore);
+        // 设置黑白名单规则数据
+        WhiteView.ActionSetWhiteData(rule.WhiteData);
+        BlackView.ActionSetBlackData(rule.BlackData);
 
         SaveConfig();
     }
@@ -274,7 +285,5 @@ public partial class RuleView : UserControl
         TabControl_RuleView.SelectedIndex = 0;
         // 查询当前规则
         QueryCurrentRuleEvent?.Invoke();
-
-        NotifierHelper.Show(NotifierType.Success, "查询当前规则成功");
     }
 }

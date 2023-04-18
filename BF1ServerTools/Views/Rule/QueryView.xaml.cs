@@ -1,4 +1,5 @@
 ﻿using BF1ServerTools.Data;
+using BF1ServerTools.Helpers;
 using BF1ServerTools.Services;
 
 namespace BF1ServerTools.Views.Rule;
@@ -9,9 +10,9 @@ namespace BF1ServerTools.Views.Rule;
 public partial class QueryView : UserControl
 {
     /// <summary>
-    /// 绑定UI 规则信息
+    /// 绑定UI 规则日志信息
     /// </summary>
-    public ObservableCollection<RuleInfo> DataGrid_RuleInfos { get; set; } = new();
+    public ObservableCollection<RuleLog> DataGrid_RuleLogs { get; set; } = new();
 
     public QueryView()
     {
@@ -22,32 +23,35 @@ public partial class QueryView : UserControl
 
     private void RuleView_QueryCurrentRuleEvent()
     {
-        ClearRuleInfo();
+        ClearRuleLog();
+        AddHeader("【当局规则】");
 
-        AddRuleInfo("【当局规则】", "最高击杀限制", $"{Globals.ServerRule_Team1.MaxKill}", $"{Globals.ServerRule_Team2.MaxKill}");
+        AddRuleLog("【当局规则】", "最高击杀限制", $"{Globals.ServerRule_Team1.MaxKill}", $"{Globals.ServerRule_Team2.MaxKill}");
 
-        AddRuleInfo("【当局规则】", "计算KD的最低击杀数", $"{Globals.ServerRule_Team1.FlagKD}", $"{Globals.ServerRule_Team2.FlagKD}");
-        AddRuleInfo("【当局规则】", "最高KD限制", $"{Globals.ServerRule_Team1.MaxKD}", $"{Globals.ServerRule_Team2.MaxKD}");
+        AddRuleLog("【当局规则】", "计算KD的最低击杀数", $"{Globals.ServerRule_Team1.FlagKD}", $"{Globals.ServerRule_Team2.FlagKD}");
+        AddRuleLog("【当局规则】", "最高KD限制", $"{Globals.ServerRule_Team1.MaxKD}", $"{Globals.ServerRule_Team2.MaxKD}");
 
-        AddRuleInfo("【当局规则】", "计算KPM的最低击杀数", $"{Globals.ServerRule_Team1.FlagKPM}", $"{Globals.ServerRule_Team2.FlagKPM}");
-        AddRuleInfo("【当局规则】", "最高KPM限制", $"{Globals.ServerRule_Team1.MaxKPM}", $"{Globals.ServerRule_Team2.MaxKPM}");
+        AddRuleLog("【当局规则】", "计算KPM的最低击杀数", $"{Globals.ServerRule_Team1.FlagKPM}", $"{Globals.ServerRule_Team2.FlagKPM}");
+        AddRuleLog("【当局规则】", "最高KPM限制", $"{Globals.ServerRule_Team1.MaxKPM}", $"{Globals.ServerRule_Team2.MaxKPM}");
 
-        AddRuleInfo("【当局规则】", "最低等级限制", $"{Globals.ServerRule_Team1.MinRank}", $"{Globals.ServerRule_Team2.MinRank}");
-        AddRuleInfo("【当局规则】", "最高等级限制", $"{Globals.ServerRule_Team1.MaxRank}", $"{Globals.ServerRule_Team2.MaxRank}");
-
-        ////////////////////////////////
-
-        AddRuleInfo();
-
-        AddRuleInfo("【生涯规则】", "最高生涯KD限制", $"{Globals.ServerRule_Team1.LifeMaxKD}", $"{Globals.ServerRule_Team2.LifeMaxKD}");
-        AddRuleInfo("【生涯规则】", "最高生涯KPM限制", $"{Globals.ServerRule_Team1.LifeMaxKPM}", $"{Globals.ServerRule_Team2.LifeMaxKPM}");
-
-        AddRuleInfo("【生涯规则】", "最高生涯武器星数限制", $"{Globals.ServerRule_Team1.LifeMaxWeaponStar}", $"{Globals.ServerRule_Team2.LifeMaxWeaponStar}");
-        AddRuleInfo("【生涯规则】", "最高生涯载具星数限制", $"{Globals.ServerRule_Team1.LifeMaxVehicleStar}", $"{Globals.ServerRule_Team2.LifeMaxVehicleStar}");
+        AddRuleLog("【当局规则】", "最低等级限制", $"{Globals.ServerRule_Team1.MinRank}", $"{Globals.ServerRule_Team2.MinRank}");
+        AddRuleLog("【当局规则】", "最高等级限制", $"{Globals.ServerRule_Team1.MaxRank}", $"{Globals.ServerRule_Team2.MaxRank}");
 
         ////////////////////////////////
 
-        AddRuleInfo();
+        AddRuleLog();
+        AddHeader("【生涯规则】");
+
+        AddRuleLog("【生涯规则】", "最高生涯KD限制", $"{Globals.ServerRule_Team1.LifeMaxKD}", $"{Globals.ServerRule_Team2.LifeMaxKD}");
+        AddRuleLog("【生涯规则】", "最高生涯KPM限制", $"{Globals.ServerRule_Team1.LifeMaxKPM}", $"{Globals.ServerRule_Team2.LifeMaxKPM}");
+
+        AddRuleLog("【生涯规则】", "最高生涯武器星数限制", $"{Globals.ServerRule_Team1.LifeMaxWeaponStar}", $"{Globals.ServerRule_Team2.LifeMaxWeaponStar}");
+        AddRuleLog("【生涯规则】", "最高生涯载具星数限制", $"{Globals.ServerRule_Team1.LifeMaxVehicleStar}", $"{Globals.ServerRule_Team2.LifeMaxVehicleStar}");
+
+        ////////////////////////////////
+
+        AddRuleLog();
+        AddHeader("【禁用武器】");
 
         int team1 = Globals.CustomWeapons_Team1.Count;
         int team2 = Globals.CustomWeapons_Team2.Count;
@@ -56,37 +60,93 @@ public partial class QueryView : UserControl
             if (i < team1 && i < team2)
             {
                 // 共有禁用武器
-                AddRuleInfo("【禁用武器】", $"武器名称 {i + 1}", $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team1[i])}", $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team2[i])}");
+                AddRuleLog("【禁用武器】", $"武器名称 {i + 1}", $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team1[i])}", $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team2[i])}");
             }
             else if (i < team1)
             {
                 // 队伍1禁用武器
-                AddRuleInfo("【禁用武器】", $"武器名称 {i + 1}", $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team1[i])}", string.Empty);
+                AddRuleLog("【禁用武器】", $"武器名称 {i + 1}", $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team1[i])}", string.Empty);
             }
             else if (i < team2)
             {
                 // 队伍2禁用武器
-                AddRuleInfo("【禁用武器】", $"武器名称 {i + 1}", string.Empty, $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team2[i])}");
+                AddRuleLog("【禁用武器】", $"武器名称 {i + 1}", string.Empty, $"{ClientUtil.GetWeaponChsName(Globals.CustomWeapons_Team2[i])}");
             }
         }
 
         ////////////////////////////////
 
-        AddRuleInfo();
+        AddRuleLog();
+        AddHeader("【白名单特权】");
 
+        if (Globals.WhiteKill)
+            AddRuleLog("【白名单特权】", "免疫击杀限制", "✔");
+        if (Globals.WhiteKD)
+            AddRuleLog("【白名单特权】", "免疫KD限制", "✔");
+        if (Globals.WhiteKPM)
+            AddRuleLog("【白名单特权】", "免疫KPM限制", "✔");
+        if (Globals.WhiteRank)
+            AddRuleLog("【白名单特权】", "免疫等级限制", "✔");
+        if (Globals.WhiteWeapon)
+            AddRuleLog("【白名单特权】", "免疫武器限制", "✔");
 
+        if (Globals.WhiteLifeKD)
+            AddRuleLog("【白名单特权】", "免疫生涯KD限制", "✔");
+        if (Globals.WhiteLifeKPM)
+            AddRuleLog("【白名单特权】", "免疫生涯KPM限制", "✔");
+        if (Globals.WhiteLifeWeaponStar)
+            AddRuleLog("【白名单特权】", "免疫生涯武器星数限制", "✔");
+        if (Globals.WhiteLifeVehicleStar)
+            AddRuleLog("【白名单特权】", "免疫生涯载具星数限制", "✔");
+
+        ////////////////////////////////
+
+        AddRuleLog();
+        AddHeader("【白名单列表】");
+
+        int index = 1;
+        foreach (var item in Globals.CustomWhites_Name)
+        {
+            AddRuleLog("【白名单列表】", $"玩家ID {index++}", $"{item}");
+        }
+
+        ////////////////////////////////
+
+        AddRuleLog();
+        AddHeader("【黑名单列表】");
+
+        index = 1;
+        foreach (var item in Globals.CustomBlacks_Name)
+        {
+            AddRuleLog("【黑名单列表】", $"玩家ID {index++}", $"{item}");
+        }
+
+        ////////////////////////////////
+
+        NotifierHelper.Show(NotifierType.Success, "查询当前规则成功");
+    }
+
+    ////////////////////////////////////////////////////////////////
+
+    /// <summary>
+    /// 增加标题
+    /// </summary>
+    /// <param name="header"></param>
+    private void AddHeader(string header)
+    {
+        AddRuleLog(string.Empty, header);
     }
 
     /// <summary>
-    /// 添加规则信息
+    /// 添加规则日志信息
     /// </summary>
     /// <param name="type"></param>
     /// <param name="Name"></param>
     /// <param name="t1Value"></param>
     /// <param name="t2Value"></param>
-    private void AddRuleInfo(string type = "", string Name = "", string t1Value = "", string t2Value = "")
+    private void AddRuleLog(string type = "", string Name = "", string t1Value = "", string t2Value = "")
     {
-        DataGrid_RuleInfos.Add(new()
+        DataGrid_RuleLogs.Add(new()
         {
             Type = type,
             Name = Name,
@@ -96,10 +156,10 @@ public partial class QueryView : UserControl
     }
 
     /// <summary>
-    /// 清空规则信息
+    /// 清空规则日志信息
     /// </summary>
-    private void ClearRuleInfo()
+    private void ClearRuleLog()
     {
-        DataGrid_RuleInfos.Clear();
+        DataGrid_RuleLogs.Clear();
     }
 }

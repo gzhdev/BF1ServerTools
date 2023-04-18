@@ -142,7 +142,7 @@
 
     <!--  //////////////////////////////////////////////////  -->
 
-    <Style x:Key="DataGridStyle_RuleInfo" TargetType="{x:Type DataGrid}">
+    <Style x:Key="DataGridStyle_RuleLog" TargetType="{x:Type DataGrid}">
         <Setter Property="Background" Value="White" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="BorderBrush" Value="Gray" />
@@ -268,7 +268,7 @@
         </Style.Resources>
     </Style>
 
-    <Style x:Key="DataGridTextColumnStyle_RuleInfo" TargetType="{x:Type TextBlock}">
+    <Style x:Key="DataGridTextColumnStyle_RuleLog" TargetType="{x:Type TextBlock}">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Padding" Value="10,0,10,0" />
     </Style>

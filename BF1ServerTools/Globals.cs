@@ -30,6 +30,11 @@ public static class Globals
     /// </summary>
     public static bool IsUseMode1 = true;
 
+    /// <summary>
+    /// 默认头像
+    /// </summary>
+    public const string Default_Avatar = "\\Assets\\Images\\Other\\Avatar.jpg";
+
     ///////////////////////////////////////////////////////
 
     /// <summary>

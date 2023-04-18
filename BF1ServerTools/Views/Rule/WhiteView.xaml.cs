@@ -15,11 +15,6 @@ public partial class WhiteView : UserControl
     /// </summary>
     public ObservableCollection<WhiteInfo> ListBox_WhiteInfos { get; set; } = new();
 
-    /// <summary>
-    /// 默认头像
-    /// </summary>
-    private const string Default_Avatar = "\\Assets\\Images\\Other\\Avatar.jpg";
-
     ////////////////////////////////////////////////////////////////////
 
     /// <summary>
@@ -32,6 +27,16 @@ public partial class WhiteView : UserControl
     /// </summary>
     public static Action<List<string>> ActionSetWhiteData;
 
+    /// <summary>
+    /// 获取白名单特权委托
+    /// </summary>
+    public static Func<IgnoreData> FuncGetWhiteIgnore;
+
+    /// <summary>
+    /// 设置白名单特权委托
+    /// </summary>
+    public static Action<IgnoreData> ActionSetWhiteIgnore;
+
     ////////////////////////////////////////////////////////////////////
 
     public WhiteView()
@@ -41,14 +46,39 @@ public partial class WhiteView : UserControl
         FuncGetWhiteData = GetWhiteData;
         ActionSetWhiteData = SetWhiteData;
 
+        FuncGetWhiteIgnore = GetWhiteIgnore;
+        ActionSetWhiteIgnore = SetWhiteIgnore;
+
         RuleView.ApplyCurrentRuleEvent += RuleView_ApplyCurrentRuleEvent;
     }
 
     private void RuleView_ApplyCurrentRuleEvent()
     {
+        // 清空白名单列表
+        Globals.CustomWhites_Name.Clear();
 
+        // 添加自定义白名单列表
+        foreach (var item in ListBox_WhiteInfos)
+        {
+            Globals.CustomWhites_Name.Add(item.Name);
+        }
+
+        Globals.WhiteKill = CheckBox_WhiteKill.IsChecked == true;
+        Globals.WhiteKD = CheckBox_WhiteKD.IsChecked == true;
+        Globals.WhiteKPM = CheckBox_WhiteKPM.IsChecked == true;
+        Globals.WhiteRank = CheckBox_WhiteRank.IsChecked == true;
+        Globals.WhiteWeapon = CheckBox_WhiteWeapon.IsChecked == true;
+
+        Globals.WhiteLifeKD = CheckBox_WhiteLifeKD.IsChecked == true;
+        Globals.WhiteLifeKPM = CheckBox_WhiteLifeKPM.IsChecked == true;
+        Globals.WhiteLifeWeaponStar = CheckBox_WhiteLifeWeaponStar.IsChecked == true;
+        Globals.WhiteLifeVehicleStar = CheckBox_WhiteLifeVehicleStar.IsChecked == true;
     }
 
+    /// <summary>
+    /// 获取白名单数据
+    /// </summary>
+    /// <returns></returns>
     private List<string> GetWhiteData()
     {
         var list = new List<string>();
@@ -64,6 +94,10 @@ public partial class WhiteView : UserControl
         return list;
     }
 
+    /// <summary>
+    /// 设置白名单数据
+    /// </summary>
+    /// <param name="whiteList"></param>
     private void SetWhiteData(List<string> whiteList)
     {
         ListBox_WhiteInfos.Clear();
@@ -75,11 +109,52 @@ public partial class WhiteView : UserControl
 
             ListBox_WhiteInfos.Add(new()
             {
-                Avatar = Default_Avatar,
+                Avatar = Globals.Default_Avatar,
                 Name = name
             });
         }
     }
+
+    /// <summary>
+    /// 获取白名单特权
+    /// </summary>
+    /// <returns></returns>
+    private IgnoreData GetWhiteIgnore()
+    {
+        return new IgnoreData()
+        {
+            WhiteKill = CheckBox_WhiteKill.IsChecked == true,
+            WhiteKD = CheckBox_WhiteKD.IsChecked == true,
+            WhiteKPM = CheckBox_WhiteKPM.IsChecked == true,
+            WhiteRank = CheckBox_WhiteRank.IsChecked == true,
+            WhiteWeapon = CheckBox_WhiteWeapon.IsChecked == true,
+
+            WhiteLifeKD = CheckBox_WhiteLifeKD.IsChecked == true,
+            WhiteLifeKPM = CheckBox_WhiteLifeKPM.IsChecked == true,
+            WhiteLifeWeaponStar = CheckBox_WhiteLifeWeaponStar.IsChecked == true,
+            WhiteLifeVehicleStar = CheckBox_WhiteLifeVehicleStar.IsChecked == true,
+        };
+    }
+
+    /// <summary>
+    /// 设置白名单特权
+    /// </summary>
+    /// <param name="ignoreData"></param>
+    private void SetWhiteIgnore(IgnoreData ignoreData)
+    {
+        CheckBox_WhiteKill.IsChecked = ignoreData.WhiteKill;
+        CheckBox_WhiteKD.IsChecked = ignoreData.WhiteKD;
+        CheckBox_WhiteKPM.IsChecked = ignoreData.WhiteKPM;
+        CheckBox_WhiteRank.IsChecked = ignoreData.WhiteRank;
+        CheckBox_WhiteWeapon.IsChecked = ignoreData.WhiteWeapon;
+
+        CheckBox_WhiteLifeKD.IsChecked = ignoreData.WhiteLifeKD;
+        CheckBox_WhiteLifeKPM.IsChecked = ignoreData.WhiteLifeKPM;
+        CheckBox_WhiteLifeWeaponStar.IsChecked = ignoreData.WhiteLifeWeaponStar;
+        CheckBox_WhiteLifeVehicleStar.IsChecked = ignoreData.WhiteLifeVehicleStar;
+    }
+
+    //////////////////////////////////////////////////////
 
     private void ListBox_White_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
@@ -98,7 +173,7 @@ public partial class WhiteView : UserControl
             {
                 ListBox_WhiteInfos.Add(new()
                 {
-                    Avatar = Default_Avatar,
+                    Avatar = Globals.Default_Avatar,
                     Name = name
                 });
             }
@@ -148,7 +223,7 @@ public partial class WhiteView : UserControl
                     {
                         ListBox_WhiteInfos.Add(new()
                         {
-                            Avatar = Default_Avatar,
+                            Avatar = Globals.Default_Avatar,
                             Name = name
                         });
                     }
@@ -209,17 +284,20 @@ public partial class WhiteView : UserControl
         }
 
         var tempStr = new List<string>();
+
         // 提取玩家名称列表
         foreach (var item in ListBox_WhiteInfos.ToList())
             tempStr.Add(item.Name);
+
         // 清空原列表
         ListBox_WhiteInfos.Clear();
+
         // 填充原列表
         foreach (var name in tempStr.Distinct().ToList().Order())
         {
             ListBox_WhiteInfos.Add(new()
             {
-                Avatar = Default_Avatar,
+                Avatar = Globals.Default_Avatar,
                 Name = name
             });
         }

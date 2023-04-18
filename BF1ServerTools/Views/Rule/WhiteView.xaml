@@ -69,15 +69,45 @@
         <!--  ///////////////////////  -->
         <StackPanel Grid.Column="1">
             <ui:UiLabelIcon Content="白名单特权" />
-            <CheckBox x:Name="CheckBox_WhiteLifeKD" Content="免疫生涯KD限制" />
-            <CheckBox x:Name="CheckBox_WhiteLifeKPM" Content="免疫生涯KPM限制" />
-            <CheckBox x:Name="CheckBox_WhiteLifeWeaponStar" Content="免疫生涯武器星数限制" />
-            <CheckBox x:Name="CheckBox_WhiteLifeVehicleStar" Content="免疫生涯载具星数限制" />
-            <CheckBox x:Name="CheckBox_WhiteKill" Content="免疫击杀限制" />
-            <CheckBox x:Name="CheckBox_WhiteKD" Content="免疫KD限制" />
-            <CheckBox x:Name="CheckBox_WhiteKPM" Content="免疫KPM限制" />
-            <CheckBox x:Name="CheckBox_WhiteRank" Content="免疫等级限制" />
-            <CheckBox x:Name="CheckBox_WhiteWeapon" Content="免疫武器限制" />
+            <CheckBox
+                x:Name="CheckBox_WhiteKill"
+                Content="免疫击杀限制"
+                IsChecked="True" />
+            <CheckBox
+                x:Name="CheckBox_WhiteKD"
+                Content="免疫KD限制"
+                IsChecked="True" />
+            <CheckBox
+                x:Name="CheckBox_WhiteKPM"
+                Content="免疫KPM限制"
+                IsChecked="True" />
+            <CheckBox
+                x:Name="CheckBox_WhiteRank"
+                Content="免疫等级限制"
+                IsChecked="True" />
+            <CheckBox
+                x:Name="CheckBox_WhiteWeapon"
+                Content="免疫武器限制"
+                IsChecked="True" />
+
+            <TextBlock />
+
+            <CheckBox
+                x:Name="CheckBox_WhiteLifeKD"
+                Content="免疫生涯KD限制"
+                IsChecked="True" />
+            <CheckBox
+                x:Name="CheckBox_WhiteLifeKPM"
+                Content="免疫生涯KPM限制"
+                IsChecked="True" />
+            <CheckBox
+                x:Name="CheckBox_WhiteLifeWeaponStar"
+                Content="免疫生涯武器星数限制"
+                IsChecked="True" />
+            <CheckBox
+                x:Name="CheckBox_WhiteLifeVehicleStar"
+                Content="免疫生涯载具星数限制"
+                IsChecked="True" />
         </StackPanel>
     </Grid>
 
