@@ -48,15 +48,18 @@
                 <TextBlock />
 
                 <ui:UiSliderIcon
+                    x:Name="Slider_Team1MinRank"
                     Title="最低等级"
                     Maximum="150"
                     Style="{StaticResource SliderStyle_INT}"
+                    ValueChanged="Slider_Team1MinRank_ValueChanged"
                     Value="{Binding RuleGeneral1Model.MinRank}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高等级"
                     Maximum="150"
                     Style="{StaticResource SliderStyle_INT}"
+                    ValueChanged="Slider_Team1MinRank_ValueChanged"
                     Value="{Binding RuleGeneral1Model.MaxRank}" />
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">
@@ -106,15 +109,18 @@
                 <TextBlock />
 
                 <ui:UiSliderIcon
+                    x:Name="Slider_Team2MinRank"
                     Title="最低等级"
                     Maximum="150"
                     Style="{StaticResource SliderStyle_INT}"
+                    ValueChanged="Slider_Team2MinRank_ValueChanged"
                     Value="{Binding RuleGeneral2Model.MinRank}" />
                 <!--  //////////////////  -->
                 <ui:UiSliderIcon
                     Title="最高等级"
                     Maximum="150"
                     Style="{StaticResource SliderStyle_INT}"
+                    ValueChanged="Slider_Team2MinRank_ValueChanged"
                     Value="{Binding RuleGeneral2Model.MaxRank}" />
 
                 <TextBlock Style="{StaticResource TextBlockStyle_Hint}">

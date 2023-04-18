@@ -141,4 +141,36 @@ public partial class GeneralView : UserControl
         RuleGeneral2Model.MinRank = generalData.MinRank;
         RuleGeneral2Model.MaxRank = generalData.MaxRank;
     }
+
+    /// <summary>
+    /// 队伍1最低等级规则调整事件
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Slider_Team1MinRank_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        if (RuleGeneral1Model.MaxRank == 0)
+            return;
+
+        if (RuleGeneral1Model.MinRank >= RuleGeneral1Model.MaxRank)
+        {
+            RuleGeneral1Model.MinRank = RuleGeneral1Model.MaxRank - 1;
+        }
+    }
+
+    /// <summary>
+    /// 队伍2最低等级规则调整事件
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Slider_Team2MinRank_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        if (RuleGeneral2Model.MaxRank == 0)
+            return;
+
+        if (RuleGeneral2Model.MinRank >= RuleGeneral2Model.MaxRank)
+        {
+            RuleGeneral2Model.MinRank = RuleGeneral2Model.MaxRank - 1;
+        }
+    }
 }
