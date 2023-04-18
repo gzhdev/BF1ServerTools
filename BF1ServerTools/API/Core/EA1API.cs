@@ -6,7 +6,7 @@ public static class EA1API
 {
     private const string _host = "https://accounts.ea.com/connect/auth?client_id=sparta-backend-as-user-pc&response_type=code&release_type=none";
 
-    private static RestClient _client;
+    private static readonly RestClient _client = null;
 
     /// <summary>
     /// 初始化

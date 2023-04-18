@@ -91,4 +91,16 @@ public static class MiscUtil
 
         return result;
     }
+
+    /// <summary>
+    /// 返回两个时间差分钟数
+    /// </summary>
+    /// <param name="startTime"></param>
+    /// <param name="endTime"></param>
+    /// <returns></returns>
+    public static double DiffMinutes(DateTime startTime, DateTime endTime)
+    {
+        var secondSpan = new TimeSpan(endTime.Ticks - startTime.Ticks);
+        return secondSpan.TotalMinutes;
+    }
 }

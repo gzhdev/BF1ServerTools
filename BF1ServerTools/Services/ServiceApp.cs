@@ -33,6 +33,18 @@ public static class ServiceApp
             IsBackground = true
         }.Start();
 
+        new Thread(MonitService.UpdateBreakPlayerThread)
+        {
+            Name = "UpdateBreakPlayerThread",
+            IsBackground = true
+        }.Start();
+
+        new Thread(CacheService.UpdateLifeCacheThread)
+        {
+            Name = "UpdateLifeCacheThread",
+            IsBackground = true
+        }.Start();
+
         ////////////////////////////////////////////
 
         // 模式1 定时内存扫描SessionId 周期10分钟

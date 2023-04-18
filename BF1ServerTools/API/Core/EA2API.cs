@@ -7,7 +7,7 @@ public static class EA2API
     private const string _host1 = "https://accounts.ea.com/connect/auth?response_type=token&locale=zh_CN&client_id=ORIGIN_JS_SDK&redirect_uri=nucleus%3Arest";
     private const string _host2 = "https://gateway.ea.com/proxy/identity/personas?namespaceName=cem_ea_id&displayName=";
 
-    private static RestClient _client;
+    private static readonly RestClient _client = null;
 
     /// <summary>
     /// 初始化

@@ -8,7 +8,7 @@ public static class BF1API
 {
     private const string _host = "https://sparta-gw.battlelog.com/jsonrpc/pc/api";
 
-    private static RestClient _client;
+    private static readonly RestClient _client = null;
 
     /// <summary>
     /// 初始化

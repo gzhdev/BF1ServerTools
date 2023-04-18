@@ -4,7 +4,7 @@ namespace BF1ServerTools.Helpers;
 
 public static class HttpHelper
 {
-    private static RestClient _client;
+    private static readonly RestClient _client = null;
 
     /// <summary>
     /// 初始化

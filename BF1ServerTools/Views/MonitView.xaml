@@ -4,12 +4,54 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:monit="clr-namespace:BF1ServerTools.Views.Monit"
     xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
     d:DesignHeight="720"
     d:DesignWidth="1280"
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
 
-    <Grid />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+        <!--  /////////////////////////  -->
+        <TabControl Margin="5">
+            <ui:UiTabItemIcon Header="违规列表">
+                <monit:BreakView />
+            </ui:UiTabItemIcon>
+            <!--  //////////////  -->
+            <ui:UiTabItemIcon Header="生涯缓存">
+                <monit:CacheView />
+            </ui:UiTabItemIcon>
+        </TabControl>
+        <!--  /////////////////////////  -->
+        <StackPanel Grid.Column="1">
+            <ui:UiLabelIcon Content="设置" />
+            <CheckBox x:Name="CheckBox_IsAutoKickSpectator" Content="启用踢出非管理员观战玩家" />
+            <ui:UiSliderIcon
+                Title="踢出玩家CD限制（分钟）"
+                Maximum="60"
+                Style="{StaticResource SliderStyle_INT}"
+                Value="{Binding RuleLife1Model.LifeMaxWeaponStar}" />
+            <CheckBox x:Name="CheckBox_IsEnableKickNoWhites" Content="启用踢出非白名单玩家模式（无视规则）" />
+            <ui:UiTextBoxHint
+                x:Name="TextBox_KickNoWhitesReason"
+                Hint="自定义踢出非白名单玩家理由"
+                IsEnabled="{Binding ElementName=CheckBox_IsEnableKickNoWhites, Path=IsChecked}"
+                Text="{Binding KickNoWhitesReason, UpdateSourceTrigger=PropertyChanged}" />
+
+            <ui:UiLabelIcon Content="自动踢人" />
+            <Button x:Name="Button_CheckAutoKickEnv" Content="检查自动踢人环境" />
+            <ToggleButton
+                x:Name="ToggleButton_RunAutoKick"
+                Margin="5"
+                Content="激活自动踢出违规玩家"
+                FontSize="14"
+                FontWeight="Bold" />
+
+        </StackPanel>
+    </Grid>
 
 </UserControl>

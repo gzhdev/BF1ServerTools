@@ -1,0 +1,91 @@
+﻿<UserControl
+    x:Class="BF1ServerTools.Views.Monit.BreakView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="clr-namespace:BF1ServerTools.Themes.Controls"
+    d:DesignHeight="720"
+    d:DesignWidth="1280"
+    DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+    mc:Ignorable="d">
+
+    <ListView
+        x:Name="ListView_Break"
+        Margin="5"
+        ItemsSource="{Binding ListView_PlayerList_BreakRuleInfo}"
+        Style="{StaticResource ListViewStyle_Normal}">
+        <ListView.ContextMenu>
+            <ContextMenu>
+                <MenuItem
+                    Name="MenuItem_SelectedInfo"
+                    Header="[违规玩家]  当前未选中"
+                    IsEnabled="False" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_Break_CopyPlayerName"
+                    Header="复制玩家ID"
+                    Icon="&#xe600;" />
+                <MenuItem Name="MenuItem_Break_CopyPlayerPersonaId" Header="复制玩家数字ID" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_Break_QueryPlayerRecord"
+                    Header="查询玩家数据"
+                    Icon="&#xe7d2;" />
+                <Separator />
+                <MenuItem Name="MenuItem_Break_KickPlayerCustom" Header="踢出玩家 - 自定义理由" />
+                <Separator />
+                <MenuItem Name="MenuItem_Break_KickPlayerOffensiveBehavior" Header="踢出玩家 - 攻击性行为" />
+                <MenuItem Name="MenuItem_Break_KickPlayerLatency" Header="踢出玩家 - 延迟" />
+                <MenuItem Name="MenuItem_Break_KickPlayerRuleViolation" Header="踢出玩家 - 违反规则" />
+                <MenuItem Name="MenuItem_Break_KickPlayerGeneral" Header="踢出玩家 - 其他" />
+            </ContextMenu>
+        </ListView.ContextMenu>
+        <ListView.View>
+            <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle_Normal}">
+                <GridViewColumn DisplayMemberBinding="{Binding Index}" Header="序号" />
+                <GridViewColumn DisplayMemberBinding="{Binding Rank}" Header="等级" />
+                <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="玩家ID" />
+                <GridViewColumn DisplayMemberBinding="{Binding PersonaId}" Header="数字ID" />
+                <GridViewColumn Header="管理员">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Admin}" Value="True">
+                                                <Setter Property="Text" Value="✔" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="白名单">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding White}" Value="True">
+                                                <Setter Property="Text" Value="✔" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn DisplayMemberBinding="{Binding Reason}" Header="违规原因" />
+                <GridViewColumn DisplayMemberBinding="{Binding Count}" Header="违规数" />
+                <GridViewColumn DisplayMemberBinding="{Binding AllReason}" Header="全部违规原因" />
+            </GridView>
+        </ListView.View>
+    </ListView>
+
+</UserControl>

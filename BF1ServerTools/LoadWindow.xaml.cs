@@ -1,12 +1,11 @@
-﻿using BF1ServerTools.API;
-using BF1ServerTools.SDK;
+﻿using BF1ServerTools.SDK;
 using BF1ServerTools.Utils;
+using BF1ServerTools.SQLite;
 using BF1ServerTools.Models;
 using BF1ServerTools.Helpers;
 using BF1ServerTools.Services;
 
 using CommunityToolkit.Mvvm.Input;
-using System.Configuration;
 
 namespace BF1ServerTools;
 
@@ -99,20 +98,22 @@ public partial class LoadWindow
                     return;
                 }
 
-                //LoadModel.LoadState = "正在初始化SQLite数据库...";
-                //// 初始化SQLite数据库
-                //if (!SQLiteApp.Initialize())
-                //{
-                //    LoadModel.LoadState = "SQLite数据库初始化失败！程序即将关闭";
-                //    LoggerHelper.Error("SQLite数据库初始化失败");
+                // 初始化SQLite数据库
+                LoadModel.LoadState = "正在初始化SQLite数据库...";
+                LoggerHelper.Info("正在初始化SQLite数据库...");
 
-                //    await Task.Delay(2000);
-                //    this.Dispatcher.Invoke(() =>
-                //    {
-                //        Application.Current.Shutdown();
-                //    });
-                //    return;
-                //}
+                if (!SQLiteApp.Initialize())
+                {
+                    LoadModel.LoadState = "SQLite数据库初始化失败！程序即将关闭";
+                    LoggerHelper.Error("SQLite数据库初始化失败");
+
+                    await Task.Delay(2000);
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        Application.Current.Shutdown();
+                    });
+                    return;
+                }
 
                 // 初始化战地1 HTTP模块
                 LoadModel.LoadState = "正在初始化战地1 HTTP模块...";
