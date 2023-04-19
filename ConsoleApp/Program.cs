@@ -12,11 +12,12 @@ internal class Program
         //Weapon();
         //Vehicle();
 
-        //Make01();
+        Make01();
+
         //Make02();
         //Make03();
 
-        Make04();
+        //Make04();
 
         Console.ReadKey();
     }
@@ -99,14 +100,13 @@ internal class Program
 
         foreach (var item in WeaponDB.AllWeaponInfo)
         {
-            var data = temps.Find(x => x.name == item.Chinese);
+            var data = temps.Find(x => x.imageUrl.Contains(item.ImageName));
             var build = new StringBuilder();
 
             build.Append("\t\t");
             build.Append("new WeaponName(){ ");
 
-
-            if (data != null)
+            if (data != null && !string.IsNullOrEmpty(item.ImageName))
             {
                 build.Append($"Guid=\"{data.guid}\", ");
             }

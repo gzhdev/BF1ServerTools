@@ -195,7 +195,7 @@ public static class ServerService
                 ServerInfo_MapList.Add(new()
                 {
                     Index = index++,
-                    MapImage = ClientUtil.GetTempImagePath(item.mapImage, "map"),
+                    MapImage = ClientUtil.GetWebMapImage(item.mapImage),
                     MapName = ChsHelper.ToSimplified(item.mapPrettyName),
                     MapMode = ChsHelper.ToSimplified(item.modePrettyName)
                 });

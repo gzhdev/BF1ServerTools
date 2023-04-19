@@ -125,14 +125,18 @@ public static class GameUtil
     /// <returns></returns>
     public static int GetLifeStar(long personaId, string weaponName)
     {
+        var guid = ClientUtil.GetWeaponGuid(weaponName);
+        if (string.IsNullOrWhiteSpace(guid))
+            return 0;
+
         var lifeCache = FindPlayerLifeCache(personaId);
         if (lifeCache != null)
         {
-            var weapon = lifeCache.WeaponStats.Find(x => x.name == weaponName);
+            var weapon = lifeCache.WeaponStats.Find(x => x.guid == guid);
             if (weapon != null)
                 return weapon.star;
 
-            var vehicel = lifeCache.VehicleStats.Find(x => x.name == weaponName);
+            var vehicel = lifeCache.VehicleStats.Find(x => x.guid == guid);
             if (vehicel != null)
                 return vehicel.star;
         }

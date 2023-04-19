@@ -31,13 +31,13 @@ public static class WeaponDB2
         new WeaponName(){ Guid="8680EFC0-CA02-43E0-8CA2-591FB279DD95", Kind="公用配枪", English="U_Webley_Mk6", Chinese="Mk VI 左轮手枪", ShortName="Mk VI", ImageName="Webley_MK6-da81b474.png" },
         new WeaponName(){ Guid="AF3F421B-F68B-401D-94B4-B982EE6C8A91", Kind="公用配枪", English="U_M1911_Preorder_Hellfighter", Chinese="地狱战士 M1911", ShortName="M1911 HF", ImageName="Colt1911-ed324bf1.png" },
         new WeaponName(){ Guid="B97A8C29-A567-437F-9B6C-9E1E8FD86BF9", Kind="公用配枪", English="U_LugerP08_Wep_Preorder", Chinese="红男爵的 P08", ShortName="P08 HNJ", ImageName="LugerP08-7f07aa2d.png" },
-        new WeaponName(){ Guid="??????", Kind="公用配枪", English="U_M1911_Suppressed", Chinese="M1911（消音器）", ShortName="M1911 XYQ", ImageName="M1911Silencer-d6c0e687.png" },
-        new WeaponName(){ Guid="??????", Kind="公用配枪", English="U_SingleActionArmy", Chinese="维和左轮 Peacekeeper", ShortName="Peacekeeper", ImageName="Colt_SAA-ef15294c.png" },
+        new WeaponName(){ Guid="5962340E-AED8-4B93-A10E-D7C91FFD2460", Kind="公用配枪", English="U_M1911_Suppressed", Chinese="M1911（消音器）", ShortName="M1911 XYQ", ImageName="M1911Silencer-d6c0e687.png" },
+        new WeaponName(){ Guid="B9333E7C-3D7D-4147-A569-9FC9BB2B4F5D", Kind="公用配枪", English="U_SingleActionArmy", Chinese="维和左轮 Peacekeeper", ShortName="Peacekeeper", ImageName="Colt_SAA-ef15294c.png" },
         new WeaponName(){ Guid="F7CED576-7629-402A-8598-4A4998C02E0A", Kind="公用配枪", English="U_M1911_Preorder_Triforce", Chinese="步兵小子 M1911", ShortName="M1911 BBXZ", ImageName="Colt1911-ed324bf1.png" },
         
         // 手榴弹
         new WeaponName(){ Guid="F0B75644-5B3F-45CD-9E42-9B67F3D4D37F", Kind="手榴弹", English="U_GermanStick", Chinese="破片手榴弹", ShortName="German Stick", ImageName="GadgetFragmented-8c15152e.png" },
-        new WeaponName(){ Guid="??????", Kind="手榴弹", English="U_FragGrenade", Chinese="棒式手榴弹", ShortName="Frag Grenade", ImageName="GadgetFragmented-8c15152e.png" },
+        new WeaponName(){ Guid="F0B75644-5B3F-45CD-9E42-9B67F3D4D37F", Kind="手榴弹", English="U_FragGrenade", Chinese="棒式手榴弹", ShortName="Frag Grenade", ImageName="GadgetFragmented-8c15152e.png" },
         new WeaponName(){ Guid="EE6AC80E-FFDF-4E5A-923D-209CE9B86BF4", Kind="手榴弹", English="U_GasGrenade", Chinese="毒气手榴弹", ShortName="Gas Grenade", ImageName="GadgetGas-2bee4386.png" },
         new WeaponName(){ Guid="F9A8C36F-F5B6-4946-B3B9-F5923564CD51", Kind="手榴弹", English="U_ImpactGrenade", Chinese="冲击手榴弹", ShortName="Impact Grenade", ImageName="GadgetImpact-f0c7f39e.png" },
         new WeaponName(){ Guid="8219207A-41E6-4ED2-A3E8-9690752EC40C", Kind="手榴弹", English="U_Incendiary", Chinese="燃烧手榴弹", ShortName="Incendiary", ImageName="GadgetIncindiary-68d49a3a.png" },
@@ -83,7 +83,7 @@ public static class WeaponDB2
         new WeaponName(){ Guid="6C3EE48B-0974-48B1-AFF7-96FD4D684E82", Kind="突击兵 主要武器", English="U_ChauchatSMG", Chinese="RSC 冲锋枪（原厂）", ShortName="RSC YC", ImageName="Chauchat-Ribeyrolles-4af8a912.png" },
         new WeaponName(){ Guid="6DAFDE21-2502-41B4-878B-532E70905238", Kind="突击兵 主要武器", English="U_ChauchatSMG_Wep_Optical", Chinese="RSC 冲锋枪（瞄准镜）", ShortName="RSC MZJ", ImageName="Chauchat-Ribeyrolles-4af8a912.png" },
         new WeaponName(){ Guid="C70FE9E0-0A1C-470C-B377-68059953EAD8", Kind="突击兵 主要武器", English="U_M1919Thompson_Wep_Trench", Chinese="Annihilator（壕沟）", ShortName="Annihilator HG", ImageName="ThompsonAnnihilatorTr-1a660e74.png" },
-        new WeaponName(){ Guid="??????", Kind="突击兵 主要武器", English="U_M1919Thompson_Wep_Stability", Chinese="Annihilator（冲锋）", ShortName="Annihilator CF", ImageName="ThompsonAnnihilatorTr-1a660e74.png" },
+        new WeaponName(){ Guid="DBC25B43-29D9-4FB4-B9EF-C4966CD773B3", Kind="突击兵 主要武器", English="U_M1919Thompson_Wep_Stability", Chinese="Annihilator（冲锋）", ShortName="Annihilator CF", ImageName="ThompsonAnnihilatorTr-1a660e74.png" },
         new WeaponName(){ Guid="A9985C95-7364-4AE3-BC77-C53651128EBE", Kind="突击兵 主要武器", English="U_M1919Thompson", Chinese="M1919 冲锋枪", ShortName="M1919", ImageName="M1919Thompson-1cf7343d.png" },
         new WeaponName(){ Guid="D8AEB334-58E2-4A52-83BA-F3C2107196F0", Kind="突击兵 主要武器", English="U_FrommerStopAuto", Chinese="费罗梅尔停止手枪（自动）", ShortName="FrommerStopAuto", ImageName="FrommerStop-506df97e.png" },
         new WeaponName(){ Guid="7085A5B9-6A77-4766-83CD-3666DA3EDF28", Kind="突击兵 主要武器", English="U_SawnOffShotgun", Chinese="短管霰弹枪", ShortName="SawnOffShotgun", ImageName="SawedOfShotgun-d31e0dd8.png" },
@@ -176,8 +176,8 @@ public static class WeaponDB2
         new WeaponName(){ Guid="96B134CC-5EDA-436A-9913-5ED429C696DD", Kind="支援兵 主要武器", English="U_BrowningM1917_Wep_Suppression", Chinese="M1917 机枪（望远瞄具）", ShortName="M1917 WYMJ", ImageName="Browning1917-61290bc9.png" },
         new WeaponName(){ Guid="57D820BF-38CC-4F62-8069-617E063971A0", Kind="支援兵 主要武器", English="U_MG0818", Chinese="轻机枪 08/18（轻量化）", ShortName="MG0818 QLH", ImageName="LMG_08-18-743c1aa8.png" },
         new WeaponName(){ Guid="16DF4163-78E0-4926-929A-E6052E04BE7F", Kind="支援兵 主要武器", English="U_MG0818_Wep_Defensive", Chinese="轻机枪 08/18（压制）", ShortName="MG0818 YZ", ImageName="LMG_08-18-743c1aa8.png" },
-        new WeaponName(){ Guid="??????", Kind="支援兵 主要武器", English="U_WinchesterBurton_Wep_Trench", Chinese="波顿 LMR（战壕）", ShortName="Burton LMR ZH", ImageName="WinchesterBurton-ce3988cc.png" },
-        new WeaponName(){ Guid="??????", Kind="支援兵 主要武器", English="U_WinchesterBurton_Wep_Optical", Chinese="波顿 LMR（瞄准镜）", ShortName="Burton LMR HZJ", ImageName="WinchesterBurton-ce3988cc.png" },
+        new WeaponName(){ Guid="6C8284DF-9CEC-4391-9E1B-0E355C2D1310", Kind="支援兵 主要武器", English="U_WinchesterBurton_Wep_Trench", Chinese="波顿 LMR（战壕）", ShortName="Burton LMR ZH", ImageName="WinchesterBurton-ce3988cc.png" },
+        new WeaponName(){ Guid="708392C1-38F7-4CFA-81E3-04FC90434021", Kind="支援兵 主要武器", English="U_WinchesterBurton_Wep_Optical", Chinese="波顿 LMR（瞄准镜）", ShortName="Burton LMR HZJ", ImageName="WinchesterBurton-ce3988cc.png" },
         new WeaponName(){ Guid="53B264D8-1E4D-42E9-AA31-401D55BA2F39", Kind="支援兵 主要武器", English="U_MauserC96AutoPistol", Chinese="C96（卡宾枪）", ShortName="C96 KBQ", ImageName="MauserC96CCarbine-741ab77d.png" },
         new WeaponName(){ Guid="0CC870E0-7AAE-44FE-B9D8-5D90706AF38B", Kind="支援兵 主要武器", English="U_LugerArtillery", Chinese="P08 Artillerie", ShortName="P08 Artillerie", ImageName="LugerArtillery-1fbfb83c.png" },
         new WeaponName(){ Guid="6CB23E70-F191-4043-951A-B43D6D2CF4A2", Kind="支援兵 主要武器", English="U_PieperCarbine", Chinese="皮珀 M1893", ShortName="M1893", ImageName="PieperCarbine-31e63cfb.png" },
@@ -257,106 +257,106 @@ public static class WeaponDB2
         /////////////////////////////////////////////////////////////////////////////
 
         // 精英兵
-        new WeaponName(){ Guid="??????", Kind="精英兵", English="U_MaximMG0815", Chinese="哨兵 MG 08/15", ShortName="Maxim MG0815", ImageName="Maxim0815-0879ffaa.png" },
-        new WeaponName(){ Guid="??????", Kind="精英兵", English="U_VillarPerosa", Chinese="哨兵 维拉·佩罗萨冲锋枪", ShortName="Villar Perosa", ImageName="VillarPerosa-4ba7d141.png" },
-        new WeaponName(){ Guid="??????", Kind="精英兵", English="U_FlameThrower", Chinese="喷火兵 Wex", ShortName="Wex", ImageName="WEXFlammenwerfer-13f2b3af.png" },
+        new WeaponName(){ Guid="0B575357-B536-45FF-BC1B-386560AE2163", Kind="精英兵", English="U_MaximMG0815", Chinese="哨兵 MG 08/15", ShortName="Maxim MG0815", ImageName="Maxim0815-0879ffaa.png" },
+        new WeaponName(){ Guid="BCF1DDDF-C812-43E6-9F5A-F08109BAB746", Kind="精英兵", English="U_VillarPerosa", Chinese="哨兵 维拉·佩罗萨冲锋枪", ShortName="Villar Perosa", ImageName="VillarPerosa-4ba7d141.png" },
+        new WeaponName(){ Guid="D4A1023A-6C3B-48DF-9515-C35A9463794D", Kind="精英兵", English="U_FlameThrower", Chinese="喷火兵 Wex", ShortName="Wex", ImageName="WEXFlammenwerfer-13f2b3af.png" },
         new WeaponName(){ Guid="8219207A-41E6-4ED2-A3E8-9690752EC40C", Kind="精英兵", English="U_Incendiary_Hero", Chinese="燃烧手榴弹", ShortName="Incendiary Hero", ImageName="GadgetIncindiary-68d49a3a.png" },
-        new WeaponName(){ Guid="??????", Kind="精英兵", English="U_RoyalClub", Chinese="战壕奇兵 奇兵棒", ShortName="Royal Club", ImageName="Steelclub-83b053cf.png" },
-        new WeaponName(){ Guid="??????", Kind="精英兵", English="U_MartiniGrenadeLauncher", Chinese="入侵者 马提尼·亨利步枪榴弹发射器", ShortName="Martini GL", ImageName="MartiniHenryGrenadeLauncher-65e27bf0.png" },
+        new WeaponName(){ Guid="8A849EDD-AE9F-4F9D-B872-7728067E4E9F", Kind="精英兵", English="U_RoyalClub", Chinese="战壕奇兵 奇兵棒", ShortName="Royal Club", ImageName="Steelclub-83b053cf.png" },
+        new WeaponName(){ Guid="1B74E3E0-2484-3BF0-AF8F-25BFA008B6F0", Kind="精英兵", English="U_MartiniGrenadeLauncher", Chinese="入侵者 马提尼·亨利步枪榴弹发射器", ShortName="Martini GL", ImageName="MartiniHenryGrenadeLauncher-65e27bf0.png" },
         new WeaponName(){ Guid="7085A5B9-6A77-4766-83CD-3666DA3EDF28", Kind="精英兵", English="U_SawnOffShotgun_FK", Chinese="短管霰弹枪", ShortName="SawnOffShotgun", ImageName="SawedOfShotgun-d31e0dd8.png" },
-        new WeaponName(){ Guid="??????", Kind="精英兵", English="U_FlareGun_Elite", Chinese="信号枪 — 信号", ShortName="FlareGun Elite", ImageName="GadgetWebleyScottFlaregunFlash-40b27cca.png" },
+        new WeaponName(){ Guid="9D1BEE08-C101-4FF3-8ECA-244240171801", Kind="精英兵", English="U_FlareGun_Elite", Chinese="信号枪 — 信号", ShortName="FlareGun Elite", ImageName="GadgetWebleyScottFlaregunFlash-40b27cca.png" },
         new WeaponName(){ Guid="??????", Kind="精英兵", English="U_SpawnBeacon", Chinese="重生信标", ShortName="Spawn Beacon", ImageName="GadgetHeliograph-66004cd6.png" },
-        new WeaponName(){ Guid="??????", Kind="精英兵", English="U_TankGewehr", Chinese="坦克猎手 Tankgewehr M1918", ShortName="Tank Gewehr", ImageName="MauserTankgewehr1918-aedf4c56.png" },
+        new WeaponName(){ Guid="A9DBBCBD-E028-4EE9-8123-252B983D8CD6", Kind="精英兵", English="U_TankGewehr", Chinese="坦克猎手 Tankgewehr M1918", ShortName="Tank Gewehr", ImageName="MauserTankgewehr1918-aedf4c56.png" },
         new WeaponName(){ Guid="C43D1466-F9D1-474B-A737-3820B6989819", Kind="精英兵", English="U_TrPeriscope_Elite", Chinese="战壕潜望镜", ShortName="Tr Periscope", ImageName="GadgetTrenchPeriscope-d916e58e.png" },
         new WeaponName(){ Guid="72CCBF3E-C0FE-4657-A1A7-EACDB2D11985", Kind="精英兵", English="U_ATGrenade_VhKit", Chinese="反坦克手榴弹", ShortName="AT Grenade", ImageName="GadgetATGrenade-4b135d46.png" },
 
         ///////////////////////////////////////////////////////////////////////////////////
 
         // 载具
-        new WeaponName(){ Guid="??????", Kind="坦克", English="ID_P_VNAME_MARKV", Chinese="巡航坦克 Mark V 巡航 坦克", ShortName="Mark V", ImageName="GBRMarkV-bf3b1d1a.png" },
-        new WeaponName(){ Guid="??????", Kind="巡航坦克1", English="U_GBR_MarkV_Package_Mortar", Chinese="迫击炮巡航坦克", ShortName="Mark V PJP", ImageName="GBRMarkV-bf3b1d1a.png" },
-        new WeaponName(){ Guid="??????", Kind="巡航坦克2", English="U_GBR_MarkV_Package_AntiTank", Chinese="坦克猎手巡航坦克", ShortName="Mark V TKLS", ImageName="GBRMarkV-bf3b1d1a.png" },
-        new WeaponName(){ Guid="??????", Kind="巡航坦克3", English="U_GBR_MarkV_Package_SquadSupport", Chinese="小队支援巡航坦克", ShortName="Mark V XDZY", ImageName="GBRMarkV-bf3b1d1a.png" },
+        new WeaponName(){ Guid="4723A26F-98AE-55BA-7B3F-3AE7E0E3B0C7", Kind="坦克", English="ID_P_VNAME_MARKV", Chinese="巡航坦克 Mark V 巡航 坦克", ShortName="Mark V", ImageName="GBRMarkV-bf3b1d1a.png" },
+        new WeaponName(){ Guid="4723A26F-98AE-55BA-7B3F-3AE7E0E3B0C7", Kind="巡航坦克1", English="U_GBR_MarkV_Package_Mortar", Chinese="迫击炮巡航坦克", ShortName="Mark V PJP", ImageName="GBRMarkV-bf3b1d1a.png" },
+        new WeaponName(){ Guid="4723A26F-98AE-55BA-7B3F-3AE7E0E3B0C7", Kind="巡航坦克2", English="U_GBR_MarkV_Package_AntiTank", Chinese="坦克猎手巡航坦克", ShortName="Mark V TKLS", ImageName="GBRMarkV-bf3b1d1a.png" },
+        new WeaponName(){ Guid="4723A26F-98AE-55BA-7B3F-3AE7E0E3B0C7", Kind="巡航坦克3", English="U_GBR_MarkV_Package_SquadSupport", Chinese="小队支援巡航坦克", ShortName="Mark V XDZY", ImageName="GBRMarkV-bf3b1d1a.png" },
 
-        new WeaponName(){ Guid="??????", Kind="坦克", English="ID_P_VNAME_A7V", Chinese="重型坦克 AV7 重型坦克", ShortName="AV7", ImageName="GERA7V-bfc09237.png" },
-        new WeaponName(){ Guid="??????", Kind="重型坦克1", English="U_GER_A7V_Package_Assault", Chinese="重型突 击坦克", ShortName="AV7 TJ", ImageName="GERA7V-bfc09237.png" },
-        new WeaponName(){ Guid="??????", Kind="重型坦克2", English="U_GER_A7V_Package_Breakthrough", Chinese="重型突破坦克", ShortName="AV7 TP", ImageName="GERA7V-bfc09237.png" },
-        new WeaponName(){ Guid="??????", Kind="重型坦克3", English="U_GER_A7V_Package_Flamethrower", Chinese="重型火焰喷射器坦克", ShortName="AV7 HYPSQ", ImageName="GERA7V-bfc09237.png" },
+        new WeaponName(){ Guid="4AA28E71-6FDA-A50B-80A8-B52D070FF884", Kind="坦克", English="ID_P_VNAME_A7V", Chinese="重型坦克 AV7 重型坦克", ShortName="AV7", ImageName="GERA7V-bfc09237.png" },
+        new WeaponName(){ Guid="4AA28E71-6FDA-A50B-80A8-B52D070FF884", Kind="重型坦克1", English="U_GER_A7V_Package_Assault", Chinese="重型突 击坦克", ShortName="AV7 TJ", ImageName="GERA7V-bfc09237.png" },
+        new WeaponName(){ Guid="4AA28E71-6FDA-A50B-80A8-B52D070FF884", Kind="重型坦克2", English="U_GER_A7V_Package_Breakthrough", Chinese="重型突破坦克", ShortName="AV7 TP", ImageName="GERA7V-bfc09237.png" },
+        new WeaponName(){ Guid="4AA28E71-6FDA-A50B-80A8-B52D070FF884", Kind="重型坦克3", English="U_GER_A7V_Package_Flamethrower", Chinese="重型火焰喷射器坦克", ShortName="AV7 HYPSQ", ImageName="GERA7V-bfc09237.png" },
 
-        new WeaponName(){ Guid="??????", Kind="坦克", English="ID_P_VNAME_FT17", Chinese="轻型坦克 FT-17 轻型坦 克", ShortName="FT-17", ImageName="FRARenaultFt-17-aea9e5e7.png" },
-        new WeaponName(){ Guid="??????", Kind="轻型坦克1", English="U_FRA_FT_Package_37mm", Chinese="轻型近距离 支援坦克", ShortName="FT-17 JJLZY", ImageName="FRARenaultFt-17-aea9e5e7.png" },
-        new WeaponName(){ Guid="??????", Kind="轻型坦克2", English="U_FRA_FT_Package_20mm", Chinese="轻型侧翼攻 击坦克", ShortName="FT-17 CYGJ", ImageName="FRARenaultFt-17-aea9e5e7.png" },
-        new WeaponName(){ Guid="??????", Kind="轻型坦克3", English="U_FRA_FT_Package_75mm", Chinese="轻型榴弹炮 坦克", ShortName="FT-17 LDP", ImageName="FRARenaultFt-17-aea9e5e7.png" },
+        new WeaponName(){ Guid="A79071D2-5C4F-0BA8-0ECC-FCB1376E2FBA", Kind="坦克", English="ID_P_VNAME_FT17", Chinese="轻型坦克 FT-17 轻型坦 克", ShortName="FT-17", ImageName="FRARenaultFt-17-aea9e5e7.png" },
+        new WeaponName(){ Guid="A79071D2-5C4F-0BA8-0ECC-FCB1376E2FBA", Kind="轻型坦克1", English="U_FRA_FT_Package_37mm", Chinese="轻型近距离 支援坦克", ShortName="FT-17 JJLZY", ImageName="FRARenaultFt-17-aea9e5e7.png" },
+        new WeaponName(){ Guid="A79071D2-5C4F-0BA8-0ECC-FCB1376E2FBA", Kind="轻型坦克2", English="U_FRA_FT_Package_20mm", Chinese="轻型侧翼攻 击坦克", ShortName="FT-17 CYGJ", ImageName="FRARenaultFt-17-aea9e5e7.png" },
+        new WeaponName(){ Guid="A79071D2-5C4F-0BA8-0ECC-FCB1376E2FBA", Kind="轻型坦克3", English="U_FRA_FT_Package_75mm", Chinese="轻型榴弹炮 坦克", ShortName="FT-17 LDP", ImageName="FRARenaultFt-17-aea9e5e7.png" },
 
-        new WeaponName(){ Guid="??????", Kind="坦克", English="ID_P_VNAME_ARTILLERYTRUCK", Chinese="装甲车 火炮 装甲车", ShortName="ARTILLERYTRUCK", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
-        new WeaponName(){ Guid="??????", Kind="火炮装甲车1", English="U_GBR_PierceArrow_Package_Artillery", Chinese="火炮装甲车", ShortName="ATruck HP", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
-        new WeaponName(){ Guid="??????", Kind="火炮装甲车2", English="U_GBR_PierceArrow_Package_AntiAircraft", Chinese="防空装甲车", ShortName="ATruck AA", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
-        new WeaponName(){ Guid="??????", Kind="火炮装甲车3", English="U_GBR_PierceArrow_Package_Mortar", Chinese="迫击炮装甲车", ShortName="ATruck Mortar", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
+        new WeaponName(){ Guid="A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78", Kind="坦克", English="ID_P_VNAME_ARTILLERYTRUCK", Chinese="装甲车 火炮 装甲车", ShortName="ARTILLERYTRUCK", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
+        new WeaponName(){ Guid="A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78", Kind="火炮装甲车1", English="U_GBR_PierceArrow_Package_Artillery", Chinese="火炮装甲车", ShortName="ATruck HP", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
+        new WeaponName(){ Guid="A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78", Kind="火炮装甲车2", English="U_GBR_PierceArrow_Package_AntiAircraft", Chinese="防空装甲车", ShortName="ATruck AA", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
+        new WeaponName(){ Guid="A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78", Kind="火炮装甲车3", English="U_GBR_PierceArrow_Package_Mortar", Chinese="迫击炮装甲车", ShortName="ATruck Mortar", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
 
-        new WeaponName(){ Guid="??????", Kind="坦克", English="ID_P_VNAME_STCHAMOND", Chinese="攻击坦克 圣沙蒙", ShortName="STCHAMOND", ImageName="FRAStChamond-3123e0cd.png" },
-        new WeaponName(){ Guid="??????", Kind="攻击坦克1", English="U_FRA_StChamond_Package_Assault", Chinese=" 战地攻击坦克", ShortName="STCHAMOND ZD", ImageName="FRAStChamond-3123e0cd.png" },
-        new WeaponName(){ Guid="??????", Kind="攻击坦克2", English="U_FRA_StChamond_Package_Gas", Chinese="毒气 攻击坦克", ShortName="STCHAMOND DQ", ImageName="FRAStChamond-3123e0cd.png" },
-        new WeaponName(){ Guid="??????", Kind="攻击坦克3", English="U_FRA_StChamond_Package_Standoff", Chinese="对峙攻击坦克", ShortName="STCHAMOND DZ", ImageName="FRAStChamond-3123e0cd.png" },
+        new WeaponName(){ Guid="12F1002B-97FA-490B-822F-E621C6827BFB", Kind="坦克", English="ID_P_VNAME_STCHAMOND", Chinese="攻击坦克 圣沙蒙", ShortName="STCHAMOND", ImageName="FRAStChamond-3123e0cd.png" },
+        new WeaponName(){ Guid="12F1002B-97FA-490B-822F-E621C6827BFB", Kind="攻击坦克1", English="U_FRA_StChamond_Package_Assault", Chinese=" 战地攻击坦克", ShortName="STCHAMOND ZD", ImageName="FRAStChamond-3123e0cd.png" },
+        new WeaponName(){ Guid="12F1002B-97FA-490B-822F-E621C6827BFB", Kind="攻击坦克2", English="U_FRA_StChamond_Package_Gas", Chinese="毒气 攻击坦克", ShortName="STCHAMOND DQ", ImageName="FRAStChamond-3123e0cd.png" },
+        new WeaponName(){ Guid="12F1002B-97FA-490B-822F-E621C6827BFB", Kind="攻击坦克3", English="U_FRA_StChamond_Package_Standoff", Chinese="对峙攻击坦克", ShortName="STCHAMOND DZ", ImageName="FRAStChamond-3123e0cd.png" },
 
-        new WeaponName(){ Guid="??????", Kind="坦克", English="ID_P_VNAME_ASSAULTTRUCK", Chinese="突袭装甲车 朴 帝洛夫·加福德", ShortName="ASSAULTTRUCK", ImageName="PutilovGarford-20a4fd91.png" },
-        new WeaponName(){ Guid="??????", Kind="突袭装甲车1", English="U_RU_PutilovGarford_Package_AssaultGun", Chinese="突袭装甲车", ShortName="ATTruck TX", ImageName="PutilovGarford-20a4fd91.png" },
-        new WeaponName(){ Guid="??????", Kind="突袭装甲车2", English="U_RU_PutilovGarford_Package_AntiVehicle", Chinese="反坦克装甲车", ShortName="ATTruck AT", ImageName="PutilovGarford-20a4fd91.png" },
-        new WeaponName(){ Guid="??????", Kind="突袭装甲车3", English="U_RU_PutilovGarford_Package_Recon", Chinese="侦察装甲车", ShortName="ATTruck ZC", ImageName="PutilovGarford-20a4fd91.png" },
+        new WeaponName(){ Guid="705E9B4E-5E97-FD3C-9979-A4F2D11AE06F", Kind="坦克", English="ID_P_VNAME_ASSAULTTRUCK", Chinese="突袭装甲车 朴 帝洛夫·加福德", ShortName="ASSAULTTRUCK", ImageName="PutilovGarford-20a4fd91.png" },
+        new WeaponName(){ Guid="705E9B4E-5E97-FD3C-9979-A4F2D11AE06F", Kind="突袭装甲车1", English="U_RU_PutilovGarford_Package_AssaultGun", Chinese="突袭装甲车", ShortName="ATTruck TX", ImageName="PutilovGarford-20a4fd91.png" },
+        new WeaponName(){ Guid="705E9B4E-5E97-FD3C-9979-A4F2D11AE06F", Kind="突袭装甲车2", English="U_RU_PutilovGarford_Package_AntiVehicle", Chinese="反坦克装甲车", ShortName="ATTruck AT", ImageName="PutilovGarford-20a4fd91.png" },
+        new WeaponName(){ Guid="705E9B4E-5E97-FD3C-9979-A4F2D11AE06F", Kind="突袭装甲车3", English="U_RU_PutilovGarford_Package_Recon", Chinese="侦察装甲车", ShortName="ATTruck ZC", ImageName="PutilovGarford-20a4fd91.png" },
 
         ////////////////////////////////
 
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_HALBERSTADT", Chinese="攻击机 哈尔伯施塔特 CL.II 攻击机", ShortName="HALBERSTADT", ImageName="GERHalberstadtCLII-c1cb8257.png" },
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_BRISTOL", Chinese="攻击机 布里斯托 F2.B 攻击机", ShortName="BRISTOL", ImageName="GBRBristolF2B-141b8daa.png" },
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_SALMSON", Chinese="攻击机 A.E.F 2-A2  攻击机", ShortName="SALMSON", ImageName="FRA_Salmson_2-05f47b5c.png" },
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_RUMPLER", Chinese="攻击机 Rumpler C.I 攻击机", ShortName="RUMPLER", ImageName="AHU_Rumpler_CI-eb45a6be.png" },
+        new WeaponName(){ Guid="EB79DB6E-8A05-9618-3368-34DCBE3C3C17", Kind="飞机", English="ID_P_VNAME_HALBERSTADT", Chinese="攻击机 哈尔伯施塔特 CL.II 攻击机", ShortName="HALBERSTADT", ImageName="GERHalberstadtCLII-c1cb8257.png" },
+        new WeaponName(){ Guid="33A894B8-BCE1-8689-3064-7308BBC781CC", Kind="飞机", English="ID_P_VNAME_BRISTOL", Chinese="攻击机 布里斯托 F2.B 攻击机", ShortName="BRISTOL", ImageName="GBRBristolF2B-141b8daa.png" },
+        new WeaponName(){ Guid="189D43F5-E653-416B-B6D6-D0137C28375D", Kind="飞机", English="ID_P_VNAME_SALMSON", Chinese="攻击机 A.E.F 2-A2  攻击机", ShortName="SALMSON", ImageName="FRA_Salmson_2-05f47b5c.png" },
+        new WeaponName(){ Guid="C3272C97-B92E-4E2A-B842-06EF06DC2CB0", Kind="飞机", English="ID_P_VNAME_RUMPLER", Chinese="攻击机 Rumpler C.I 攻击机", ShortName="RUMPLER", ImageName="AHU_Rumpler_CI-eb45a6be.png" },
 
-        new WeaponName(){ Guid="??????", Kind="攻击机1", English="U_2Seater_Package_GroundSupport", Chinese="地 面支援攻击机", ShortName="2Seater DMZY", ImageName="AHU_Rumpler_CI-eb45a6be.png" },
+        new WeaponName(){ Guid="??????", Kind="攻击机1", English="U_2Seater_Package_GroundSupport", Chinese="地面支援攻击机", ShortName="2Seater DMZY", ImageName="AHU_Rumpler_CI-eb45a6be.png" },
         new WeaponName(){ Guid="??????", Kind="攻击机2", English="U_2Seater_Package_TankHunter", Chinese="坦克猎手攻击机", ShortName="2Seater TKLS", ImageName="AHU_Rumpler_CI-eb45a6be.png" },
-        new WeaponName(){ Guid="??????", Kind="攻击机3", English="U_2Seater_Package_AirshipBuster", Chinese="飞 船毁灭者攻击机", ShortName="2Seater FCHMZ", ImageName="AHU_Rumpler_CI-eb45a6be.png" },
+        new WeaponName(){ Guid="??????", Kind="攻击机3", English="U_2Seater_Package_AirshipBuster", Chinese="飞船毁灭者攻击机", ShortName="2Seater FCHMZ", ImageName="AHU_Rumpler_CI-eb45a6be.png" },
 
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_GOTHA", Chinese="轰炸机 戈塔 G 轰炸机", ShortName="GOTHA", ImageName="GERGothaGIV-54bfb0bf.png" },
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_CAPRONI", Chinese="轰炸机 卡普罗尼 CA.5 轰炸机", ShortName="CAPRONI", ImageName="ITACaproniCa5-31fc77c8.png" },
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_DH10", Chinese="轰炸机 Airco DH.10 轰 炸机", ShortName="DH10", ImageName="GBR_Airco_DH10-05e772e8.png" },
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_HBG1", Chinese="轰炸机 汉莎·布兰登堡 G.I 轰炸机", ShortName="HBG1", ImageName="AHU_Hansa_Brandenburg_GI-042fc3dc.png" },
+        new WeaponName(){ Guid="2B0D6EA6-8978-6400-7E85-C8ED33E3B6B3", Kind="飞机", English="ID_P_VNAME_GOTHA", Chinese="轰炸机 戈塔 G 轰炸机", ShortName="GOTHA", ImageName="GERGothaGIV-54bfb0bf.png" },
+        new WeaponName(){ Guid="91ECED06-9066-470D-BFE0-A1122118A5B3", Kind="飞机", English="ID_P_VNAME_CAPRONI", Chinese="轰炸机 卡普罗尼 CA.5 轰炸机", ShortName="CAPRONI", ImageName="ITACaproniCa5-31fc77c8.png" },
+        new WeaponName(){ Guid="DF87BA6E-961D-4F14-86B4-AE5F1326BA14", Kind="飞机", English="ID_P_VNAME_DH10", Chinese="轰炸机 Airco DH.10 轰 炸机", ShortName="DH10", ImageName="GBR_Airco_DH10-05e772e8.png" },
+        new WeaponName(){ Guid="887AA8B4-878C-4943-B688-BAE3E9A5A4E7", Kind="飞机", English="ID_P_VNAME_HBG1", Chinese="轰炸机 汉莎·布兰登堡 G.I 轰炸机", ShortName="HBG1", ImageName="AHU_Hansa_Brandenburg_GI-042fc3dc.png" },
 
         new WeaponName(){ Guid="??????", Kind="轰炸机1", English="U_Bomber_Package_Barrage", Chinese="弹幕轰炸机", ShortName="Bomber DM", ImageName="AHU_Hansa_Brandenburg_GI-042fc3dc.png" },
         new WeaponName(){ Guid="??????", Kind="轰炸机2", English="U_Bomber_Package_Firestorm", Chinese="火焰风暴轰炸机", ShortName="Bomber YYFB", ImageName="AHU_Hansa_Brandenburg_GI-042fc3dc.png" },
         new WeaponName(){ Guid="??????", Kind="轰炸机3", English="U_Bomber_Package_Torpedo", Chinese="鱼雷轰炸机", ShortName="Bomber YL", ImageName="AHU_Hansa_Brandenburg_GI-042fc3dc.png" },
 
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_SPAD", Chinese="战斗机 SPAD S XIII 战 斗机", ShortName="SPAD S XIII", ImageName="FRA_SPAD_X_XIII-8f60a194.png" },
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_SOPWITH", Chinese="战斗机 索普维斯骆驼式战斗机", ShortName="SOPWITH", ImageName="GBRSopwithCamel-39d664a3.png" },
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_DR1", Chinese="战斗机 DR.1 战斗机", ShortName="DR1", ImageName="GERFokkerDR1-14f95745.png" },
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_ALBATROS", Chinese="战斗机 信天翁 D-III 战斗机", ShortName="ALBATROS", ImageName="GER_Albatros_DIII-5ca9e1d3.png" },
+        new WeaponName(){ Guid="CB7D595C-0376-4C72-A8B8-1455965EA81E", Kind="飞机", English="ID_P_VNAME_SPAD", Chinese="战斗机 SPAD S XIII 战 斗机", ShortName="SPAD S XIII", ImageName="FRA_SPAD_X_XIII-8f60a194.png" },
+        new WeaponName(){ Guid="ADF5B89F-5854-43C4-BAD4-46C9D1C020F5", Kind="飞机", English="ID_P_VNAME_SOPWITH", Chinese="战斗机 索普维斯骆驼式战斗机", ShortName="SOPWITH", ImageName="GBRSopwithCamel-39d664a3.png" },
+        new WeaponName(){ Guid="AD78AD89-1824-B113-75EC-CFD3180A367D", Kind="飞机", English="ID_P_VNAME_DR1", Chinese="战斗机 DR.1 战斗机", ShortName="DR1", ImageName="GERFokkerDR1-14f95745.png" },
+        new WeaponName(){ Guid="6D6C110E-EBC9-42CC-BB7A-ACA156638D3C", Kind="飞机", English="ID_P_VNAME_ALBATROS", Chinese="战斗机 信天翁 D-III 战斗机", ShortName="ALBATROS", ImageName="GER_Albatros_DIII-5ca9e1d3.png" },
 
         new WeaponName(){ Guid="??????", Kind="战斗机1", English="U_Scout_Package_Dogfighter", Chinese="空战机", ShortName="Scout KZJ", ImageName="GER_Albatros_DIII-5ca9e1d3.png" },
         new WeaponName(){ Guid="??????", Kind="战斗机2", English="U_Scout_Package_BomberKiller", Chinese="轰炸机杀手", ShortName="Scout HZJSS", ImageName="GER_Albatros_DIII-5ca9e1d3.png" },
-        new WeaponName(){ Guid="??????", Kind="战斗机3", English="U_Scout_Package_TrenchFighter", Chinese="战壕 战斗机", ShortName="Scout ZHZDJ", ImageName="GER_Albatros_DIII-5ca9e1d3.png" },
+        new WeaponName(){ Guid="??????", Kind="战斗机3", English="U_Scout_Package_TrenchFighter", Chinese="战壕战斗机", ShortName="Scout ZHZDJ", ImageName="GER_Albatros_DIII-5ca9e1d3.png" },
 
-        new WeaponName(){ Guid="??????", Kind="飞机", English="ID_P_VNAME_ILYAMUROMETS", Chinese="重型轰炸机 伊 利亚·穆罗梅茨", ShortName="ILYAMUROMETS", ImageName="IlyaMurometsHeavyBomber-74779164.png" },
+        new WeaponName(){ Guid="E305E0C1-FED8-00FD-747A-C9282C51F524", Kind="飞机", English="ID_P_VNAME_ILYAMUROMETS", Chinese="重型轰炸机 伊 利亚·穆罗梅茨", ShortName="ILYAMUROMETS", ImageName="IlyaMurometsHeavyBomber-74779164.png" },
 
         new WeaponName(){ Guid="??????", Kind="重型轰炸机1", English="U_HeavyBomber_Package_Strategic", Chinese="重型战略轰炸机", ShortName="HeavyBomber ZL", ImageName="IlyaMurometsHeavyBomber-74779164.png" },
         new WeaponName(){ Guid="??????", Kind="重型轰炸机2", English="U_HeavyBomber_Package_Demolition", Chinese="重型爆破轰炸机", ShortName="HeavyBomber BP", ImageName="IlyaMurometsHeavyBomber-74779164.png" },
         new WeaponName(){ Guid="??????", Kind="重型轰炸机3", English="U_HeavyBomber_Package_Support", Chinese=" 重型支援轰炸机", ShortName="HeavyBomber ZY", ImageName="IlyaMurometsHeavyBomber-74779164.png" },
 
-        new WeaponName(){ Guid="??????", Kind="飞船", English="ID_P_VNAME_ASTRATORRES", Chinese="飞船 C 级飞船", ShortName="ASTRATORRES", ImageName="AstraTorresAirship-e2148807.png" },
+        new WeaponName(){ Guid="4289E1A4-5EBE-7FA3-52D8-AFDB8ED374BA", Kind="飞船", English="ID_P_VNAME_ASTRATORRES", Chinese="飞船 C 级飞船", ShortName="ASTRATORRES", ImageName="AstraTorresAirship-e2148807.png" },
 
         new WeaponName(){ Guid="??????", Kind="飞船1", English="U_CoastalAirship_Package_Observation", Chinese="观察者", ShortName="Airship GCZ", ImageName="AstraTorresAirship-e2148807.png" },
-        new WeaponName(){ Guid="??????", Kind="飞船2", English="U_CoastalAirship_Package_Raider", Chinese="掠夺 者", ShortName="Airship NDZ", ImageName="AstraTorresAirship-e2148807.png" },
+        new WeaponName(){ Guid="??????", Kind="飞船2", English="U_CoastalAirship_Package_Raider", Chinese="掠夺者", ShortName="Airship NDZ", ImageName="AstraTorresAirship-e2148807.png" },
         
         ////////////////////////////////
         
-        new WeaponName(){ Guid="??????", Kind="驱逐舰", English="ID_P_VNAME_HMS_LANCE", Chinese="驱逐舰 L 级驱逐舰", ShortName="HMS LANCE", ImageName="HMSLancerDestroyer-65317e44.png" },
+        new WeaponName(){ Guid="67B44E81-D1DA-B485-D185-D6520CF59E4B", Kind="驱逐舰", English="ID_P_VNAME_HMS_LANCE", Chinese="驱逐舰 L 级驱逐舰", ShortName="HMS LANCE", ImageName="HMSLancerDestroyer-65317e44.png" },
 
-        new WeaponName(){ Guid="??????", Kind="驱逐舰1", English="U_HMS_Lance_Package_Destroyer", Chinese="鱼雷 艇驱逐舰", ShortName="HMS LANCE YL", ImageName="HMSLancerDestroyer-65317e44.png" },
-        new WeaponName(){ Guid="??????", Kind="驱逐舰2", English="U_HMS_Lance_Package_Minelayer", Chinese="水雷 布设艇", ShortName="HMS LANCE SL", ImageName="HMSLancerDestroyer-65317e44.png" },
+        new WeaponName(){ Guid="??????", Kind="驱逐舰1", English="U_HMS_Lance_Package_Destroyer", Chinese="鱼雷艇驱逐舰", ShortName="HMS LANCE YL", ImageName="HMSLancerDestroyer-65317e44.png" },
+        new WeaponName(){ Guid="??????", Kind="驱逐舰2", English="U_HMS_Lance_Package_Minelayer", Chinese="水雷布设艇", ShortName="HMS LANCE SL", ImageName="HMSLancerDestroyer-65317e44.png" },
         
         ////////////////////////////////
         
-        new WeaponName(){ Guid="??????", Kind="骑兵", English="ID_P_VNAME_HORSE", Chinese="骑兵 战马", ShortName="HORSE", ImageName="Horse-c07830d0.png" },
+        new WeaponName(){ Guid="7CA00F5A-E5DE-3FD9-ECAD-7D4FC5C1AC80", Kind="骑兵", English="ID_P_VNAME_HORSE", Chinese="骑兵 战马", ShortName="HORSE", ImageName="Horse-c07830d0.png" },
         
         ////////////////////////////////
 
-        new WeaponName(){ Guid="??????", Kind="驾驶员下车", English="U_WinchesterM1895_Horse", Chinese="Russian 1895（骑兵）", ShortName="M1895 Horse", ImageName="Winchester1895-69d56c0b.png" },
+        new WeaponName(){ Guid="E76568C5-B222-4C49-B4E0-D517425596C6", Kind="驾驶员下车", English="U_WinchesterM1895_Horse", Chinese="Russian 1895（骑兵）", ShortName="M1895 Horse", ImageName="Winchester1895-69d56c0b.png" },
         new WeaponName(){ Guid="52B19C38-72C0-4E0F-B051-EF11103F6220", Kind="驾驶员下车", English="U_AmmoPouch_Cav", Chinese="弹药包", ShortName="Ammo Pouch", ImageName="GadgetSmallAmmoPack-5837fde5.png" },
         new WeaponName(){ Guid="9BCDB1F5-5E1C-4C3E-824C-8C05CC0CE21A", Kind="驾驶员下车", English="U_Bandages_Cav", Chinese="绷带包", ShortName="Bandages", ImageName="GadgetBandages-1d1fc900.png" },
         new WeaponName(){ Guid="D4A99456-2ABA-4376-9870-200FD24C5D45", Kind="驾驶员下车", English="U_Grenade_AT_Cavalry", Chinese="轻型反坦克手榴弹", ShortName="Grenade AT", ImageName="GadgetTrooperATGrenade-a6575030.png" },
@@ -364,43 +364,43 @@ public static class WeaponDB2
         
         ////////////////////////////////
         
-        new WeaponName(){ Guid="??????", Kind="特殊载具", English="ID_P_INAME_U_MORTAR", Chinese="特殊载具 空爆 迫击炮", ShortName="MORTAR", ImageName="MortarAirburst-77c9647f.png" },
-        new WeaponName(){ Guid="??????", Kind="特殊载具", English="ID_P_INAME_MORTAR_HE", Chinese="特殊载具 高爆迫击炮", ShortName="MORTAR HE", ImageName="GadgetMortar-84e30045.png" },
+        new WeaponName(){ Guid="C71A02C3-608E-42AA-9179-A4324A4D4539", Kind="特殊载具", English="ID_P_INAME_U_MORTAR", Chinese="特殊载具 空爆迫击炮", ShortName="MORTAR", ImageName="MortarAirburst-77c9647f.png" },
+        new WeaponName(){ Guid="8BD0FABD-DCCE-4031-8156-B77866FCE1A0", Kind="特殊载具", English="ID_P_INAME_MORTAR_HE", Chinese="特殊载具 高爆迫击炮", ShortName="MORTAR HE", ImageName="GadgetMortar-84e30045.png" },
             
         /////////////////////////////////////////////////////////////////////////////
 
         // 运输载具        
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_MODEL30", Chinese="运输载具 M30 侦察车", ShortName="MODEL30", ImageName="USADodgeScoutCar-843c9c16.png" },
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_MERCEDES_37", Chinese="运输载具 37/95 侦察车", ShortName="MERCEDES 37", ImageName="AHU_Mercedes_37_95-69b407d2.png" },
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_BENZ_MG", Chinese="运输载具 KFT 侦察车", ShortName="BENZ MG", ImageName="GER_Benz_MGCarrier-474daf7b.png" },
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_MOTORCYCLE", Chinese="运输载具 MC 18J 附边车摩托车", ShortName="MOTORCYCLE", ImageName="USAHarleyDavidsson18J-27b0d7ef.png" },
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_NSU", Chinese="运输载具 MC 3.5HP  附边车摩托车", ShortName="NSU", ImageName="GER_NSU_1914-e1a63515.png" },
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_ROLLS", Chinese="运输载具 RNAS 装 甲车", ShortName="ROLLS", ImageName="GBRRollsRoyceArmoredCar-4c6ccdf0.png" },
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_ROMFELL", Chinese="运输载具 Romfell 装甲车", ShortName="ROMFELL", ImageName="GER_Romfell-79d5be52.png" },
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_EHRHARDT", Chinese="运输载具 EV4  装甲车", ShortName="EHRHARDT", ImageName="GER_Ehrhardt_EV4-1e718572.png" },
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_TERNI", Chinese="运输载具 F.T. 装 甲车", ShortName="TERNI", ImageName="ITA_Fiat_Terni-3d8076d6.png" },
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_MAS15", Chinese="运输载具 M.A.S 鱼雷快艇", ShortName="MAS15", ImageName="ITAMAS-51e28b0e.png" },
-        new WeaponName(){ Guid="??????", Kind="运输载具", English="ID_P_VNAME_YLIGHTER", Chinese="运输载具 Y-Lighter 登陆艇", ShortName="MAS15", ImageName="GBR_Y_Lighter-468f2eaa.png" },
+        new WeaponName(){ Guid="1F37F90F-F85E-A4EA-0CA0-977FBC04DB6C", Kind="运输载具", English="ID_P_VNAME_MODEL30", Chinese="运输载具 M30 侦察车", ShortName="MODEL30", ImageName="USADodgeScoutCar-843c9c16.png" },
+        new WeaponName(){ Guid="A9D9062B-FFEC-429E-9DD5-E24EB9D9C51B", Kind="运输载具", English="ID_P_VNAME_MERCEDES_37", Chinese="运输载具 37/95 侦察车", ShortName="MERCEDES 37", ImageName="AHU_Mercedes_37_95-69b407d2.png" },
+        new WeaponName(){ Guid="F73DA041-0864-4782-BEDD-D9C08D86DA7D", Kind="运输载具", English="ID_P_VNAME_BENZ_MG", Chinese="运输载具 KFT 侦察车", ShortName="BENZ MG", ImageName="GER_Benz_MGCarrier-474daf7b.png" },
+        new WeaponName(){ Guid="56C8EC6A-6667-547E-8393-B047A1BCB730", Kind="运输载具", English="ID_P_VNAME_MOTORCYCLE", Chinese="运输载具 MC 18J 附边车摩托车", ShortName="MOTORCYCLE", ImageName="USAHarleyDavidsson18J-27b0d7ef.png" },
+        new WeaponName(){ Guid="41A7B28A-FE39-4FC8-9AA3-9AD7BC4F6A3C", Kind="运输载具", English="ID_P_VNAME_NSU", Chinese="运输载具 MC 3.5HP  附边车摩托车", ShortName="NSU", ImageName="GER_NSU_1914-e1a63515.png" },
+        new WeaponName(){ Guid="7FEDA17B-6A27-1946-A02E-AA72A72FBCD7", Kind="运输载具", English="ID_P_VNAME_ROLLS", Chinese="运输载具 RNAS 装甲车", ShortName="ROLLS", ImageName="GBRRollsRoyceArmoredCar-4c6ccdf0.png" },
+        new WeaponName(){ Guid="045085BF-D9E2-476F-9363-C11DD9BDDC61", Kind="运输载具", English="ID_P_VNAME_ROMFELL", Chinese="运输载具 Romfell 装甲车", ShortName="ROMFELL", ImageName="GER_Romfell-79d5be52.png" },
+        new WeaponName(){ Guid="B30F9312-6887-46C5-873F-2670906856AE", Kind="运输载具", English="ID_P_VNAME_EHRHARDT", Chinese="运输载具 EV4 装甲车", ShortName="EHRHARDT", ImageName="GER_Ehrhardt_EV4-1e718572.png" },
+        new WeaponName(){ Guid="87E38FC3-022D-4A88-80B5-6E3BD58C320F", Kind="运输载具", English="ID_P_VNAME_TERNI", Chinese="运输载具 F.T. 装甲车", ShortName="TERNI", ImageName="ITA_Fiat_Terni-3d8076d6.png" },
+        new WeaponName(){ Guid="FA740EE6-6C1E-2F97-D48B-0EF8D1C7D11B", Kind="运输载具", English="ID_P_VNAME_MAS15", Chinese="运输载具 M.A.S 鱼雷快艇", ShortName="MAS15", ImageName="ITAMAS-51e28b0e.png" },
+        new WeaponName(){ Guid="EA1C556F-DC5A-4764-BE8F-E661AF2B2C3B", Kind="运输载具", English="ID_P_VNAME_YLIGHTER", Chinese="运输载具 Y-Lighter 登陆艇", ShortName="MAS15", ImageName="GBR_Y_Lighter-468f2eaa.png" },
         
         /////////////////////////////////////////////////////////////////////////////
 
         // 定点武器
-        new WeaponName(){ Guid="??????", Kind="定点武器", English="ID_P_VNAME_FIELDGUN", Chinese="定点武器 FK 96 野战炮", ShortName="FIELDGUN", ImageName="GERFk96nA-760d0461.png" },
-        new WeaponName(){ Guid="??????", Kind="定点武器", English="ID_P_VNAME_TURRET", Chinese="定点武器 堡垒火 炮", ShortName="TURRET", ImageName="FRAFortressTurret-9fb165ad.png" },
-        new WeaponName(){ Guid="??????", Kind="定点武器", English="ID_P_VNAME_AASTATION", Chinese="定点武器 QF 1 防空炮", ShortName="AASTATION", ImageName="GBRQF1-63882f78.png" },
-        new WeaponName(){ Guid="??????", Kind="定点武器", English="ID_P_INAME_MAXIM", Chinese="定点武器 重型机枪", ShortName="MAXIM", ImageName="GBRVickers-ea4826ae.png" },
-        // 定点武器 高爆机砲 GER_BeckerM_Stationary-c741a373.png
-        new WeaponName(){ Guid="??????", Kind="定点武器", English="ID_P_VNAME_BL9", Chinese="定点武器 BL 9.2 攻 城炮", ShortName="BL9", ImageName="GBRBL9-0a10176d.png" },
-        new WeaponName(){ Guid="??????", Kind="定点武器", English="ID_P_VNAME_COASTALBATTERY", Chinese="定点武器 350/52 o 岸防炮", ShortName="COASTALBATTERY", ImageName="DagoCoastalArtilleryGun-b4b737b1.png" },
-        new WeaponName(){ Guid="??????", Kind="定点武器", English="ID_P_VNAME_SK45GUN", Chinese="定点武器 SK45  岸防炮", ShortName="SK45GUN", ImageName="" },
+        new WeaponName(){ Guid="E7825334-17D9-3BA1-D59C-8497155B8DBB", Kind="定点武器", English="ID_P_VNAME_FIELDGUN", Chinese="定点武器 FK 96 野战炮", ShortName="FIELDGUN", ImageName="GERFk96nA-760d0461.png" },
+        new WeaponName(){ Guid="12689F49-C72C-6BFE-07E9-A26258C0FCA0", Kind="定点武器", English="ID_P_VNAME_TURRET", Chinese="定点武器 堡垒火炮", ShortName="TURRET", ImageName="FRAFortressTurret-9fb165ad.png" },
+        new WeaponName(){ Guid="2E5402EF-6303-B756-AEE9-E7926AB5FEF8", Kind="定点武器", English="ID_P_VNAME_AASTATION", Chinese="定点武器 QF 1 防空炮", ShortName="AASTATION", ImageName="GBRQF1-63882f78.png" },
+        new WeaponName(){ Guid="690ABB5C-7B7E-4609-B37A-2DB46C2F6287", Kind="定点武器", English="ID_P_INAME_MAXIM", Chinese="定点武器 重型机枪", ShortName="MAXIM", ImageName="GBRVickers-ea4826ae.png" },
+        // A3C6FC16-2DF6-4719-9A5F-E079CDB928F3 定点武器 高爆机炮 GER_BeckerM_Stationary-c741a373.png
+        new WeaponName(){ Guid="EFB07B81-BBA3-413E-AF40-221CC104C21D", Kind="定点武器", English="ID_P_VNAME_BL9", Chinese="定点武器 BL 9.2 攻城炮", ShortName="BL9", ImageName="GBRBL9-0a10176d.png" },
+        new WeaponName(){ Guid="B3BFBF74-6475-598C-C097-06DA0375F14A", Kind="定点武器", English="ID_P_VNAME_COASTALBATTERY", Chinese="定点武器 350/52 o 岸防炮", ShortName="COASTALBATTERY", ImageName="DagoCoastalArtilleryGun-b4b737b1.png" },
+        new WeaponName(){ Guid="??????", Kind="定点武器", English="ID_P_VNAME_SK45GUN", Chinese="定点武器 SK45 岸防炮", ShortName="SK45GUN", ImageName="" },
         
         /////////////////////////////////////////////////////////////////////////////
         
         // 战争巨兽
-        new WeaponName(){ Guid="??????", Kind="机械巨兽", English="ID_P_VNAME_ZEPPELIN", Chinese="机械巨兽 飞船 l30", ShortName="ZEPPELIN", ImageName="GERZeppelinL30-62618731.png" },
-        new WeaponName(){ Guid="??????", Kind="机械巨兽", English="ID_P_VNAME_ARMOREDTRAIN", Chinese="机械巨兽  装甲列车", ShortName="ARMOREDTRAIN", ImageName="RUSArmoredTrain-564a4e48.png" },
-        new WeaponName(){ Guid="??????", Kind="机械巨兽", English="ID_P_VNAME_IRONDUKE", Chinese="机械巨兽 无畏 舰", ShortName="IRONDUKE", ImageName="GBRHMSIronDuke-3b82016f.png" },
-        new WeaponName(){ Guid="??????", Kind="机械巨兽", English="ID_P_VNAME_CHAR", Chinese="机械巨兽 Char 2C", ShortName="CHAR", ImageName="FRAChar2C-b8f3c0e2.png" },
+        new WeaponName(){ Guid="1A7DEECF-4F0E-E343-9644-D6D91DCAEC12", Kind="机械巨兽", English="ID_P_VNAME_ZEPPELIN", Chinese="机械巨兽 飞船 l30", ShortName="ZEPPELIN", ImageName="GERZeppelinL30-62618731.png" },
+        new WeaponName(){ Guid="A3ED808E-1525-412B-8E77-9EB6902A55D2", Kind="机械巨兽", English="ID_P_VNAME_ARMOREDTRAIN", Chinese="机械巨兽 装甲列车", ShortName="ARMOREDTRAIN", ImageName="RUSArmoredTrain-564a4e48.png" },
+        new WeaponName(){ Guid="003FCC0A-2758-8508-4774-78E66FA1B5E3", Kind="机械巨兽", English="ID_P_VNAME_IRONDUKE", Chinese="机械巨兽 无畏舰", ShortName="IRONDUKE", ImageName="GBRHMSIronDuke-3b82016f.png" },
+        new WeaponName(){ Guid="BBFC5A91-B2FC-48D2-8913-658C08072E6E", Kind="机械巨兽", English="ID_P_VNAME_CHAR", Chinese="机械巨兽 Char 2C", ShortName="CHAR", ImageName="FRAChar2C-b8f3c0e2.png" },
         
         /////////////////////////////////////////////////////////////////////////////
         

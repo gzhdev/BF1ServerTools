@@ -66,13 +66,13 @@ public static class GameService
             ServerData.MapName = Server.GetMapName();
 
             Team1Data.TeamImg = ClientUtil.GetTeam1Image(ServerData.MapName);
-            Team1Data.TeamName = ClientUtil.GetTeamChsName(ServerData.MapName, 1);
+            Team1Data.TeamName = ClientUtil.GetTeam1ChsName(ServerData.MapName);
 
             Team2Data.TeamImg = ClientUtil.GetTeam2Image(ServerData.MapName);
-            Team2Data.TeamName = ClientUtil.GetTeamChsName(ServerData.MapName, 2);
+            Team2Data.TeamName = ClientUtil.GetTeam2ChsName(ServerData.MapName);
 
             // 服务器地图预览图
-            ServerData.MapImg = ClientUtil.GetMapPreImage(ServerData.MapName);
+            ServerData.MapImg = ClientUtil.GetMapImage(ServerData.MapName);
 
             // 服务器地图中文名称
             ServerData.MapName = ClientUtil.GetMapChsName(ServerData.MapName);
@@ -145,6 +145,9 @@ public static class GameService
                 item.KitImg = ClientUtil.GetPlayerKitImage(item.Kit);
                 item.KitName = ClientUtil.GetPlayerKitName(item.Kit);
 
+                // 主武器生涯星数
+                item.LifeStar = GameUtil.GetLifeStar(item.PersonaId, item.WeaponS0);
+
                 // 显示中文武器名称
                 item.WeaponS0 = ClientUtil.GetWeaponChsName(item.WeaponS0);
                 item.WeaponS1 = ClientUtil.GetWeaponChsName(item.WeaponS1);
@@ -154,9 +157,6 @@ public static class GameService
                 item.WeaponS5 = ClientUtil.GetWeaponChsName(item.WeaponS5);
                 item.WeaponS6 = ClientUtil.GetWeaponChsName(item.WeaponS6);
                 item.WeaponS7 = ClientUtil.GetWeaponChsName(item.WeaponS7);
-
-                // 主武器生涯星数
-                item.LifeStar = GameUtil.GetLifeStar(item.PersonaId, item.WeaponS0);
 
                 switch (item.TeamId)
                 {

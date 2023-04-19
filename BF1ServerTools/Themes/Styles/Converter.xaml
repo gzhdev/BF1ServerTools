@@ -8,5 +8,6 @@
     <cvt:LoadingSpinnerConverter x:Key="LoadingSpinnerConverter" />
     <cvt:IsNullOrEmptyConverter x:Key="IsNullOrEmptyConverter" />
     <cvt:StringToIsEnabledConverter x:Key="StringToIsEnabledConverter" />
+    <cvt:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
 
 </ResourceDictionary>

@@ -154,8 +154,9 @@ public static class CacheService
 
                 var weaponStat = new WeaponStat()
                 {
+                    guid = wea.guid,
                     name = ChsHelper.ToSimplified(wea.name),
-                    imageUrl = ClientUtil.GetTempImagePath(wea.imageUrl, "weapon2"),
+                    imageUrl = ClientUtil.GetWebWeaponImage(wea.imageUrl),
 
                     hits = wea.stats.values.hits,
                     shots = wea.stats.values.shots,
@@ -200,8 +201,9 @@ public static class CacheService
 
                 var vehicleStat = new VehicleStat()
                 {
+                    guid = veh.guid,
                     name = ChsHelper.ToSimplified(veh.name),
-                    imageUrl = ClientUtil.GetTempImagePath(veh.imageUrl, "weapon2"),
+                    imageUrl = ClientUtil.GetWebWeaponImage(veh.imageUrl),
 
                     seconds = veh.stats.values.seconds,
                     kills = veh.stats.values.kills,

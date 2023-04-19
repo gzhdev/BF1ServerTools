@@ -113,21 +113,18 @@
                                             FontSize="14"
                                             FontWeight="Bold"
                                             Text="{Binding name}" />
-                                        <TextBlock
-                                            Name="star"
-                                            Margin="10,0,0,0"
+                                        <StackPanel
+                                            Name="star_isShow"
                                             VerticalAlignment="Center"
-                                            FontSize="14"
-                                            Foreground="#ffa200"
-                                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
-                                            Text="&#xe670;" />
-                                        <TextBlock
-                                            Name="star_count"
-                                            Margin="5,0,0,0"
-                                            VerticalAlignment="Center"
-                                            FontSize="12"
-                                            Foreground="#ffa200"
-                                            Text="{Binding star}" />
+                                            Orientation="Horizontal"
+                                            TextElement.Foreground="#FFA200">
+                                            <TextBlock
+                                                Margin="10,0,5,0"
+                                                FontSize="14"
+                                                Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                                                Text="&#xe670;" />
+                                            <TextBlock Name="star_count" Text="{Binding star}" />
+                                        </StackPanel>
                                     </StackPanel>
                                     <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                         <StackPanel Margin="0,0,10,0">
@@ -172,8 +169,8 @@
                             </Grid>
                         </Border>
                         <DataTemplate.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=star_count, Path=Text}" Value="">
-                                <Setter TargetName="star" Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding ElementName=star_count, Path=Text}" Value="0">
+                                <Setter TargetName="star_isShow" Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </DataTemplate.Triggers>
                     </DataTemplate>
@@ -215,21 +212,18 @@
                                             FontSize="14"
                                             FontWeight="Bold"
                                             Text="{Binding name}" />
-                                        <TextBlock
-                                            Name="star"
-                                            Margin="10,0,0,0"
+                                        <StackPanel
+                                            Name="star_isShow"
                                             VerticalAlignment="Center"
-                                            FontSize="14"
-                                            Foreground="#ffa200"
-                                            Style="{StaticResource TextBlockStyle_IconFontVerCen}"
-                                            Text="&#xe670;" />
-                                        <TextBlock
-                                            Name="star_count"
-                                            Margin="5,0,0,0"
-                                            VerticalAlignment="Center"
-                                            FontSize="12"
-                                            Foreground="#ffa200"
-                                            Text="{Binding star}" />
+                                            Orientation="Horizontal"
+                                            TextElement.Foreground="#FFA200">
+                                            <TextBlock
+                                                Margin="10,0,5,0"
+                                                FontSize="14"
+                                                Style="{StaticResource TextBlockStyle_IconFontVerCen}"
+                                                Text="&#xe670;" />
+                                            <TextBlock Name="star_count" Text="{Binding star}" />
+                                        </StackPanel>
                                     </StackPanel>
                                     <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                         <StackPanel Margin="0,0,10,0">
@@ -253,8 +247,8 @@
                             </Grid>
                         </Border>
                         <DataTemplate.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=star_count, Path=Text}" Value="">
-                                <Setter TargetName="star" Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding ElementName=star_count, Path=Text}" Value="0">
+                                <Setter TargetName="star_isShow" Property="Visibility" Value="Collapsed" />
                             </DataTrigger>
                         </DataTemplate.Triggers>
                     </DataTemplate>

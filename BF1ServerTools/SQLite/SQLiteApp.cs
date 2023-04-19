@@ -39,19 +39,19 @@ public static class SQLiteApp
     /// 获取生涯缓存信息
     /// </summary>
     /// <returns></returns>
-    public static List<LifeCacheDb> ReadLifeCacheDb()
+    public static List<LifeCacheSheet> ReadLifeCacheDb()
     {
-        return _freeSql.Select<LifeCacheDb>().ToList();
+        return _freeSql.Select<LifeCacheSheet>().ToList();
     }
 
     /// <summary>
     /// 保持生涯缓存信息
     /// </summary>
     /// <param name="lifeCacheDbs"></param>
-    public static void SaveLifeCacheDb(List<LifeCacheDb> lifeCacheDbs)
+    public static void SaveLifeCacheDb(List<LifeCacheSheet> lifeCacheDbs)
     {
         // 清空表
-        _freeSql.Delete<LifeCacheDb>().Where("1=1").ExecuteAffrows();
+        _freeSql.Delete<LifeCacheSheet>().Where("1=1").ExecuteAffrows();
         // 批量插入数据
         _freeSql.Insert(lifeCacheDbs).ExecuteAffrows();
     }

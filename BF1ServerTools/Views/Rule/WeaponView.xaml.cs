@@ -48,7 +48,7 @@ public partial class WeaponView : UserControl
         RuleView.ApplyCurrentRuleEvent += RuleView_ApplyCurrentRuleEvent;
 
         // 添加武器数据列表
-        foreach (var item in WeaponData.AllWeaponInfo)
+        foreach (var item in WeaponDB.AllWeaponInfo)
         {
             DataGrid_RuleWeaponModels.Add(new()
             {

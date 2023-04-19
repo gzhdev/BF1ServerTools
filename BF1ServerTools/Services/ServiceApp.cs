@@ -1,6 +1,6 @@
 ﻿using BF1ServerTools.Data;
-using BF1ServerTools.Helpers;
 using BF1ServerTools.SQLite;
+using BF1ServerTools.Helpers;
 
 namespace BF1ServerTools.Services;
 
@@ -10,11 +10,6 @@ public static class ServiceApp
     /// 是否停止线程循环
     /// </summary>
     public static bool IsDispose { get; private set; } = false;
-
-    /// <summary>
-    /// 生涯数据缓存
-    /// </summary>
-    private static readonly string File_LifeCache_Json = Path.Combine(FileHelper.Dir_Data, "LifeCache.json");
 
     private static Timer AutoRefreshTimerModel1 = null;
     private static Timer AutoRefreshTimerModel2 = null;
@@ -95,9 +90,11 @@ public static class ServiceApp
         AutoRefreshTimerModel2?.Stop();
 
         // 保存生涯数据缓存到数据库
-        var lifeCacheDbs = new List<LifeCacheDb>();
-        foreach (var item in Globals.PlayerLifeCaches)
+        var lifeCacheDbs = new List<LifeCacheSheet>();
+        for (int i = 0; i < Globals.PlayerLifeCaches.Count; i++)
         {
+            var item = Globals.PlayerLifeCaches[i];
+
             var lifeCacheJson = JsonHelper.JsonSerialize(item);
             lifeCacheDbs.Add(new()
             {

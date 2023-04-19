@@ -128,6 +128,7 @@ public class BaseStat
 
 public class WeaponStat
 {
+    public string guid { get; set; }
     public string name { get; set; }
     public string imageUrl { get; set; }
 
@@ -160,6 +161,7 @@ public class WeaponStat
 
 public class VehicleStat
 {
+    public string guid { get; set; }
     public string name { get; set; }
     public string imageUrl { get; set; }
 

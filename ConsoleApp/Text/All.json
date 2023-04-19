@@ -1812,7 +1812,7 @@
   {
     "index": 4,
     "guid": "A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78",
-    "name": "火抱装甲车",
+    "name": "火炮装甲车",
     "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/110/109/GBRPierceArrowAALorry-6e6d8d9f.png"
   },
   {
@@ -1986,19 +1986,19 @@
   {
     "index": 33,
     "guid": "E7825334-17D9-3BA1-D59C-8497155B8DBB",
-    "name": "FK 96 野战抱",
+    "name": "FK 96 野战炮",
     "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/118/13/GERFk96nA-760d0461.png"
   },
   {
     "index": 34,
     "guid": "12689F49-C72C-6BFE-07E9-A26258C0FCA0",
-    "name": "堡垒火抱",
+    "name": "堡垒火炮",
     "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/97/79/FRAFortressTurret-9fb165ad.png"
   },
   {
     "index": 35,
     "guid": "2E5402EF-6303-B756-AEE9-E7926AB5FEF8",
-    "name": "QF 1 防空抱",
+    "name": "QF 1 防空炮",
     "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/99/120/GBRQF1-63882f78.png"
   },
   {
@@ -2010,19 +2010,19 @@
   {
     "index": 37,
     "guid": "A3C6FC16-2DF6-4719-9A5F-E079CDB928F3",
-    "name": "高爆机抱",
+    "name": "高爆机炮",
     "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/57/65/GER_BeckerM_Stationary-c741a373.png"
   },
   {
     "index": 38,
     "guid": "EFB07B81-BBA3-413E-AF40-221CC104C21D",
-    "name": "BL 9.2 攻城抱",
+    "name": "BL 9.2 攻城炮",
     "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/10/16/GBRBL9-0a10176d.png"
   },
   {
     "index": 39,
     "guid": "B3BFBF74-6475-598C-C097-06DA0375F14A",
-    "name": "305/52 O 岸防抱",
+    "name": "305/52 O 岸防炮",
     "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/76/73/DagoCoastalArtilleryGun-b4b737b1.png"
   },
   {

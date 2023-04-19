@@ -268,8 +268,8 @@ public enum OrderBy
     LKD,
     LKPM,
     LTime,
-    LStar,
     KitName,
+    LStar,
     Weapon
 }
 
