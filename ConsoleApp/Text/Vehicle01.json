@@ -1,0 +1,266 @@
+[
+  {
+    "index": 1,
+    "guid": "4AA28E71-6FDA-A50B-80A8-B52D070FF884",
+    "name": "A7V 重型坦克",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/65/64/GERA7V-bfc09237.png"
+  },
+  {
+    "index": 2,
+    "guid": "4723A26F-98AE-55BA-7B3F-3AE7E0E3B0C7",
+    "name": "Mark V 巡航坦克",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/65/59/GBRMarkV-bf3b1d1a.png"
+  },
+  {
+    "index": 3,
+    "guid": "A79071D2-5C4F-0BA8-0ECC-FCB1376E2FBA",
+    "name": "FT-17 轻型坦克",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/82/87/FRARenaultFt-17-aea9e5e7.png"
+  },
+  {
+    "index": 4,
+    "guid": "A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78",
+    "name": "火砲装甲车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/110/109/GBRPierceArrowAALorry-6e6d8d9f.png"
+  },
+  {
+    "index": 5,
+    "guid": "12F1002B-97FA-490B-822F-E621C6827BFB",
+    "name": "圣沙蒙",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/49/35/FRAStChamond-3123e0cd.png"
+  },
+  {
+    "index": 6,
+    "guid": "705E9B4E-5E97-FD3C-9979-A4F2D11AE06F",
+    "name": "朴帝洛夫·加福德",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/32/92/PutilovGarford-20a4fd91.png"
+  },
+  {
+    "index": 7,
+    "guid": "EB79DB6E-8A05-9618-3368-34DCBE3C3C17",
+    "name": "哈尔伯施塔特 CL.II 攻击机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/63/53/GERHalberstadtCLII-c1cb8257.png"
+  },
+  {
+    "index": 8,
+    "guid": "33A894B8-BCE1-8689-3064-7308BBC781CC",
+    "name": "布里斯托 F2.B 攻击机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/20/27/GBRBristolF2B-141b8daa.png"
+  },
+  {
+    "index": 9,
+    "guid": "189D43F5-E653-416B-B6D6-D0137C28375D",
+    "name": "A.E.F 2-A2 攻击机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/5/12/FRA_Salmson_2-05f47b5c.png"
+  },
+  {
+    "index": 10,
+    "guid": "C3272C97-B92E-4E2A-B842-06EF06DC2CB0",
+    "name": "Rumpler C.I 攻击机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/21/69/AHU_Rumpler_CI-eb45a6be.png"
+  },
+  {
+    "index": 11,
+    "guid": "2B0D6EA6-8978-6400-7E85-C8ED33E3B6B3",
+    "name": "戈塔 G 轰炸机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/84/65/GERGothaGIV-54bfb0bf.png"
+  },
+  {
+    "index": 12,
+    "guid": "91ECED06-9066-470D-BFE0-A1122118A5B3",
+    "name": "卡普罗尼 CA.5 轰炸机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/49/4/ITACaproniCa5-31fc77c8.png"
+  },
+  {
+    "index": 13,
+    "guid": "DF87BA6E-961D-4F14-86B4-AE5F1326BA14",
+    "name": "Airco DH.10 轰炸机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/5/25/GBR_Airco_DH10-05e772e8.png"
+  },
+  {
+    "index": 14,
+    "guid": "887AA8B4-878C-4943-B688-BAE3E9A5A4E7",
+    "name": "汉莎·布兰登堡 G.I 轰炸机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/4/47/AHU_Hansa_Brandenburg_GI-042fc3dc.png"
+  },
+  {
+    "index": 15,
+    "guid": "CB7D595C-0376-4C72-A8B8-1455965EA81E",
+    "name": "SPAD S XIII 战斗机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/113/96/FRA_SPAD_X_XIII-8f60a194.png"
+  },
+  {
+    "index": 16,
+    "guid": "ADF5B89F-5854-43C4-BAD4-46C9D1C020F5",
+    "name": "索普威斯骆驼式战斗机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/57/42/GBRSopwithCamel-39d664a3.png"
+  },
+  {
+    "index": 17,
+    "guid": "AD78AD89-1824-B113-75EC-CFD3180A367D",
+    "name": "DR.1 战斗机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/20/7/GERFokkerDR1-14f95745.png"
+  },
+  {
+    "index": 18,
+    "guid": "6D6C110E-EBC9-42CC-BB7A-ACA156638D3C",
+    "name": "信天翁 D-III 战斗机",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/92/87/GER_Albatros_DIII-5ca9e1d3.png"
+  },
+  {
+    "index": 19,
+    "guid": "E305E0C1-FED8-00FD-747A-C9282C51F524",
+    "name": "伊利亚·穆罗梅茨",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/116/119/IlyaMurometsHeavyBomber-74779164.png"
+  },
+  {
+    "index": 20,
+    "guid": "4289E1A4-5EBE-7FA3-52D8-AFDB8ED374BA",
+    "name": "C 级飞船",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/30/20/AstraTorresAirship-e2148807.png"
+  },
+  {
+    "index": 21,
+    "guid": "1F37F90F-F85E-A4EA-0CA0-977FBC04DB6C",
+    "name": "M30 侦察车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/124/60/USADodgeScoutCar-843c9c16.png"
+  },
+  {
+    "index": 22,
+    "guid": "A9D9062B-FFEC-429E-9DD5-E24EB9D9C51B",
+    "name": "37/95 侦察车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/105/76/AHU_Mercedes_37_95-69b407d2.png"
+  },
+  {
+    "index": 23,
+    "guid": "F73DA041-0864-4782-BEDD-D9C08D86DA7D",
+    "name": "KFT 侦察车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/71/77/GER_Benz_MGCarrier-474daf7b.png"
+  },
+  {
+    "index": 24,
+    "guid": "56C8EC6A-6667-547E-8393-B047A1BCB730",
+    "name": "MC 18J 附边车摩托车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/39/80/USAHarleyDavidsson18J-27b0d7ef.png"
+  },
+  {
+    "index": 25,
+    "guid": "41A7B28A-FE39-4FC8-9AA3-9AD7BC4F6A3C",
+    "name": "MC 3.5HP 附边车摩托车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/31/90/GER_NSU_1914-e1a63515.png"
+  },
+  {
+    "index": 26,
+    "guid": "7FEDA17B-6A27-1946-A02E-AA72A72FBCD7",
+    "name": "RNAS 装甲车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/76/108/GBRRollsRoyceArmoredCar-4c6ccdf0.png"
+  },
+  {
+    "index": 27,
+    "guid": "045085BF-D9E2-476F-9363-C11DD9BDDC61",
+    "name": "Romfell 装甲车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/121/43/GER_Romfell-79d5be52.png"
+  },
+  {
+    "index": 28,
+    "guid": "B30F9312-6887-46C5-873F-2670906856AE",
+    "name": "EV4 装甲车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/30/113/GER_Ehrhardt_EV4-1e718572.png"
+  },
+  {
+    "index": 29,
+    "guid": "87E38FC3-022D-4A88-80B5-6E3BD58C320F",
+    "name": "F.T. 装甲车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/61/128/ITA_Fiat_Terni-3d8076d6.png"
+  },
+  {
+    "index": 30,
+    "guid": "FA740EE6-6C1E-2F97-D48B-0EF8D1C7D11B",
+    "name": "M.A.S. 鱼雷快艇",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/81/30/ITAMAS-51e28b0e.png"
+  },
+  {
+    "index": 31,
+    "guid": "EA1C556F-DC5A-4764-BE8F-E661AF2B2C3B",
+    "name": "Y-Lighter 登陆艇",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/70/113/GBR_Y_Lighter-468f2eaa.png"
+  },
+  {
+    "index": 32,
+    "guid": "67B44E81-D1DA-B485-D185-D6520CF59E4B",
+    "name": "L 级驱逐舰",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/101/49/HMSLancerDestroyer-65317e44.png"
+  },
+  {
+    "index": 33,
+    "guid": "E7825334-17D9-3BA1-D59C-8497155B8DBB",
+    "name": "FK 96 野战砲",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/118/13/GERFk96nA-760d0461.png"
+  },
+  {
+    "index": 34,
+    "guid": "12689F49-C72C-6BFE-07E9-A26258C0FCA0",
+    "name": "堡垒火砲",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/97/79/FRAFortressTurret-9fb165ad.png"
+  },
+  {
+    "index": 35,
+    "guid": "2E5402EF-6303-B756-AEE9-E7926AB5FEF8",
+    "name": "QF 1 防空砲",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/99/120/GBRQF1-63882f78.png"
+  },
+  {
+    "index": 36,
+    "guid": "690ABB5C-7B7E-4609-B37A-2DB46C2F6287",
+    "name": "重型机枪",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/22/72/GBRVickers-ea4826ae.png"
+  },
+  {
+    "index": 37,
+    "guid": "A3C6FC16-2DF6-4719-9A5F-E079CDB928F3",
+    "name": "高爆机砲",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/57/65/GER_BeckerM_Stationary-c741a373.png"
+  },
+  {
+    "index": 38,
+    "guid": "EFB07B81-BBA3-413E-AF40-221CC104C21D",
+    "name": "BL 9.2 攻城砲",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/10/16/GBRBL9-0a10176d.png"
+  },
+  {
+    "index": 39,
+    "guid": "B3BFBF74-6475-598C-C097-06DA0375F14A",
+    "name": "305/52 O 岸防砲",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/76/73/DagoCoastalArtilleryGun-b4b737b1.png"
+  },
+  {
+    "index": 40,
+    "guid": "1A7DEECF-4F0E-E343-9644-D6D91DCAEC12",
+    "name": "飞船 L30",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/98/97/GERZeppelinL30-62618731.png"
+  },
+  {
+    "index": 41,
+    "guid": "A3ED808E-1525-412B-8E77-9EB6902A55D2",
+    "name": "装甲列车",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/86/74/RUSArmoredTrain-564a4e48.png"
+  },
+  {
+    "index": 42,
+    "guid": "003FCC0A-2758-8508-4774-78E66FA1B5E3",
+    "name": "无畏舰",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/59/126/GBRHMSIronDuke-3b82016f.png"
+  },
+  {
+    "index": 43,
+    "guid": "BBFC5A91-B2FC-48D2-8913-658C08072E6E",
+    "name": "Char 2C",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/72/13/FRAChar2C-b8f3c0e2.png"
+  },
+  {
+    "index": 44,
+    "guid": "7CA00F5A-E5DE-3FD9-ECAD-7D4FC5C1AC80",
+    "name": "战马",
+    "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/64/120/Horse-c07830d0.png"
+  }
+]
