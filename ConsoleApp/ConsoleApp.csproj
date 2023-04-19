@@ -19,16 +19,28 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="Database\GameToolsAll.json">
+      <None Update="JSON\GameToolsAll.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="Database\OriginVehicle.json">
+      <None Update="JSON\OriginVehicle.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="Database\OriginWeapon.json">
+      <None Update="JSON\OriginWeapon.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="Text\All.json">
+      <None Update="TEXT\All.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="TEXT\MPUnlockInfos01.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="TEXT\SPUnlockInfos01.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="XML\MPProfile.xml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="XML\SPProfile.xml">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>

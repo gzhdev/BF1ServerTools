@@ -786,7 +786,7 @@
   {
     "index": 113,
     "guid": "8BD0FABD-DCCE-4031-8156-B77866FCE1A0",
-    "name": "迫击抱（高爆）",
+    "name": "迫击炮（高爆）",
     "category": "配备",
     "imageUrl": "[BB_PREFIX]/gamedata/tunguska/124/29/GadgetMortar-84e30045.png"
   },
@@ -940,14 +940,14 @@
   {
     "index": 135,
     "guid": "BE041F1A-460B-4FD5-9E4B-F1C803C0F42F",
-    "name": "反坦克火箭抱",
+    "name": "反坦克火箭炮",
     "category": "配备",
     "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/14/24/GadgetBreechgun-f2188c3f.png"
   },
   {
     "index": 136,
     "guid": "C71A02C3-608E-42AA-9179-A4324A4D4539",
-    "name": "迫击抱（空爆）",
+    "name": "迫击炮（空爆）",
     "category": "配备",
     "imageUrl": "[BB_PREFIX]/gamedata/tunguska/119/55/MortarAirburst-77c9647f.png"
   },
@@ -975,7 +975,7 @@
   {
     "index": 140,
     "guid": "AE96B513-1F05-4E63-A273-E98FA91EE4D0",
-    "name": "防空火箭抱",
+    "name": "防空火箭炮",
     "category": "配备",
     "imageUrl": "[BB_PREFIX]/gamedata/Tunguska/73/92/AA-Rocket-Gun-49a4e8d1.png"
   },
