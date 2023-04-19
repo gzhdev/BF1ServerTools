@@ -226,7 +226,7 @@ public class ScorePlayerModel : ObservableObject, IComparable<ScorePlayerModel>
     }
     #endregion
 
-    #region 主武器生涯星数 lifeStar
+    #region 主武器生涯星数 LifeStar
     private int lifeStar;
     /// <summary>
     /// 主武器生涯星数
@@ -395,7 +395,8 @@ public class ScorePlayerModel : ObservableObject, IComparable<ScorePlayerModel>
             OrderBy.LKD => other.lifeKD.CompareTo(this.lifeKD),
             OrderBy.LKPM => other.lifeKPM.CompareTo(this.lifeKPM),
             OrderBy.LTime => other.lifeTime.CompareTo(this.lifeTime),
-            OrderBy.Kit3 => other.kitName.CompareTo(this.kitName),
+            OrderBy.KitName => other.kitName.CompareTo(this.kitName),
+            OrderBy.LStar => other.lifeStar.CompareTo(this.lifeStar),
             OrderBy.Weapon => other.weaponS0.CompareTo(this.weaponS0),
             _ => other.score.CompareTo(this.score),
         };

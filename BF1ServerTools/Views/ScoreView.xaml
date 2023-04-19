@@ -186,6 +186,7 @@
                             <ComboBoxItem Content="生涯KPM" />
                             <ComboBoxItem Content="时长" />
                             <ComboBoxItem Content="兵种" />
+                            <ComboBoxItem Content="星数" />
                             <ComboBoxItem Content="主武器" />
                         </ComboBox>
                         <TextBlock
@@ -940,36 +941,41 @@
                                         <CheckBox
                                             x:Name="CheckBox_GridView_Header14"
                                             Click="CheckBox_GridView_Header14_Click"
-                                            Content="主要武器"
+                                            Content="星数"
                                             IsChecked="True" />
                                         <CheckBox
                                             x:Name="CheckBox_GridView_Header15"
                                             Click="CheckBox_GridView_Header15_Click"
-                                            Content="配枪"
+                                            Content="主要武器"
                                             IsChecked="True" />
                                         <CheckBox
                                             x:Name="CheckBox_GridView_Header16"
                                             Click="CheckBox_GridView_Header16_Click"
-                                            Content="配备一"
+                                            Content="配枪"
                                             IsChecked="True" />
                                         <CheckBox
                                             x:Name="CheckBox_GridView_Header17"
                                             Click="CheckBox_GridView_Header17_Click"
-                                            Content="配备二"
+                                            Content="配备一"
                                             IsChecked="True" />
                                         <CheckBox
                                             x:Name="CheckBox_GridView_Header18"
                                             Click="CheckBox_GridView_Header18_Click"
-                                            Content="特殊"
+                                            Content="配备二"
                                             IsChecked="True" />
                                         <CheckBox
                                             x:Name="CheckBox_GridView_Header19"
                                             Click="CheckBox_GridView_Header19_Click"
-                                            Content="手榴弹"
+                                            Content="特殊"
                                             IsChecked="True" />
                                         <CheckBox
                                             x:Name="CheckBox_GridView_Header20"
                                             Click="CheckBox_GridView_Header20_Click"
+                                            Content="手榴弹"
+                                            IsChecked="True" />
+                                        <CheckBox
+                                            x:Name="CheckBox_GridView_Header21"
+                                            Click="CheckBox_GridView_Header21_Click"
                                             Content="近战"
                                             IsChecked="True" />
                                     </WrapPanel>

@@ -120,6 +120,10 @@ public class BaseStat
     /// 胜率
     /// </summary>
     public float winPercent { get; set; }
+    /// <summary>
+    /// 爆头率
+    /// </summary>
+    public float headshotsVKills { get; set; }
 }
 
 public class WeaponStat

@@ -155,6 +155,7 @@ public static class GameService
                 item.WeaponS6 = ClientUtil.GetWeaponChsName(item.WeaponS6);
                 item.WeaponS7 = ClientUtil.GetWeaponChsName(item.WeaponS7);
 
+                // 主武器生涯星数
                 item.LifeStar = GameUtil.GetLifeStar(item.PersonaId, item.WeaponS0);
 
                 switch (item.TeamId)

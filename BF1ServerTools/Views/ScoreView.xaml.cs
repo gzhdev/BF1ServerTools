@@ -902,5 +902,10 @@ public partial class ScoreView : UserControl
     {
         MakeGridViewColumns(CheckBox_GridView_Header20.IsChecked == true, 20);
     }
+
+    private void CheckBox_GridView_Header21_Click(object sender, RoutedEventArgs e)
+    {
+        MakeGridViewColumns(CheckBox_GridView_Header21.IsChecked == true, 21);
+    }
     #endregion
 }

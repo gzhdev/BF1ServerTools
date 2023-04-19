@@ -106,7 +106,7 @@ public static class CacheService
         lifeCache.BaseStats.kpm = basicStats.kpm;
         lifeCache.BaseStats.skill = basicStats.skill;
 
-        lifeCache.BaseStats.favoriteClass = result.favoriteClass;
+        lifeCache.BaseStats.favoriteClass = ClientUtil.GetClassChs(result.favoriteClass);
 
         lifeCache.BaseStats.awardScore = result.awardScore;
         lifeCache.BaseStats.bonusScore = result.bonusScore;
@@ -132,6 +132,7 @@ public static class CacheService
 
         lifeCache.BaseStats.kd = PlayerUtil.GetPlayerKD(basicStats.kills, basicStats.deaths);
         lifeCache.BaseStats.winPercent = PlayerUtil.GetPlayerPercent(basicStats.wins, result.roundsPlayed);
+        lifeCache.BaseStats.headshotsVKills = PlayerUtil.GetPlayerPercent(result.headShots, basicStats.kills);
     }
 
     /// <summary>
@@ -147,10 +148,14 @@ public static class CacheService
         {
             foreach (var wea in res.weapons)
             {
+                // 过滤击杀数为0的数据
+                if (wea.stats.values.kills == 0)
+                    continue;
+
                 var weaponStat = new WeaponStat()
                 {
                     name = ChsHelper.ToSimplified(wea.name),
-                    imageUrl = wea.imageUrl,
+                    imageUrl = ClientUtil.GetTempImagePath(wea.imageUrl, "weapon2"),
 
                     hits = wea.stats.values.hits,
                     shots = wea.stats.values.shots,
@@ -163,7 +168,7 @@ public static class CacheService
                 weaponStat.kpm = PlayerUtil.GetPlayerKPMBySecond(weaponStat.kills, weaponStat.seconds);
                 weaponStat.headshotsVKills = PlayerUtil.GetPlayerPercent(weaponStat.headshots, weaponStat.kills);
                 weaponStat.hitsVShots = PlayerUtil.GetPlayerPercent(weaponStat.hits, weaponStat.shots);
-                weaponStat.hitVKills = PlayerUtil.GetPlayerPercent(weaponStat.hits, weaponStat.kills);
+                weaponStat.hitVKills = weaponStat.hits / weaponStat.kills;
 
                 weaponStat.star = PlayerUtil.GetKillStar(weaponStat.kills);
                 weaponStat.time = PlayerUtil.GetPlayTimeStrBySecond(weaponStat.seconds);
@@ -171,6 +176,9 @@ public static class CacheService
                 lifeCache.WeaponStats.Add(weaponStat);
             }
         }
+
+        // 按击杀数降序排序
+        lifeCache.WeaponStats.Sort((a, b) => b.kills.CompareTo(a.kills));
     }
 
     /// <summary>
@@ -186,10 +194,14 @@ public static class CacheService
         {
             foreach (var veh in res.vehicles)
             {
+                // 过滤击杀数为0的数据
+                if (veh.stats.values.kills == 0)
+                    continue;
+
                 var vehicleStat = new VehicleStat()
                 {
                     name = ChsHelper.ToSimplified(veh.name),
-                    imageUrl = veh.imageUrl,
+                    imageUrl = ClientUtil.GetTempImagePath(veh.imageUrl, "weapon2"),
 
                     seconds = veh.stats.values.seconds,
                     kills = veh.stats.values.kills,
@@ -204,5 +216,8 @@ public static class CacheService
                 lifeCache.VehicleStats.Add(vehicleStat);
             }
         }
+
+        // 按击杀数降序排序
+        lifeCache.VehicleStats.Sort((a, b) => b.kills.CompareTo(a.kills));
     }
 }
