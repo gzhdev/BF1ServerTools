@@ -25,7 +25,11 @@ public static class ServiceApp
     public static void Initialize()
     {
         // 从数据库读取生涯数据缓存
-        Globals.PlayerLifeCaches = SQLiteApp.ReadLifeCacheDb();
+        foreach (var item in SQLiteApp.ReadLifeCacheDb())
+        {
+            var lifeCaches = JsonHelper.JsonDese<LifeCache>(item.LifeCacheJson);
+            Globals.PlayerLifeCaches.Add(lifeCaches);
+        }
 
         ////////////////////////////////////////////
 
@@ -91,7 +95,19 @@ public static class ServiceApp
         AutoRefreshTimerModel2?.Stop();
 
         // 保存生涯数据缓存到数据库
-        SQLiteApp.SaveLifeCacheDb(Globals.PlayerLifeCaches);
+        var lifeCacheDbs = new List<LifeCacheDb>();
+        foreach (var item in Globals.PlayerLifeCaches)
+        {
+            var lifeCacheJson = JsonHelper.JsonSeri(item);
+            lifeCacheDbs.Add(new()
+            {
+                Name = item.Name,
+                PersonaId = item.PersonaId,
+                LifeCacheJson = lifeCacheJson,
+                CreateTime = item.CreateTime,
+            });
+        }
+        SQLiteApp.SaveLifeCacheDb(lifeCacheDbs);
     }
 
     private static void AutoRefreshTimerModel1_Elapsed(object sender, ElapsedEventArgs e)

@@ -13,11 +13,7 @@ public class LifeCacheDb
     public long PersonaId { get; set; }
 
     [Column(DbType = "text")]
-    public string DetailedStatsJson { get; set; }
-    [Column(DbType = "text")]
-    public string GetWeaponsJson { get; set; }
-    [Column(DbType = "text")]
-    public string GetVehiclesJson { get; set; }
+    public string LifeCacheJson { get; set; }
 
     [Column(ServerTime = DateTimeKind.Local, CanUpdate = false, IsNullable = false)]
     public DateTime CreateTime { get; set; }

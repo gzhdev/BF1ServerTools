@@ -173,7 +173,7 @@ public static class Globals
     /// <summary>
     /// 玩家生涯缓存数据
     /// </summary>
-    public static List<LifeCacheDb> PlayerLifeCaches = new();
+    public static List<LifeCache> PlayerLifeCaches = new();
 
     ///// <summary>
     ///// 保存违规玩家列表信息

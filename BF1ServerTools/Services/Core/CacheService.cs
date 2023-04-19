@@ -1,6 +1,8 @@
 ﻿using BF1ServerTools.API;
 using BF1ServerTools.SDK;
+using BF1ServerTools.Data;
 using BF1ServerTools.Utils;
+using BF1ServerTools.Helpers;
 
 namespace BF1ServerTools.Services;
 
@@ -38,33 +40,149 @@ public static class CacheService
                 if (Globals.PlayerLifeCaches.Find(x => x.PersonaId == item.PersonaId) != null)
                     continue;
 
-                // 缓存玩家生涯KD、KPM
-                var result1 = await BF1API.DetailedStatsByPersonaId(Globals.SessionId, item.PersonaId);
-                if (result1.IsSuccess)
+                var lifeCache = new LifeCache
                 {
+                    BaseStats = new(),
+                    WeaponStats = new(),
+                    VehicleStats = new()
+                };
+
+                lifeCache.Name = item.Name;
+                lifeCache.PersonaId = item.PersonaId;
+
+                // 缓存玩家生涯KD、KPM
+                var result = await BF1API.DetailedStatsByPersonaId(Globals.SessionId, item.PersonaId);
+                if (result.IsSuccess)
+                {
+                    MakeDetailedStats(lifeCache, result.Content);
+
                     // 缓存玩家生涯武器数据
-                    var result2 = await BF1API.GetWeaponsByPersonaId(Globals.SessionId, item.PersonaId);
-                    if (result2.IsSuccess)
+                    result = await BF1API.GetWeaponsByPersonaId(Globals.SessionId, item.PersonaId);
+                    if (result.IsSuccess)
                     {
+                        MakeGetWeapons(lifeCache, result.Content);
+
                         // 缓存玩家生涯载具数据
-                        var result3 = await BF1API.GetVehiclesByPersonaId(Globals.SessionId, item.PersonaId);
-                        if (result3.IsSuccess)
+                        result = await BF1API.GetVehiclesByPersonaId(Globals.SessionId, item.PersonaId);
+                        if (result.IsSuccess)
                         {
-                            Globals.PlayerLifeCaches.Add(new()
-                            {
-                                Name = item.Name,
-                                PersonaId = item.PersonaId,
-                                DetailedStatsJson = result1.Content,
-                                GetWeaponsJson = result2.Content,
-                                GetVehiclesJson = result3.Content,
-                                CreateTime = DateTime.Now
-                            });
+                            MakeGetVehicles(lifeCache, result.Content);
+
+                            lifeCache.CreateTime = DateTime.Now;
+                            Globals.PlayerLifeCaches.Add(lifeCache);
                         }
                     }
                 }
+
+                Thread.Sleep(100);
             }
 
             Thread.Sleep(1000);
+        }
+    }
+
+    /// <summary>
+    /// 处理生涯综合数据
+    /// </summary>
+    /// <param name="lifeCache"></param>
+    /// <param name="content"></param>
+    private static void MakeDetailedStats(LifeCache lifeCache, string content)
+    {
+        var detailedStats = JsonHelper.JsonDese<DetailedStats>(content);
+
+        var result = detailedStats.result;
+        var basicStats = result.basicStats;
+
+        // basicStats
+        lifeCache.BaseStats.timePlayed = basicStats.timePlayed;
+        lifeCache.BaseStats.wins = basicStats.wins;
+        lifeCache.BaseStats.losses = basicStats.losses;
+        lifeCache.BaseStats.kills = basicStats.kills;
+        lifeCache.BaseStats.deaths = basicStats.deaths;
+        lifeCache.BaseStats.kpm = basicStats.kpm;
+        lifeCache.BaseStats.skill = basicStats.skill;
+
+        lifeCache.BaseStats.favoriteClass = result.favoriteClass;
+
+        lifeCache.BaseStats.awardScore = result.awardScore;
+        lifeCache.BaseStats.bonusScore = result.bonusScore;
+        lifeCache.BaseStats.squadScore = result.squadScore;
+        lifeCache.BaseStats.avengerKills = result.avengerKills;
+        lifeCache.BaseStats.saviorKills = result.saviorKills;
+        lifeCache.BaseStats.highestKillStreak = result.highestKillStreak;
+        lifeCache.BaseStats.dogtagsTaken = result.dogtagsTaken;
+        lifeCache.BaseStats.roundsPlayed = result.roundsPlayed;
+        lifeCache.BaseStats.flagsCaptured = result.flagsCaptured;
+        lifeCache.BaseStats.flagsDefended = result.flagsDefended;
+        lifeCache.BaseStats.accuracyRatio = result.accuracyRatio;
+        lifeCache.BaseStats.headShots = result.headShots;
+        lifeCache.BaseStats.longestHeadShot = result.longestHeadShot;
+        lifeCache.BaseStats.nemesisKills = result.nemesisKills;
+        lifeCache.BaseStats.nemesisKillStreak = result.nemesisKillStreak;
+        lifeCache.BaseStats.revives = result.revives;
+        lifeCache.BaseStats.heals = result.heals;
+        lifeCache.BaseStats.repairs = result.repairs;
+        lifeCache.BaseStats.suppressionAssist = result.suppressionAssist;
+        lifeCache.BaseStats.kdr = result.kdr;
+        lifeCache.BaseStats.killAssists = result.killAssists;
+    }
+
+    /// <summary>
+    /// 处理生涯武器数据
+    /// </summary>
+    /// <param name="lifeCache"></param>
+    /// <param name="content"></param>
+    private static void MakeGetWeapons(LifeCache lifeCache, string content)
+    {
+        var getWeapons = JsonHelper.JsonDese<GetWeapons>(content);
+
+        foreach (var res in getWeapons.result)
+        {
+            foreach (var wea in res.weapons)
+            {
+                var weaponStat = new WeaponStat()
+                {
+                    name = wea.name,
+                    imageUrl = wea.imageUrl,
+
+                    hits = wea.stats.values.hits,
+                    shots = wea.stats.values.shots,
+                    kills = wea.stats.values.kills,
+                    headshots = wea.stats.values.headshots,
+                    accuracy = wea.stats.values.accuracy,
+                    seconds = wea.stats.values.seconds,
+                };
+
+                lifeCache.WeaponStats.Add(weaponStat);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 处理生涯载具数据
+    /// </summary>
+    /// <param name="lifeCache"></param>
+    /// <param name="content"></param>
+    private static void MakeGetVehicles(LifeCache lifeCache, string content)
+    {
+        var getVehicles = JsonHelper.JsonDese<GetVehicles>(content);
+
+        foreach (var res in getVehicles.result)
+        {
+            foreach (var veh in res.vehicles)
+            {
+                var vehicleStat = new VehicleStat()
+                {
+                    name = veh.name,
+                    imageUrl = veh.imageUrl,
+
+                    seconds = veh.stats.values.seconds,
+                    kills = veh.stats.values.kills,
+                    destroyed = veh.stats.values.destroyed,
+                };
+
+                lifeCache.VehicleStats.Add(vehicleStat);
+            }
         }
     }
 }
