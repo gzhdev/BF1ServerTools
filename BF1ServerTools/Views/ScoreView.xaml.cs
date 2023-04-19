@@ -201,6 +201,7 @@ public partial class ScoreView : UserControl
                 listView_Team[i].LifeKD = teamData.LifeKD;
                 listView_Team[i].LifeKPM = teamData.LifeKPM;
                 listView_Team[i].LifeTime = teamData.LifeTime;
+                listView_Team[i].LifeStar = teamData.LifeStar;
                 listView_Team[i].Score = teamData.Score;
                 listView_Team[i].Kit = teamData.Kit;
                 listView_Team[i].KitImg = teamData.KitImg;
@@ -244,6 +245,7 @@ public partial class ScoreView : UserControl
                     LifeKD = item.LifeKD,
                     LifeKPM = item.LifeKPM,
                     LifeTime = item.LifeTime,
+                    LifeStar = item.LifeStar,
                     Score = item.Score,
                     Kit = item.Kit,
                     KitImg = item.KitImg,
@@ -426,7 +428,7 @@ public partial class ScoreView : UserControl
     #region 队伍1、队伍2 公共方法
     private async void ChangePlayerTeam(ListView listView, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listView.SelectedItem is ScorePlayerModel item)
         {
@@ -450,7 +452,7 @@ public partial class ScoreView : UserControl
 
     private void KickPlayerCustom(ListView listView, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listView.SelectedItem is ScorePlayerModel item)
             ViewUtil.KickPlayerCustom(item.Name, item.PersonaId);
@@ -460,7 +462,7 @@ public partial class ScoreView : UserControl
 
     private void KickPlayer(ListView listView, string reason, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listView.SelectedItem is ScorePlayerModel item)
             ViewUtil.KickPlayer(item.Name, item.PersonaId, reason);
@@ -470,7 +472,7 @@ public partial class ScoreView : UserControl
 
     private void CopyPlayerName(ListView listView, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listView.SelectedItem is ScorePlayerModel item)
             ViewUtil.Copy2Clipboard(item.Name);
@@ -480,7 +482,7 @@ public partial class ScoreView : UserControl
 
     private void CopyPlayerPersonaId(ListView listView, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listView.SelectedItem is ScorePlayerModel item)
             ViewUtil.Copy2Clipboard(item.PersonaId.ToString());
@@ -490,7 +492,7 @@ public partial class ScoreView : UserControl
 
     private void CopyPlayerAllData(ListView listView, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listView.SelectedItem is ScorePlayerModel item)
         {
@@ -529,7 +531,7 @@ public partial class ScoreView : UserControl
 
     private void QueryPlayerRecord(ListView listView, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listView.SelectedItem is ScorePlayerModel item)
             ViewUtil.QueryPlayerRecord(item.Name, item.PersonaId, item.Rank);
@@ -541,7 +543,7 @@ public partial class ScoreView : UserControl
     #region 观战、载入中 公用方法
     private void KickPlayerCustom(ListBox listBox, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listBox.SelectedItem is SpectatorData item)
             ViewUtil.KickPlayerCustom(item.Name, item.PersonaId);
@@ -551,7 +553,7 @@ public partial class ScoreView : UserControl
 
     private void KickPlayer(ListBox listBox, string reason, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listBox.SelectedItem is SpectatorData item)
             ViewUtil.KickPlayer(item.Name, item.PersonaId, reason);
@@ -561,7 +563,7 @@ public partial class ScoreView : UserControl
 
     private void CopyPlayerName(ListBox listBox, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listBox.SelectedItem is SpectatorData item)
             ViewUtil.Copy2Clipboard(item.Name);
@@ -571,7 +573,7 @@ public partial class ScoreView : UserControl
 
     private void CopyPlayerPersonaId(ListBox listBox, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listBox.SelectedItem is SpectatorData item)
             ViewUtil.Copy2Clipboard(item.PersonaId.ToString());
@@ -581,7 +583,7 @@ public partial class ScoreView : UserControl
 
     private void QueryPlayerRecord(ListBox listBox, Team team)
     {
-        var teamInfo = AuthUtil.GetTeamInfo(team);
+        var teamInfo = GameUtil.GetTeamInfo(team);
 
         if (listBox.SelectedItem is SpectatorData item)
             ViewUtil.QueryPlayerRecord(item.Name, item.PersonaId, (int)team);

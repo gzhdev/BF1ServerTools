@@ -116,4 +116,44 @@ public static class GameUtil
 
         return 0;
     }
+
+    /// <summary>
+    /// 获取玩家主武器生涯星数
+    /// </summary>
+    /// <param name="personaId"></param>
+    /// <param name="weaponName"></param>
+    /// <returns></returns>
+    public static int GetLifeStar(long personaId, string weaponName)
+    {
+        var lifeCache = FindPlayerLifeCache(personaId);
+        if (lifeCache != null)
+        {
+            var weapon = lifeCache.WeaponStats.Find(x => x.name == weaponName);
+            if (weapon != null)
+                return weapon.star;
+
+            var vehicel = lifeCache.VehicleStats.Find(x => x.name == weaponName);
+            if (vehicel != null)
+                return vehicel.star;
+        }
+
+        return 0;
+    }
+
+    /// <summary>
+    /// 获取队伍信息
+    /// </summary>
+    /// <param name="team"></param>
+    /// <returns></returns>
+    public static string GetTeamInfo(Team team)
+    {
+        return team switch
+        {
+            Team.Team01 => "观战",
+            Team.Team02 => "载入中",
+            Team.Team1 => "队伍1",
+            Team.Team2 => "队伍2",
+            _ => string.Empty,
+        };
+    }
 }

@@ -502,6 +502,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding LifeStar}" Header="星数" />
                         <GridViewColumn DisplayMemberBinding="{Binding WeaponS0}" Header="主要武器" />
                         <GridViewColumn DisplayMemberBinding="{Binding WeaponS1}" Header="配枪" />
                         <GridViewColumn DisplayMemberBinding="{Binding WeaponS2}" Header="配备一" />
@@ -638,6 +639,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding LifeStar}" Header="星数" />
                         <GridViewColumn DisplayMemberBinding="{Binding WeaponS0}" Header="主要武器" />
                         <GridViewColumn DisplayMemberBinding="{Binding WeaponS1}" Header="配枪" />
                         <GridViewColumn DisplayMemberBinding="{Binding WeaponS2}" Header="配备一" />

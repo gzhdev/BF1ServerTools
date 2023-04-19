@@ -81,21 +81,4 @@ public static class AuthUtil
 
         return true;
     }
-
-    /// <summary>
-    /// 获取队伍信息
-    /// </summary>
-    /// <param name="team"></param>
-    /// <returns></returns>
-    public static string GetTeamInfo(Team team)
-    {
-        return team switch
-        {
-            Team.Team01 => "观战",
-            Team.Team02 => "载入中",
-            Team.Team1 => "队伍1",
-            Team.Team2 => "队伍2",
-            _ => string.Empty,
-        };
-    }
 }

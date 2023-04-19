@@ -149,7 +149,7 @@ public static class CacheService
             {
                 var weaponStat = new WeaponStat()
                 {
-                    name = wea.name,
+                    name = ChsHelper.ToSimplified(wea.name),
                     imageUrl = wea.imageUrl,
 
                     hits = wea.stats.values.hits,
@@ -188,7 +188,7 @@ public static class CacheService
             {
                 var vehicleStat = new VehicleStat()
                 {
-                    name = veh.name,
+                    name = ChsHelper.ToSimplified(veh.name),
                     imageUrl = veh.imageUrl,
 
                     seconds = veh.stats.values.seconds,

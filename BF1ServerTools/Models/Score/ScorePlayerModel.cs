@@ -226,6 +226,18 @@ public class ScorePlayerModel : ObservableObject, IComparable<ScorePlayerModel>
     }
     #endregion
 
+    #region 主武器生涯星数 lifeStar
+    private int lifeStar;
+    /// <summary>
+    /// 主武器生涯星数
+    /// </summary>
+    public int LifeStar
+    {
+        get => lifeStar;
+        set => SetProperty(ref lifeStar, value);
+    }
+    #endregion
+
     ///////////////////////////////////
 
     #region 兵种 Kit

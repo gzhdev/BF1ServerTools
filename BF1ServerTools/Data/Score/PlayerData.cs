@@ -27,6 +27,7 @@ public class PlayerData
     public float LifeKD { get; set; }
     public float LifeKPM { get; set; }
     public int LifeTime { get; set; }
+    public int LifeStar { get; set; }
 
     public string Kit { get; set; }
     public string KitImg { get; set; }
