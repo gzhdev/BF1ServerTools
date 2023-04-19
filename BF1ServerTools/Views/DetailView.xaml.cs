@@ -50,7 +50,7 @@ public partial class DetailView : UserControl
     /// <param name="e"></param>
     private async void Button_RefreshFullServerDetails_Click(object sender, RoutedEventArgs e)
     {
-        if (!PlayerUtil.CheckPlayerSesId())
+        if (!AuthUtil.CheckPlayerSesId())
             return;
 
         NotifierHelper.Show(NotifierType.Information, "正在刷新当前服务器详情中...");
@@ -88,7 +88,7 @@ public partial class DetailView : UserControl
     /// <param name="e"></param>
     private async void Button_LeaveCurrentGame_Click(object sender, RoutedEventArgs e)
     {
-        if (!PlayerUtil.CheckPlayerSesId1())
+        if (!AuthUtil.CheckPlayerSesId1())
             return;
 
         NotifierHelper.Show(NotifierType.Information, $"正在离开服务器 {Globals.GameId} 中...");

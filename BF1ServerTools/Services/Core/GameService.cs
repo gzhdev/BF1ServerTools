@@ -88,10 +88,8 @@ public static class GameService
 
             // 服务器时间
             ServerData.Time = Server.GetServerTime();
-            // 服务器时间 - 分钟
-            ServerData.TimeMM = GameUtil.SecondsToMinute(ServerData.Time);
             // 服务器时间 - 字符串
-            ServerData.GameTime = GameUtil.SecondsToMMSS(ServerData.Time);
+            ServerData.GameTime = GameUtil.GetMMSSStrBySecond(ServerData.Time);
 
             // 最大比分
             Team1Data.MaxScore = Server.GetServerMaxScore();
@@ -133,16 +131,16 @@ public static class GameService
 
                 item.SquadName = ClientUtil.GetSquadNameById(item.SquadId);
 
-                item.KD = GameUtil.GetPlayerKD(item.Kill, item.Dead);
-                item.KPM = GameUtil.GetPlayerKPM(item.Kill, ServerData.TimeMM);
+                item.KD = PlayerUtil.GetPlayerKD(item.Kill, item.Dead);
+                item.KPM = PlayerUtil.GetPlayerKPMBySecond(item.Kill, ServerData.Time);
 
-                //item.LifeKD = GameUtil.GetLifeKD(item.PersonaId);
-                //item.LifeKPM = GameUtil.GetLifeKPM(item.PersonaId);
-                //item.LifeTime = GameUtil.GetLifeTime(item.PersonaId);
+                item.LifeKD = GameUtil.GetLifeKD(item.PersonaId);
+                item.LifeKPM = GameUtil.GetLifeKPM(item.PersonaId);
+                item.LifeTime = GameUtil.GetLifeTime(item.PersonaId);
 
-                item.IsAdmin = GameUtil.IsAdminVIP(item.PersonaId, Globals.ServerAdmins_PID);
-                item.IsVIP = GameUtil.IsAdminVIP(item.PersonaId, Globals.ServerVIPs_PID);
-                item.IsWhite = GameUtil.IsWhite(item.Name, Globals.CustomWhites_Name);
+                item.IsAdmin = GameUtil.IsServerAdmin(item.PersonaId);
+                item.IsVIP = GameUtil.IsServerVIP(item.PersonaId);
+                item.IsWhite = GameUtil.IsServerWhite(item.Name);
 
                 item.KitImg = ClientUtil.GetPlayerKitImage(item.Kit);
                 item.KitName = ClientUtil.GetPlayerKitName(item.Kit);

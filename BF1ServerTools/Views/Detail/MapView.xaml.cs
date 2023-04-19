@@ -36,7 +36,7 @@ public partial class MapView : UserControl
         if (ListBox_Map.SelectedIndex == -1)
             return;
 
-        if (!PlayerUtil.CheckPlayerAuth())
+        if (!AuthUtil.CheckPlayerAuth())
         {
             // 使ListBox能够响应重复点击
             ListBox_Map.SelectedIndex = -1;

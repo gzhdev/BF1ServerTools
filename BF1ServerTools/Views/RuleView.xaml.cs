@@ -73,7 +73,7 @@ public partial class RuleView : UserControl
         if (File.Exists(File_Rule_Config))
         {
             using var streamReader = new StreamReader(File_Rule_Config);
-            RuleConfig = JsonHelper.JsonDese<RuleConfig>(streamReader.ReadToEnd());
+            RuleConfig = JsonHelper.JsonDeserialize<RuleConfig>(streamReader.ReadToEnd());
             streamReader.Close();
 
             // 读取配置文件名称
@@ -160,7 +160,7 @@ public partial class RuleView : UserControl
             rule.BlackData = blackData;
         }
 
-        File.WriteAllText(File_Rule_Config, JsonHelper.JsonSeri(RuleConfig));
+        File.WriteAllText(File_Rule_Config, JsonHelper.JsonSerialize(RuleConfig));
     }
 
     /// <summary>

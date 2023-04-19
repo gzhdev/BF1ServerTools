@@ -27,7 +27,7 @@ public static class ServiceApp
         // 从数据库读取生涯数据缓存
         foreach (var item in SQLiteApp.ReadLifeCacheDb())
         {
-            var lifeCaches = JsonHelper.JsonDese<LifeCache>(item.LifeCacheJson);
+            var lifeCaches = JsonHelper.JsonDeserialize<LifeCache>(item.LifeCacheJson);
             Globals.PlayerLifeCaches.Add(lifeCaches);
         }
 
@@ -98,7 +98,7 @@ public static class ServiceApp
         var lifeCacheDbs = new List<LifeCacheDb>();
         foreach (var item in Globals.PlayerLifeCaches)
         {
-            var lifeCacheJson = JsonHelper.JsonSeri(item);
+            var lifeCacheJson = JsonHelper.JsonSerialize(item);
             lifeCacheDbs.Add(new()
             {
                 Name = item.Name,

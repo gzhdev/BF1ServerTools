@@ -133,7 +133,7 @@ public static class ServerService
         var result = await BF1API.GetFullServerDetails(Globals.SessionId, Globals.GameId);
         if (result.IsSuccess)
         {
-            var fullServerDetails = JsonHelper.JsonDese<FullServerDetails>(result.Content);
+            var fullServerDetails = JsonHelper.JsonDeserialize<FullServerDetails>(result.Content);
             if (fullServerDetails.result.serverInfo.serverType == "OFFICIAL")
             {
                 DetailData.Name = "OFFICIAL";

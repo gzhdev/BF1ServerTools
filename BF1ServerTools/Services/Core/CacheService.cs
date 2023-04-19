@@ -24,7 +24,7 @@ public static class CacheService
                 return;
 
             // 移除超过预设时间的玩家
-            // 倒叙删除，因为每次删除list的下标号会改变，倒叙就不存在这个问题
+            // 倒叙删除，因为每次删除list的下标号会改变，倒叙就可以避免这个问题
             for (int i = Globals.PlayerLifeCaches.Count - 1; i >= 0; i--)
             {
                 if (MiscUtil.DiffMinutes(Globals.PlayerLifeCaches[i].CreateTime, DateTime.Now) > CacheTime)
@@ -88,10 +88,14 @@ public static class CacheService
     /// <param name="content"></param>
     private static void MakeDetailedStats(LifeCache lifeCache, string content)
     {
-        var detailedStats = JsonHelper.JsonDese<DetailedStats>(content);
+        var detailedStats = JsonHelper.JsonDeserialize<DetailedStats>(content);
 
         var result = detailedStats.result;
         var basicStats = result.basicStats;
+
+        lifeCache.KD = PlayerUtil.GetPlayerKD(basicStats.kills, basicStats.deaths);
+        lifeCache.KPM = basicStats.kpm;
+        lifeCache.Time = PlayerUtil.GetPlayHoursBySecond(basicStats.timePlayed);
 
         // basicStats
         lifeCache.BaseStats.timePlayed = basicStats.timePlayed;
@@ -125,6 +129,9 @@ public static class CacheService
         lifeCache.BaseStats.suppressionAssist = result.suppressionAssist;
         lifeCache.BaseStats.kdr = result.kdr;
         lifeCache.BaseStats.killAssists = result.killAssists;
+
+        lifeCache.BaseStats.kd = PlayerUtil.GetPlayerKD(basicStats.kills, basicStats.deaths);
+        lifeCache.BaseStats.winPercent = PlayerUtil.GetPlayerPercent(basicStats.wins, result.roundsPlayed);
     }
 
     /// <summary>
@@ -134,7 +141,7 @@ public static class CacheService
     /// <param name="content"></param>
     private static void MakeGetWeapons(LifeCache lifeCache, string content)
     {
-        var getWeapons = JsonHelper.JsonDese<GetWeapons>(content);
+        var getWeapons = JsonHelper.JsonDeserialize<GetWeapons>(content);
 
         foreach (var res in getWeapons.result)
         {
@@ -153,6 +160,14 @@ public static class CacheService
                     seconds = wea.stats.values.seconds,
                 };
 
+                weaponStat.kpm = PlayerUtil.GetPlayerKPMBySecond(weaponStat.kills, weaponStat.seconds);
+                weaponStat.headshotsVKills = PlayerUtil.GetPlayerPercent(weaponStat.headshots, weaponStat.kills);
+                weaponStat.hitsVShots = PlayerUtil.GetPlayerPercent(weaponStat.hits, weaponStat.shots);
+                weaponStat.hitVKills = PlayerUtil.GetPlayerPercent(weaponStat.hits, weaponStat.kills);
+
+                weaponStat.star = PlayerUtil.GetKillStar(weaponStat.kills);
+                weaponStat.time = PlayerUtil.GetPlayTimeStrBySecond(weaponStat.seconds);
+
                 lifeCache.WeaponStats.Add(weaponStat);
             }
         }
@@ -165,7 +180,7 @@ public static class CacheService
     /// <param name="content"></param>
     private static void MakeGetVehicles(LifeCache lifeCache, string content)
     {
-        var getVehicles = JsonHelper.JsonDese<GetVehicles>(content);
+        var getVehicles = JsonHelper.JsonDeserialize<GetVehicles>(content);
 
         foreach (var res in getVehicles.result)
         {
@@ -180,6 +195,11 @@ public static class CacheService
                     kills = veh.stats.values.kills,
                     destroyed = veh.stats.values.destroyed,
                 };
+
+                vehicleStat.kpm = PlayerUtil.GetPlayerKPMBySecond(vehicleStat.kills, vehicleStat.seconds);
+
+                vehicleStat.star = PlayerUtil.GetKillStar(vehicleStat.kills);
+                vehicleStat.time = PlayerUtil.GetPlayTimeStrBySecond(vehicleStat.seconds);
 
                 lifeCache.VehicleStats.Add(vehicleStat);
             }

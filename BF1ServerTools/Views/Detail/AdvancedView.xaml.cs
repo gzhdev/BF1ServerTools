@@ -30,7 +30,7 @@ public partial class AdvancedView : UserControl
     /// <param name="e"></param>
     private async void Button_GetServerAdvancedInfo_Click(object sender, RoutedEventArgs e)
     {
-        if (!PlayerUtil.CheckPlayerAuth2())
+        if (!AuthUtil.CheckPlayerAuth2())
             return;
 
         NotifierHelper.Show(NotifierType.Information, $"正在获取服务器 {Globals.ServerId} 数据中...");
@@ -38,7 +38,7 @@ public partial class AdvancedView : UserControl
         var result = await BF1API.GetServerDetails(Globals.SessionId, Globals.ServerId);
         if (result.IsSuccess)
         {
-            _serverDetails = JsonHelper.JsonDese<ServerDetails>(result.Content);
+            _serverDetails = JsonHelper.JsonDeserialize<ServerDetails>(result.Content);
 
             TextBox_ServerName.Text = _serverDetails.result.serverSettings.name;
             TextBox_ServerDescription.Text = _serverDetails.result.serverSettings.description;
@@ -70,7 +70,7 @@ public partial class AdvancedView : UserControl
         var serverDescription = TextBox_ServerDescription.Text.Trim();
         serverDescription = ChsHelper.ToTraditional(serverDescription);
 
-        if (!PlayerUtil.CheckPlayerAuth2())
+        if (!AuthUtil.CheckPlayerAuth2())
             return;
 
         if (string.IsNullOrEmpty(serverName))

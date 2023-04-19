@@ -61,7 +61,7 @@ public static class AuthService
             result = await BF1API.GetEnvIdViaAuthCode(respAuth.Code);
             if (result.IsSuccess)
             {
-                var envIdViaAuthCode = JsonHelper.JsonDese<EnvIdViaAuthCode>(result.Content);
+                var envIdViaAuthCode = JsonHelper.JsonDeserialize<EnvIdViaAuthCode>(result.Content);
                 Globals.SessionId2 = envIdViaAuthCode.result.sessionId;
                 Globals.PersonaId2 = long.Parse(envIdViaAuthCode.result.personaId);
 

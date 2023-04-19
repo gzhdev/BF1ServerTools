@@ -14,18 +14,18 @@ public static class MonitService
             if (ServiceApp.IsDispose)
                 return;
 
-            var time = GameUtil.SecondsToMinute(Server.GetServerTime());
+            var second = Server.GetServerTime();
 
             foreach (var item in Player.GetPlayerList())
             {
-                item.KD = GameUtil.GetPlayerKD(item.Kill, item.Dead);
-                item.KPM = GameUtil.GetPlayerKPM(item.Kill, time);
+                item.KD = PlayerUtil.GetPlayerKD(item.Kill, item.Dead);
+                item.KPM = PlayerUtil.GetPlayerKPMBySecond(item.Kill, second);
 
-                //item.LifeKD = GameUtil.GetLifeKD(item.PersonaId);
-                //item.LifeKPM = GameUtil.GetLifeKPM(item.PersonaId);
+                item.LifeKD = GameUtil.GetLifeKD(item.PersonaId);
+                item.LifeKPM = GameUtil.GetLifeKPM(item.PersonaId);
 
-                item.IsAdmin = GameUtil.IsAdminVIP(item.PersonaId, Globals.ServerAdmins_PID);
-                item.IsWhite = GameUtil.IsWhite(item.Name, Globals.CustomWhites_Name);
+                item.IsAdmin = GameUtil.IsServerAdmin(item.PersonaId);
+                item.IsWhite = GameUtil.IsServerWhite(item.Name);
 
 
             }

@@ -5,7 +5,6 @@ public class ServerData
     public string Name { get; set; }
     public long GameId { get; set; }
     public float Time { get; set; }
-    public float TimeMM { get; set; }
     public string GameTime { get; set; }
 
     public string GameMode { get; set; }

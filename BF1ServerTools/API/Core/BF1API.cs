@@ -85,7 +85,7 @@ public static class BF1API
                 }                
                  */
 
-                var errorMessage = JsonHelper.JsonDese<ErrorMessage>(response.Content);
+                var errorMessage = JsonHelper.JsonDeserialize<ErrorMessage>(response.Content);
                 respContent.Content = $"({(int)respContent.HttpCode} {respContent.HttpCode}) {errorMessage.error.code} {errorMessage.error.message}";
             }
         }

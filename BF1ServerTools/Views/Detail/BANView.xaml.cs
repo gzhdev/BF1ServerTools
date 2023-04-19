@@ -41,7 +41,7 @@ public partial class BANView : UserControl
 
     private void MenuItem_BAN_AddNewPlayer_Click(object sender, RoutedEventArgs e)
     {
-        if (!PlayerUtil.CheckPlayerAuth2())
+        if (!AuthUtil.CheckPlayerAuth2())
             return;
 
         var addPlayerWindow = new AddPlayerWindow("BAN")
@@ -53,7 +53,7 @@ public partial class BANView : UserControl
 
     private async void MenuItem_BAN_RemoveSelectedPlayer_Click(object sender, RoutedEventArgs e)
     {
-        if (!PlayerUtil.CheckPlayerAuth2())
+        if (!AuthUtil.CheckPlayerAuth2())
             return;
 
         if (ListBox_BAN.SelectedItem is RSPInfo item)

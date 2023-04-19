@@ -1,156 +1,119 @@
-﻿namespace BF1ServerTools.Services;
+﻿using BF1ServerTools.Data;
+
+namespace BF1ServerTools.Services;
 
 public static class GameUtil
 {
     /// <summary>
-    /// 获取玩家游玩时间，返回分钟数或小时数
+    /// 转为mm:ss字符串格式，传入时间为秒
     /// </summary>
     /// <param name="second"></param>
     /// <returns></returns>
-    public static string GetPlayTime(double second)
+    public static string GetMMSSStrBySecond(float second)
     {
-        var ts = TimeSpan.FromSeconds(second);
-
-        if (ts.TotalHours < 1)
-            return ts.TotalMinutes.ToString("0") + " 分钟";
-
-        return ts.TotalHours.ToString("0") + " 小时";
-    }
-
-    /// <summary>
-    /// 获取游玩小时数
-    /// </summary>
-    /// <param name="second"></param>
-    /// <returns></returns>
-    public static int GetPlayHours(double second)
-    {
-        var ts = TimeSpan.FromSeconds(second);
-        return (int)ts.TotalHours;
-    }
-
-    /// <summary>
-    /// 计算玩家KD
-    /// </summary>
-    /// <param name="kill"></param>
-    /// <param name="dead"></param>
-    /// <returns></returns>
-    public static float GetPlayerKD(int kill, int dead)
-    {
-        if (kill == 0 && dead >= 0)
-            return 0.0f;
-        else if (kill > 0 && dead == 0)
-            return kill;
-        else if (kill > 0 && dead > 0)
-            return (float)kill / dead;
-        else
-            return (float)kill / dead;
-    }
-
-    /// <summary>
-    /// 计算玩家KPM
-    /// </summary>
-    /// <param name="kill"></param>
-    /// <param name="minute"></param>
-    /// <returns></returns>
-    public static float GetPlayerKPM(int kill, float minute)
-    {
-        if (minute != 0.0f)
-            return kill / minute;
-        else
-            return 0.0f;
-    }
-
-    /// <summary>
-    /// 获取玩家KPM
-    /// </summary>
-    /// <param name="kill"></param>
-    /// <param name="time"></param>
-    /// <returns></returns>
-    public static string GetPlayerKPM(float kill, float time)
-    {
-        if (time < 60)
-        {
-            return "0.00";
-        }
-        else
-        {
-            var minute = (int)(time / 60);
-            return $"{kill / minute:0.00}";
-        }
-    }
-
-    /// <summary>
-    /// 计算百分比
-    /// </summary>
-    /// <param name="num1"></param>
-    /// <param name="num2"></param>
-    /// <returns></returns>
-    public static string GetPlayerPercentage(float num1, float num2)
-    {
-        if (num2 != 0)
-            return $"{num1 / num2 * 100:0.00}%";
-        else
-            return "0%";
-    }
-
-    /// <summary>
-    /// 获取击杀星数
-    /// </summary>
-    /// <param name="kills"></param>
-    /// <returns></returns>
-    public static string GetKillStar(int kills)
-    {
-        if (kills < 100)
-            return "";
-        else
-            return $"{kills / 100:0}";
-    }
-
-    /// <summary>
-    /// 小数类型的时间秒，转为mm:ss格式
-    /// </summary>
-    /// <param name="time"></param>
-    /// <returns></returns>
-    public static string SecondsToMMSS(float time)
-    {
-        var mm = time / 60;
-        var ss = time % 60;
+        var mm = second / 60;
+        var ss = second % 60;
 
         return $"{mm:00}:{ss:00}";
     }
 
     /// <summary>
-    /// 小数类型的时间秒，转为分钟
+    /// 转为分钟数，传入时间为秒
     /// </summary>
     /// <param name="second"></param>
     /// <returns></returns>
-    public static int SecondsToMinute(float second)
+    public static int GetMinuteBySecond(float second)
     {
-        if (second >= 0 && second <= 36000)
-            return (int)(second / 60);
-        else
+        // 排除负数和大于10小时的情况
+        if (second <= 0 || second > 36000)
             return 0;
+
+        var ts = TimeSpan.FromSeconds(second);
+        return (int)ts.TotalMinutes;
     }
 
     /// <summary>
-    /// 判断玩家是不是管理员、VIP
+    /// 判断玩家是不是管理员
     /// </summary>
     /// <param name="personaId"></param>
-    /// <param name="list"></param>
     /// <returns></returns>
-    public static bool IsAdminVIP(long personaId, List<long> list)
+    public static bool IsServerAdmin(long personaId)
     {
-        return list.IndexOf(personaId) != -1;
+        return Globals.ServerAdmins_PID.Contains(personaId);
+    }
+
+    /// <summary>
+    /// 判断玩家是不是VIP
+    /// </summary>
+    /// <param name="personaId"></param>
+    /// <returns></returns>
+    public static bool IsServerVIP(long personaId)
+    {
+        return Globals.ServerVIPs_PID.Contains(personaId);
     }
 
     /// <summary>
     /// 判断玩家是不是白名单
     /// </summary>
-    /// <param name="personaId"></param>
-    /// <param name="list"></param>
+    /// <param name="name"></param>
     /// <returns></returns>
-    public static bool IsWhite(string name, List<string> list)
+    public static bool IsServerWhite(string name)
     {
-        return list.IndexOf(name) != -1;
+        return Globals.CustomWhites_Name.Contains(name);
+    }
+
+    /// <summary>
+    /// 查找生涯数据，如果未查到则返回null
+    /// </summary>
+    /// <param name="personaId"></param>
+    /// <returns></returns>
+    public static LifeCache FindPlayerLifeCache(long personaId)
+    {
+        if (Globals.PlayerLifeCaches.Count == 0)
+            return null;
+
+        return Globals.PlayerLifeCaches.Find(item => item.PersonaId == personaId);
+    }
+
+    /// <summary>
+    /// 获取玩家生涯KD
+    /// </summary>
+    /// <param name="personaId"></param>
+    /// <returns></returns>
+    public static float GetLifeKD(long personaId)
+    {
+        var lifeCache = FindPlayerLifeCache(personaId);
+        if (lifeCache != null)
+            return lifeCache.KD;
+
+        return 0.0f;
+    }
+
+    /// <summary>
+    /// 获取玩家生涯KPM
+    /// </summary>
+    /// <param name="personaId"></param>
+    /// <returns></returns>
+    public static float GetLifeKPM(long personaId)
+    {
+        var lifeCache = FindPlayerLifeCache(personaId);
+        if (lifeCache != null)
+            return lifeCache.KPM;
+
+        return 0.0f;
+    }
+
+    /// <summary>
+    /// 获取玩家生涯时长
+    /// </summary>
+    /// <param name="personaId"></param>
+    /// <returns></returns>
+    public static int GetLifeTime(long personaId)
+    {
+        var lifeCache = FindPlayerLifeCache(personaId);
+        if (lifeCache != null)
+            return lifeCache.Time;
+
+        return 0;
     }
 }

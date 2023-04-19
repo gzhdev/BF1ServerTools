@@ -41,7 +41,7 @@ public partial class AdminView : UserControl
 
     private void MenuItem_Admin_AddNewPlayer_Click(object sender, RoutedEventArgs e)
     {
-        if (!PlayerUtil.CheckPlayerAuth2())
+        if (!AuthUtil.CheckPlayerAuth2())
             return;
 
         var addPlayerWindow = new AddPlayerWindow("Admin")
@@ -53,7 +53,7 @@ public partial class AdminView : UserControl
 
     private async void MenuItem_Admin_RemoveSelectedPlayer_Click(object sender, RoutedEventArgs e)
     {
-        if (!PlayerUtil.CheckPlayerAuth2())
+        if (!AuthUtil.CheckPlayerAuth2())
             return;
 
         if (ListBox_Admin.SelectedItem is RSPInfo item)

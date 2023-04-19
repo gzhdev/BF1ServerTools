@@ -35,7 +35,7 @@ public static class ViewUtil
     public static async void KickPlayer(string playerName, long personaId, string reason)
     {
         // 检查权限
-        if (!PlayerUtil.CheckPlayerAuth())
+        if (!AuthUtil.CheckPlayerAuth())
             return;
 
         NotifierHelper.Show(NotifierType.Information, $"正在踢出玩家 {playerName} 中...");
@@ -55,7 +55,7 @@ public static class ViewUtil
     public static void KickPlayerCustom(string playerName, long personaId)
     {
         // 检查权限
-        if (!PlayerUtil.CheckPlayerAuth())
+        if (!AuthUtil.CheckPlayerAuth())
             return;
 
         var customKickWindow = new CustomKickWindow(playerName, personaId)
@@ -74,7 +74,7 @@ public static class ViewUtil
     public static void QueryPlayerRecord(string playerName, long personaId, int rank)
     {
         // 检查权限
-        if (!PlayerUtil.CheckPlayerSesId())
+        if (!AuthUtil.CheckPlayerSesId())
             return;
 
         var queryRecordWindow = new QueryRecordWindow(playerName, personaId, rank);

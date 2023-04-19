@@ -72,7 +72,7 @@ public partial class AuthView : UserControl
         if (File.Exists(File_Auth_Config))
         {
             using var streamReader = new StreamReader(File_Auth_Config);
-            AuthConfig = JsonHelper.JsonDese<AuthConfig>(streamReader.ReadToEnd());
+            AuthConfig = JsonHelper.JsonDeserialize<AuthConfig>(streamReader.ReadToEnd());
             streamReader.Close();
 
             // 读取配置文件名称
@@ -169,7 +169,7 @@ public partial class AuthView : UserControl
             auth.SessionId2 = Globals.SessionId2;
         }
         // 写入到Json文件
-        File.WriteAllText(File_Auth_Config, JsonHelper.JsonSeri(AuthConfig));
+        File.WriteAllText(File_Auth_Config, JsonHelper.JsonSerialize(AuthConfig));
     }
 
     /// <summary>
@@ -322,7 +322,7 @@ public partial class AuthView : UserControl
                 result = await BF1API.GetEnvIdViaAuthCode(respAuth.Code);
                 if (result.IsSuccess)
                 {
-                    var envIdViaAuthCode = JsonHelper.JsonDese<EnvIdViaAuthCode>(result.Content);
+                    var envIdViaAuthCode = JsonHelper.JsonDeserialize<EnvIdViaAuthCode>(result.Content);
                     Globals.SessionId2 = envIdViaAuthCode.result.sessionId;
                     Globals.PersonaId2 = long.Parse(envIdViaAuthCode.result.personaId);
 
@@ -386,7 +386,7 @@ public partial class AuthView : UserControl
         var result = await BF1API.GetWelcomeMessage(Globals.SessionId);
         if (result.IsSuccess)
         {
-            var welcomeMsg = JsonHelper.JsonDese<WelcomeMsg>(result.Content);
+            var welcomeMsg = JsonHelper.JsonDeserialize<WelcomeMsg>(result.Content);
             var firstMessage = ChsHelper.ToSimplified(welcomeMsg.result.firstMessage);
 
             TextBlock_SessionIdState.Text = firstMessage;

@@ -137,8 +137,17 @@ public class WeaponStat
     ///////////////////////////////////////
 
     public float kpm { get; set; }
+    /// <summary>
+    /// 爆头率
+    /// </summary>
     public float headshotsVKills { get; set; }
+    /// <summary>
+    /// 命中率
+    /// </summary>
     public float hitsVShots { get; set; }
+    /// <summary>
+    /// 效率
+    /// </summary>
     public float hitVKills { get; set; }
 
     public int star { get; set; }

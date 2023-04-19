@@ -1,101 +1,89 @@
-﻿using BF1ServerTools.Helpers;
-
-namespace BF1ServerTools.Services;
+﻿namespace BF1ServerTools.Services;
 
 public static class PlayerUtil
 {
     /// <summary>
-    /// 检查SessionId
+    /// 获取玩家游玩时间，传入时间为秒，返回分钟数或小时数
     /// </summary>
+    /// <param name="second">秒</param>
     /// <returns></returns>
-    public static bool CheckPlayerSesId()
+    public static string GetPlayTimeStrBySecond(float second)
     {
-        if (Globals.GameId == 0)
-        {
-            NotifierHelper.Show(NotifierType.Warning, "GameId为空，请先进入服务器");
-            return false;
-        }
+        var ts = TimeSpan.FromSeconds(second);
 
-        if (string.IsNullOrEmpty(Globals.SessionId))
-        {
-            NotifierHelper.Show(NotifierType.Warning, "请先获取玩家SessionId后，再执行本操作");
-            return false;
-        }
+        // 低于一小时，则显示分钟数
+        if (ts.TotalHours < 1)
+            return $"{ts.TotalMinutes:0} 分钟";
 
-        return true;
+        return $"{ts.TotalHours:0} 小时";
     }
 
     /// <summary>
-    /// 检查SessionId1
+    /// 获取游玩小时数，传入时间为秒
     /// </summary>
+    /// <param name="second">秒</param>
     /// <returns></returns>
-    public static bool CheckPlayerSesId1()
+    public static int GetPlayHoursBySecond(float second)
     {
-        if (Globals.GameId == 0)
-        {
-            NotifierHelper.Show(NotifierType.Warning, "GameId为空，请先进入服务器");
-            return false;
-        }
-
-        if (string.IsNullOrEmpty(Globals.SessionId1))
-        {
-            NotifierHelper.Show(NotifierType.Warning, "请先获取玩家SessionId1后，再执行本操作");
-            return false;
-        }
-
-        return true;
+        var ts = TimeSpan.FromSeconds(second);
+        return (int)ts.TotalHours;
     }
 
     /// <summary>
-    /// 检查玩家SessionId和管理员授权
+    /// 计算玩家KD
     /// </summary>
+    /// <param name="kill">击杀数</param>
+    /// <param name="dead">死亡数</param>
     /// <returns></returns>
-    public static bool CheckPlayerAuth()
+    public static float GetPlayerKD(int kill, int dead)
     {
-        if (!CheckPlayerSesId())
-            return false;
-
-        if (!Globals.LoginPlayerIsAdmin)
-        {
-            NotifierHelper.Show(NotifierType.Warning, $"玩家 {Globals.DisplayName} 不是当前服务器的管理员");
-            return false;
-        }
-
-        return true;
+        if (kill == 0 && dead >= 0)
+            return 0.0f;
+        else if (kill > 0 && dead == 0)
+            return kill;
+        else
+            return (float)kill / dead;
     }
 
     /// <summary>
-    /// 检查玩家SessionId、管理员授权和ServerId
+    /// 计算玩家KPM，传入时间为秒
     /// </summary>
+    /// <param name="kill">击杀数</param>
+    /// <param name="second">秒</param>
     /// <returns></returns>
-    public static bool CheckPlayerAuth2()
+    public static float GetPlayerKPMBySecond(float kill, float second)
     {
-        if (!CheckPlayerAuth())
-            return false;
+        if (second <= 0.0f)
+            return 0.0f;
 
-        if (Globals.ServerId == 0)
-        {
-            NotifierHelper.Show(NotifierType.Warning, "ServerId为空，请重新获取服务器详细信息");
-            return false;
-        }
-
-        return true;
+        var ts = TimeSpan.FromSeconds(second);
+        return kill / (float)ts.TotalMinutes;
     }
 
     /// <summary>
-    /// 获取队伍信息
+    /// 获取百分比
     /// </summary>
-    /// <param name="team"></param>
-    /// <returns></returns>
-    public static string GetTeamInfo(Team team)
+    /// <param name="num1">被除数</param>
+    /// <param name="num2">除数，不可为0</param>
+    /// <returns></returns> 
+    public static float GetPlayerPercent(float num1, float num2)
     {
-        return team switch
-        {
-            Team.Team01 => "观战",
-            Team.Team02 => "载入中",
-            Team.Team1 => "队伍1",
-            Team.Team2 => "队伍2",
-            _ => string.Empty,
-        };
+        if (num2 == 0)
+            return 0.0f;
+
+        return num1 / num2 * 100;
+    }
+
+    /// <summary>
+    /// 获取击杀星数
+    /// </summary>
+    /// <param name="kills">击杀数</param>
+    /// <returns></returns>
+    public static int GetKillStar(float kills)
+    {
+        if (kills < 100.0f)
+            return 0;
+
+        return (int)kills / 100;
     }
 }

@@ -24,7 +24,7 @@ public static class JsonHelper
     /// <typeparam name="T"></typeparam>
     /// <param name="result"></param>
     /// <returns></returns>
-    public static T JsonDese<T>(string result)
+    public static T JsonDeserialize<T>(string result) where T : class
     {
         return JsonSerializer.Deserialize<T>(result, OptionsDese);
     }
@@ -35,7 +35,7 @@ public static class JsonHelper
     /// <typeparam name="T"></typeparam>
     /// <param name="jsonClass"></param>
     /// <returns></returns>
-    public static string JsonSeri<T>(T jsonClass)
+    public static string JsonSerialize<T>(T jsonClass) where T : class
     {
         return JsonSerializer.Serialize(jsonClass, OptionsSeri);
     }
@@ -48,7 +48,7 @@ public static class JsonHelper
     /// <param name="jsonClass"></param>
     public static T ReadFile<T>(string savePath) where T : class
     {
-        return JsonDese<T>(File.ReadAllText(savePath));
+        return JsonDeserialize<T>(File.ReadAllText(savePath));
     }
 
     /// <summary>
@@ -59,6 +59,6 @@ public static class JsonHelper
     /// <param name="jsonClass"></param>
     public static void WriteFile<T>(string savePath, T jsonClass) where T : class
     {
-        File.WriteAllText(savePath, JsonSeri(jsonClass));
+        File.WriteAllText(savePath, JsonSerialize(jsonClass));
     }
 }
