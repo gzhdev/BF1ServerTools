@@ -23,7 +23,10 @@ public static class ProcessHelper
         {
             foreach (var item in pArray)
             {
-                if (item.MainWindowTitle.Equals("Battlefield™ 1"))
+                if (item.MainWindowHandle == IntPtr.Zero)
+                    continue;
+
+                if (item.MainModule.FileVersionInfo.CompanyName.Equals("EA Digital Illusions CE AB"))
                     return true;
             }
         }
