@@ -1,6 +1,6 @@
 ﻿namespace BF1ServerTools.Data;
 
-public class RuleLog
+public class QueryRule
 {
     public string Type { get; set; }
     public string Name { get; set; }

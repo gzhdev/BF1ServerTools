@@ -5,22 +5,22 @@ namespace BF1ServerTools.Utils;
 public static class CoreUtil
 {
     #region Native方法
-    [DllImport("kernel32.dll")]
+    [DllImport("user32.dll")]
     private static extern bool OpenClipboard(IntPtr hWndNewOwner);
 
-    [DllImport("kernel32.dll")]
+    [DllImport("user32.dll")]
     private static extern bool CloseClipboard();
 
-    [DllImport("kernel32.dll")]
+    [DllImport("user32.dll")]
     private static extern bool EmptyClipboard();
 
-    [DllImport("kernel32.dll")]
+    [DllImport("user32.dll")]
     private static extern bool IsClipboardFormatAvailable(int format);
 
-    [DllImport("kernel32.dll")]
+    [DllImport("user32.dll")]
     private static extern IntPtr GetClipboardData(int uFormat);
 
-    [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
     private static extern IntPtr SetClipboardData(int uFormat, IntPtr hMem);
 
     [DllImport("kernel32.dll")]
@@ -52,20 +52,6 @@ public static class CoreUtil
         EmptyClipboard();
         SetClipboardData(13, Marshal.StringToHGlobalUni(text));
         CloseClipboard();
-    }
-
-    /// <summary>
-    /// 计算时间差，即软件运行时间
-    /// </summary>
-    /// <param name="startTime"></param>
-    /// <param name="endTime"></param>
-    /// <returns></returns>
-    public static string ExecDateDiff(DateTime startTime, DateTime endTime)
-    {
-        var ts1 = new TimeSpan(startTime.Ticks);
-        var ts2 = new TimeSpan(endTime.Ticks);
-
-        return ts1.Subtract(ts2).Duration().ToString("c")[..8];
     }
 
     /// <summary>
@@ -105,18 +91,6 @@ public static class CoreUtil
         }
 
         return result;
-    }
-
-    /// <summary>
-    /// 返回两个时间差分钟数
-    /// </summary>
-    /// <param name="startTime"></param>
-    /// <param name="endTime"></param>
-    /// <returns></returns>
-    public static double DiffMinutes(DateTime startTime, DateTime endTime)
-    {
-        var secondSpan = new TimeSpan(endTime.Ticks - startTime.Ticks);
-        return secondSpan.TotalMinutes;
     }
 
     /// <summary>

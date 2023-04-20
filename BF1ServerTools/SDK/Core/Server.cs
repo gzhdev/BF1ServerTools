@@ -45,8 +45,13 @@ public static class Server
     /// <returns></returns>
     public static string GetGameMode()
     {
-        long pointer = Memory.Read<long>(Memory.Bf1ProBaseAddress + Offsets.Offset_ServerId);
-        pointer = Memory.Read<long>(pointer + 0x648);
+        //long pointer = Memory.Read<long>(Memory.Bf1ProBaseAddress + Offsets.Offset_ServerId);
+        //pointer = Memory.Read<long>(pointer + 0x648);
+
+        long pointer = Memory.Read<long>(Offsets.OFFSET_CLIENTGAMECONTEXT);
+        pointer = Memory.Read<long>(pointer + 0x30);
+        pointer = Memory.Read<long>(pointer + 0x30);
+        pointer = Memory.Read<long>(pointer + 0x08);
 
         return Memory.ReadString(pointer, 64);
     }

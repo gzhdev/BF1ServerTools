@@ -12,7 +12,7 @@ public partial class QueryView : UserControl
     /// <summary>
     /// 绑定UI 规则日志信息
     /// </summary>
-    public ObservableCollection<RuleLog> DataGrid_RuleLogs { get; set; } = new();
+    public ObservableCollection<QueryRule> DataGrid_QueryRules { get; set; } = new();
 
     public QueryView()
     {
@@ -146,7 +146,7 @@ public partial class QueryView : UserControl
     /// <param name="t2Value"></param>
     private void AddRuleLog(string type = "", string Name = "", string t1Value = "", string t2Value = "")
     {
-        DataGrid_RuleLogs.Add(new()
+        DataGrid_QueryRules.Add(new()
         {
             Type = type,
             Name = Name,
@@ -160,6 +160,6 @@ public partial class QueryView : UserControl
     /// </summary>
     private void ClearRuleLog()
     {
-        DataGrid_RuleLogs.Clear();
+        DataGrid_QueryRules.Clear();
     }
 }

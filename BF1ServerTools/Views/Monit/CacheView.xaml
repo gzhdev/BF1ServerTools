@@ -10,6 +10,89 @@
     DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
     mc:Ignorable="d">
 
-    <Grid />
+    <DataGrid
+        x:Name="DataGrid_Cache"
+        Margin="5"
+        ItemsSource="{Binding DataGrid_QueryCaches}"
+        SelectionChanged="DataGrid_SelectionChanged"
+        Style="{StaticResource DataGridStyle_SQLite}">
+        <DataGrid.ContextMenu>
+            <ContextMenu>
+                <MenuItem
+                    Name="MenuItem_SelectedInfo"
+                    Header="[缓存]  当前未选中"
+                    IsEnabled="False" />
+                <Separator />
+                <MenuItem
+                    x:Name="MenuItem_Cache_RefushCacheList"
+                    Click="MenuItem_Cache_RefushCacheList_Click"
+                    Header="刷新生涯缓存列表" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_Cache_CopyPlayerName"
+                    Click="MenuItem_Cache_CopyPlayerName_Click"
+                    Header="复制玩家ID"
+                    Icon="&#xe600;" />
+                <MenuItem
+                    Name="MenuItem_Cache_CopyPlayerPersonaId"
+                    Click="MenuItem_Cache_CopyPlayerPersonaId_Click"
+                    Header="复制玩家数字ID" />
+                <Separator />
+                <MenuItem
+                    Name="MenuItem_Cache_QueryPlayerRecord"
+                    Click="MenuItem_Cache_QueryPlayerRecord_Click"
+                    Header="查询玩家数据"
+                    Icon="&#xe7d2;" />
+            </ContextMenu>
+        </DataGrid.ContextMenu>
+        <DataGrid.Columns>
+            <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding Index}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_C2}"
+                FontWeight="Bold"
+                Header="索引" />
+            <DataGridTextColumn
+                Width="*"
+                Binding="{Binding Name}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_C1}"
+                Header="玩家ID" />
+            <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding PersonaId}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_C1}"
+                Header="数字ID" />
+            <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding KD, StringFormat={}{0:0.00}}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_C2}"
+                Header="生涯KD" />
+            <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding KPM, StringFormat={}{0:0.00}}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_C2}"
+                Header="生涯KPM" />
+            <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding Time}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_C3}"
+                Header="生涯时长" />
+            <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding WeaponCount}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_C3}"
+                Header="武器缓存数量" />
+            <DataGridTextColumn
+                Width="Auto"
+                Binding="{Binding VehicleCount}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_C3}"
+                Header="载具缓存数量" />
+            <DataGridTextColumn
+                Width="*"
+                Binding="{Binding CountDown}"
+                ElementStyle="{StaticResource DataGridTextColumnStyle_C3}"
+                Header="缓存有效期（60分钟）" />
+        </DataGrid.Columns>
+    </DataGrid>
 
 </UserControl>
