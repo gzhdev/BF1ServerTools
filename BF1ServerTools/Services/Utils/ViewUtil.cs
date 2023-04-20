@@ -22,7 +22,7 @@ public static class ViewUtil
     /// <param name="text"></param>
     public static void Copy2Clipboard(string text)
     {
-        MiscUtil.SetText(text);
+        CoreUtil.SetText(text);
         NotifierHelper.Show(NotifierType.Success, $"复制 {text} 到剪切板成功");
     }
 

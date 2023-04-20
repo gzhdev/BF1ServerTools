@@ -27,7 +27,7 @@ public static class CacheService
             // 倒叙删除，因为每次删除list的下标号会改变，倒叙就可以避免这个问题
             for (int i = Globals.PlayerLifeCaches.Count - 1; i >= 0; i--)
             {
-                if (MiscUtil.DiffMinutes(Globals.PlayerLifeCaches[i].CreateTime, DateTime.Now) > CacheTime)
+                if (CoreUtil.DiffMinutes(Globals.PlayerLifeCaches[i].CreateTime, DateTime.Now) > CacheTime)
                 {
                     Globals.PlayerLifeCaches.RemoveAt(i);
                 }

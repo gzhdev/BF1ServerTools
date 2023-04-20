@@ -111,7 +111,7 @@ public partial class MainWindow
     /// </summary>
     private void CreateView()
     {
-        foreach (var item in MiscUtil.GetControls(StackPanel_NavMenu).Cast<RadioButton>())
+        foreach (var item in CoreUtil.GetControls(StackPanel_NavMenu).Cast<RadioButton>())
         {
             var viewName = item.CommandParameter.ToString();
 
@@ -143,7 +143,7 @@ public partial class MainWindow
     private void MainService_UpdateMainDataEvent(MainData mainData)
     {
         // 获取软件运行时间
-        MainModel.AppRunTime = MiscUtil.ExecDateDiff(Origin_DateTime, DateTime.Now);
+        MainModel.AppRunTime = CoreUtil.ExecDateDiff(Origin_DateTime, DateTime.Now);
 
         // 是否使用模式1
         MainModel.IsUseMode1 = Globals.IsUseMode1;

@@ -257,7 +257,7 @@ public partial class AuthView : UserControl
     /// <param name="e"></param>
     private void Button_GetPlayerCookies_Click(object sender, RoutedEventArgs e)
     {
-        if (!MiscUtil.CheckWebView2Env())
+        if (!CoreUtil.CheckWebView2Env())
         {
             NotifierHelper.Show(NotifierType.Warning, "未检测到WebView2对应依赖，请安装对应依赖");
             return;
