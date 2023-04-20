@@ -149,6 +149,9 @@ public partial class MainWindow
         MainModel.DisplayName2 = Globals.DisplayName2;
         MainModel.PersonaId2 = Globals.PersonaId2;
 
+        MainModel.CacheCount = Globals.PlayerLifeCaches.Count;
+        MainModel.AdminCount = Globals.ServerAdmins_PID.Count;
+
         if (!ProcessHelper.IsBf1Run())
         {
             this.Dispatcher.Invoke(this.Close);

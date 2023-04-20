@@ -20,6 +20,7 @@
 
     <ui:UiWindow.TitleContent>
         <DockPanel>
+            <!--  //////////////  窗口图标  //////////////  -->
             <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
                 <Image
                     Width="26"
@@ -28,68 +29,31 @@
                     Source="\Assets\Images\Favicon.ico"
                     ToolTip="{Binding ElementName=Window_Main, Path=Title}" />
             </StackPanel>
-            <!--  ///////////////////////////////////  -->
+            <!--  //////////////  增强功能  //////////////  -->
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                <Border
-                    Margin="0,0,5,0"
-                    Padding="5,1,5,1"
-                    VerticalAlignment="Center">
-                    <Border.Style>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="BorderBrush" Value="#008000" />
-                            <Setter Property="BorderThickness" Value="1" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding MainModel.IsUseMode1}" Value="False">
-                                    <Setter Property="BorderThickness" Value="1,1,5,1" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                    <StackPanel VerticalAlignment="Center">
-                        <TextBlock
-                            FontSize="12"
-                            Text="{Binding MainModel.DisplayName2, FallbackValue='玩家昵称'}"
-                            TextAlignment="Right" />
-                        <TextBlock
-                            FontSize="10"
-                            Text="{Binding MainModel.PersonaId2, FallbackValue='玩家数字Id'}"
-                            TextAlignment="Right" />
-                    </StackPanel>
-                </Border>
+                <StackPanel Margin="5,0,10,0" VerticalAlignment="Center">
+                    <TextBlock FontSize="11" Text="{Binding MainModel.CacheCount, StringFormat='Cache : {0}', FallbackValue='00:00:00'}" />
+                    <TextBlock FontSize="11" Text="{Binding MainModel.AdminCount, StringFormat='Admin : {0}', FallbackValue='1.0.0.0'}" />
+                </StackPanel>
                 <!--  ///////////////////////////////////  -->
-                <Border
-                    Margin="0,0,5,0"
-                    Padding="5,1,5,1"
-                    VerticalAlignment="Center">
-                    <Border.Style>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="BorderBrush" Value="#1E88E5" />
-                            <Setter Property="BorderThickness" Value="1" />
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding MainModel.IsUseMode1}" Value="True">
-                                    <Setter Property="BorderThickness" Value="1,1,5,1" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                    <StackPanel VerticalAlignment="Center">
-                        <TextBlock
-                            FontSize="12"
-                            Text="{Binding MainModel.DisplayName1, FallbackValue='玩家昵称'}"
-                            TextAlignment="Right" />
-                        <TextBlock
-                            FontSize="10"
-                            Text="{Binding MainModel.PersonaId1, FallbackValue='玩家数字Id'}"
-                            TextAlignment="Right" />
-                    </StackPanel>
-                </Border>
+                <ui:UiLabel
+                    Title="{Binding MainModel.DisplayName2, FallbackValue='玩家昵称'}"
+                    Description="{Binding MainModel.PersonaId2, FallbackValue='玩家数字Id'}"
+                    IsEnabled="{Binding MainModel.IsUseMode1}"
+                    Style="{StaticResource LabelStyle_UseMode2}" />
+                <!--  ///////////////////////////////////  -->
+                <ui:UiLabel
+                    Title="{Binding MainModel.DisplayName1, FallbackValue='玩家昵称'}"
+                    Description="{Binding MainModel.PersonaId1, FallbackValue='玩家数字Id'}"
+                    IsEnabled="{Binding MainModel.IsUseMode1}"
+                    Style="{StaticResource LabelStyle_UseMode1}" />
                 <!--  ///////////////////////////////////  -->
                 <StackPanel Margin="5,0,5,0" VerticalAlignment="Center">
                     <TextBlock Text="{Binding MainModel.AppRunTime, FallbackValue='00:00:00'}" />
                     <TextBlock FontSize="10" Text="{Binding MainModel.VersionInfo, StringFormat='v{0}', FallbackValue='1.0.0.0'}" />
                 </StackPanel>
             </StackPanel>
-            <!--  ///////////////////////////////////  -->
+            <!--  //////////////  导航菜单  //////////////  -->
             <StackPanel
                 x:Name="StackPanel_NavMenu"
                 DockPanel.Dock="Left"
@@ -140,11 +104,6 @@
                     Command="{Binding NavigateCommand}"
                     CommandParameter="RobotView"
                     Content="机器人"
-                    Icon="&#xe63b;" />
-                <ui:UiRadioButtonIcon
-                    Command="{Binding NavigateCommand}"
-                    CommandParameter="CacheView"
-                    Content="缓存"
                     Icon="&#xe63b;" />
                 <ui:UiRadioButtonIcon
                     Command="{Binding NavigateCommand}"

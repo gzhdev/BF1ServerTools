@@ -115,6 +115,9 @@ public partial class LoadWindow
                     return;
                 }
 
+                // 整理SQLite数据库空间
+                SQLiteApp.VACUUM();
+
                 // 初始化战地1 HTTP模块
                 LoadModel.LoadState = "正在初始化战地1 HTTP模块...";
                 LoggerHelper.Info("正在初始化战地1 HTTP模块...");

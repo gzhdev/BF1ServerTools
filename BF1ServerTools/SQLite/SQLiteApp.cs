@@ -36,6 +36,14 @@ public static class SQLiteApp
     }
 
     /// <summary>
+    /// 手动释放空间
+    /// </summary>
+    public static void VACUUM()
+    {
+        _freeSql.Ado.ExecuteNonQuery(CommandType.Text, "VACUUM", null);
+    }
+
+    /// <summary>
     /// 获取生涯缓存信息
     /// </summary>
     /// <returns></returns>

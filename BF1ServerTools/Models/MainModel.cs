@@ -91,4 +91,30 @@ public class MainModel : ObservableObject
         set => SetProperty(ref personaId2, value);
     }
     #endregion
+
+    ////////////////////////////////////
+
+    #region 生涯缓存数量 CacheCount
+    private int cacheCount;
+    /// <summary>
+    /// 生涯缓存数量
+    /// </summary>
+    public int CacheCount
+    {
+        get => cacheCount;
+        set => SetProperty(ref cacheCount, value);
+    }
+    #endregion
+
+    #region 当前服务器管理员数量 AdminCount
+    private int adminCount;
+    /// <summary>
+    /// 当前服务器管理员数量
+    /// </summary>
+    public int AdminCount
+    {
+        get => adminCount;
+        set => SetProperty(ref adminCount, value);
+    }
+    #endregion
 }
