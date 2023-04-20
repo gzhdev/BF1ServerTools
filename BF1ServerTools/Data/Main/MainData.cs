@@ -2,5 +2,5 @@
 
 public class MainData
 {
-    public string AppRunTime { get; set; }
+
 }

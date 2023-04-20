@@ -29,17 +29,22 @@ public partial class MainWindow
     /// </summary>
     public static Window MainWindowInstance { get; private set; }
 
-    /////////////////////////////////////////
-
     /// <summary>
     /// 数据模型绑定
     /// </summary>
     public MainModel MainModel { get; set; } = new();
 
+    /////////////////////////////////////////
+
     /// <summary>
     /// 声明一个变量，用于存储软件开始运行的时间
     /// </summary>
     private DateTime Origin_DateTime;
+
+    private static readonly int _cpuCount = Environment.ProcessorCount;
+
+    private static PerformanceCounter _cpuCounter;
+    private static PerformanceCounter _ramCounter;
 
     /////////////////////////////////////////
 
@@ -62,11 +67,8 @@ public partial class MainWindow
         MainModel.VersionInfo = CoreUtil.VersionInfo;
         MainModel.AppRunTime = "loading...";
 
-        MainModel.DisplayName1 = "loading...";
-        MainModel.PersonaId1 = 0;
-
-        MainModel.DisplayName2 = "loading...";
-        MainModel.PersonaId2 = 0;
+        MainModel.DisplayName = "loading...";
+        MainModel.PersonaId = 0;
 
         // 获取当前时间，存储到对于变量中
         Origin_DateTime = DateTime.Now;
@@ -74,6 +76,10 @@ public partial class MainWindow
         ////////////////////////////////////////////
 
         MainService.UpdateMainDataEvent += MainService_UpdateMainDataEvent;
+
+        var name = Process.GetCurrentProcess().ProcessName;
+        _cpuCounter = new PerformanceCounter("Process", "% Processor Time", name);
+        _ramCounter = new PerformanceCounter("Process", "Working Set - Private", name);
     }
 
     private void Window_Main_Closing(object sender, CancelEventArgs e)
@@ -142,15 +148,17 @@ public partial class MainWindow
         // 是否使用模式1
         MainModel.IsUseMode1 = Globals.IsUseMode1;
 
-        // 模式1玩家信息
-        MainModel.DisplayName1 = Globals.DisplayName1;
-        MainModel.PersonaId1 = Globals.PersonaId1;
-        // 模式2玩家信息
-        MainModel.DisplayName2 = Globals.DisplayName2;
-        MainModel.PersonaId2 = Globals.PersonaId2;
+        // 模式1/2 玩家信息
+        MainModel.DisplayName = Globals.DisplayName;
+        MainModel.PersonaId = Globals.PersonaId;
 
         MainModel.CacheCount = Globals.PlayerLifeCaches.Count;
         MainModel.AdminCount = Globals.ServerAdmins_PID.Count;
+
+        if (_cpuCounter != null)
+            MainModel.UseCPU = _cpuCounter.NextValue() / _cpuCount;
+        if (_ramCounter != null)
+            MainModel.UseRAM = _ramCounter.NextValue() / 1024 / 1024;
 
         if (!ProcessHelper.IsBf1Run())
         {

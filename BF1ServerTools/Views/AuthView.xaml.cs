@@ -418,6 +418,11 @@ public partial class AuthView : UserControl
         }
 
         NotifierHelper.Show(NotifierType.Success, "保存配置文件成功");
+
+#if DEBUG
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+#endif
     }
 
     /// <summary>

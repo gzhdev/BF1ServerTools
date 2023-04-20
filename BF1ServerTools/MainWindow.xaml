@@ -31,27 +31,26 @@
             </StackPanel>
             <!--  //////////////  增强功能  //////////////  -->
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                <StackPanel Margin="5,0,10,0" VerticalAlignment="Center">
-                    <TextBlock FontSize="11" Text="{Binding MainModel.CacheCount, StringFormat='Cache : {0}', FallbackValue='00:00:00'}" />
-                    <TextBlock FontSize="11" Text="{Binding MainModel.AdminCount, StringFormat='Admin : {0}', FallbackValue='1.0.0.0'}" />
-                </StackPanel>
+                <ui:UiLabel
+                    Title="{Binding MainModel.AdminCount, StringFormat='Admin : {0}', FallbackValue='Admin'}"
+                    Description="{Binding MainModel.CacheCount, StringFormat='Cache : {0}', FallbackValue='Cache'}"
+                    Style="{StaticResource LabelStyle_BorderBase}" />
                 <!--  ///////////////////////////////////  -->
                 <ui:UiLabel
-                    Title="{Binding MainModel.DisplayName2, FallbackValue='玩家昵称'}"
-                    Description="{Binding MainModel.PersonaId2, FallbackValue='玩家数字Id'}"
+                    Title="{Binding MainModel.DisplayName, FallbackValue='玩家昵称'}"
+                    Description="{Binding MainModel.PersonaId, FallbackValue='玩家数字Id'}"
                     IsEnabled="{Binding MainModel.IsUseMode1}"
-                    Style="{StaticResource LabelStyle_UseMode2}" />
+                    Style="{StaticResource LabelStyle_UseMode12}" />
                 <!--  ///////////////////////////////////  -->
                 <ui:UiLabel
-                    Title="{Binding MainModel.DisplayName1, FallbackValue='玩家昵称'}"
-                    Description="{Binding MainModel.PersonaId1, FallbackValue='玩家数字Id'}"
-                    IsEnabled="{Binding MainModel.IsUseMode1}"
-                    Style="{StaticResource LabelStyle_UseMode1}" />
+                    Title="{Binding MainModel.UseCPU, StringFormat='{}{0:0.00} %', FallbackValue='CPU'}"
+                    Description="{Binding MainModel.UseRAM, StringFormat='{}{0:0.00} MB', FallbackValue='RAM'}"
+                    Style="{StaticResource LabelStyle_BorderBase}" />
                 <!--  ///////////////////////////////////  -->
-                <StackPanel Margin="5,0,5,0" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding MainModel.AppRunTime, FallbackValue='00:00:00'}" />
-                    <TextBlock FontSize="10" Text="{Binding MainModel.VersionInfo, StringFormat='v{0}', FallbackValue='1.0.0.0'}" />
-                </StackPanel>
+                <ui:UiLabel
+                    Title="{Binding MainModel.VersionInfo, StringFormat='v{0}', FallbackValue='0.0.0.0'}"
+                    Description="{Binding MainModel.AppRunTime, FallbackValue='00:00:00'}"
+                    Style="{StaticResource LabelStyle_BorderBase}" />
             </StackPanel>
             <!--  //////////////  导航菜单  //////////////  -->
             <StackPanel
@@ -119,8 +118,6 @@
         </DockPanel>
     </ui:UiWindow.TitleContent>
 
-    <Grid>
-        <ContentControl x:Name="ContentControl_NavRegion" FocusVisualStyle="{x:Null}" />
-    </Grid>
+    <ContentControl x:Name="ContentControl_NavRegion" FocusVisualStyle="{x:Null}" />
 
 </ui:UiWindow>

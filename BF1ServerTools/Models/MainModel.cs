@@ -42,53 +42,27 @@ public class MainModel : ObservableObject
 
     ////////////////////////////////////
 
-    #region 模式1 显示名称 DisplayName1
-    private string displayName1;
+    #region 模式1/2 显示名称 DisplayName
+    private string displayName;
     /// <summary>
-    /// 模式1 显示名称
+    /// 模式1/2 显示名称
     /// </summary>
-    public string DisplayName1
+    public string DisplayName
     {
-        get => displayName1;
-        set => SetProperty(ref displayName1, value);
+        get => displayName;
+        set => SetProperty(ref displayName, value);
     }
     #endregion
 
-    #region 模式1 数字Id PersonaId1
-    private long personaId1;
+    #region 模式1/2 数字Id PersonaId
+    private long personaId;
     /// <summary>
-    /// 模式1 数字Id
+    /// 模式1/2 数字Id
     /// </summary>
-    public long PersonaId1
+    public long PersonaId
     {
-        get => personaId1;
-        set => SetProperty(ref personaId1, value);
-    }
-    #endregion
-
-    ////////////////////////////////////
-
-    #region 模式2 显示名称 DisplayName2
-    private string displayName2;
-    /// <summary>
-    /// 模式2 显示名称
-    /// </summary>
-    public string DisplayName2
-    {
-        get => displayName2;
-        set => SetProperty(ref displayName2, value);
-    }
-    #endregion
-
-    #region 模式2 数字Id PersonaId2
-    private long personaId2;
-    /// <summary>
-    /// 模式2 数字Id
-    /// </summary>
-    public long PersonaId2
-    {
-        get => personaId2;
-        set => SetProperty(ref personaId2, value);
+        get => personaId;
+        set => SetProperty(ref personaId, value);
     }
     #endregion
 
@@ -115,6 +89,32 @@ public class MainModel : ObservableObject
     {
         get => adminCount;
         set => SetProperty(ref adminCount, value);
+    }
+    #endregion
+
+    ////////////////////////////////////
+
+    #region CPU使用量 UseCPU
+    private float useCPU;
+    /// <summary>
+    /// CPU使用量
+    /// </summary>
+    public float UseCPU
+    {
+        get => useCPU;
+        set => SetProperty(ref useCPU, value);
+    }
+    #endregion
+
+    #region 内存使用量 UseRAM
+    private float useRAM;
+    /// <summary>
+    /// 内存使用量
+    /// </summary>
+    public float UseRAM
+    {
+        get => useRAM;
+        set => SetProperty(ref useRAM, value);
     }
     #endregion
 }
