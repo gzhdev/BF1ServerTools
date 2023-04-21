@@ -50,13 +50,13 @@ public static class MonitService
                         PlayerList_Team1.Add(item);
                         // 检查队伍1违规玩家
                         CheckTeam12GeneralRuleBreakInfo(item, Globals.ServerRule_Team1, Globals.CustomWeapons_Team1);
-                        CheckTeam12LifeRuleBreakInfo(item, Globals.ServerRule_Team1, Globals.CustomWeapons_Team1);
+                        CheckTeam12LifeRuleBreakInfo(item, Globals.ServerRule_Team1);
                         break;
                     case 2:
                         PlayerList_Team2.Add(item);
                         // 检查队伍2违规玩家
                         CheckTeam12GeneralRuleBreakInfo(item, Globals.ServerRule_Team2, Globals.CustomWeapons_Team2);
-                        CheckTeam12LifeRuleBreakInfo(item, Globals.ServerRule_Team1, Globals.CustomWeapons_Team1);
+                        CheckTeam12LifeRuleBreakInfo(item, Globals.ServerRule_Team1);
                         break;
                 }
             }
@@ -240,8 +240,7 @@ public static class MonitService
     /// </summary>
     /// <param name="playerData"></param>
     /// <param name="serverRule"></param>
-    /// <param name="customWeapons"></param>
-    private static void CheckTeam12LifeRuleBreakInfo(PlayerData playerData, ServerRule serverRule, List<string> customWeapons)
+    private static void CheckTeam12LifeRuleBreakInfo(PlayerData playerData, ServerRule serverRule)
     {
         // 先查找玩家生涯缓存
         var lifeCache = GameUtil.FindPlayerLifeCache(playerData.PersonaId);
