@@ -1,7 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Media;
-
-namespace BF1ServerTools.Themes.Attach;
+﻿namespace BF1ServerTools.Themes.Attach;
 
 public class Mouse
 {

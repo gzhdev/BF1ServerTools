@@ -1,10 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Shell;
-
-namespace BF1ServerTools.Themes.Controls;
+﻿namespace BF1ServerTools.Themes.Controls;
 
 public class UiWindow : Window
 {
