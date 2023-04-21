@@ -182,6 +182,52 @@ public static class GameUtil
     }
 
     /// <summary>
+    /// 获取玩家武器生涯星数
+    /// </summary>
+    /// <param name="personaId"></param>
+    /// <param name="weaponName"></param>
+    /// <returns></returns>
+    public static int GetLifeWeaponStar(long personaId, string weaponName)
+    {
+        var guid = ClientUtil.GetWeaponGuid(weaponName);
+        if (string.IsNullOrWhiteSpace(guid))
+            return 0;
+
+        var lifeCache = FindPlayerLifeCache(personaId);
+        if (lifeCache != null)
+        {
+            var weapon = lifeCache.WeaponStats.Find(x => x.guid == guid);
+            if (weapon != null)
+                return weapon.star;
+        }
+
+        return 0;
+    }
+
+    /// <summary>
+    /// 获取玩家载具生涯星数
+    /// </summary>
+    /// <param name="personaId"></param>
+    /// <param name="weaponName"></param>
+    /// <returns></returns>
+    public static int GetLifeVehicleStar(long personaId, string weaponName)
+    {
+        var guid = ClientUtil.GetWeaponGuid(weaponName);
+        if (string.IsNullOrWhiteSpace(guid))
+            return 0;
+
+        var lifeCache = FindPlayerLifeCache(personaId);
+        if (lifeCache != null)
+        {
+            var vehicel = lifeCache.VehicleStats.Find(x => x.guid == guid);
+            if (vehicel != null)
+                return vehicel.star;
+        }
+
+        return 0;
+    }
+
+    /// <summary>
     /// 获取队伍信息
     /// </summary>
     /// <param name="team"></param>
