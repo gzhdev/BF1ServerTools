@@ -33,7 +33,9 @@ public static class CacheService
                 }
             }
 
-            // ....
+            // 排除 未进入服务器 且 SessionId为空
+            if (!GameUtil.IsInGame() || !GameUtil.IsValidSessionId())
+                goto LOOP;
 
             // 遍历玩家列表
             foreach (var item in Player.GetPlayerCache())
@@ -79,7 +81,8 @@ public static class CacheService
                 Thread.Sleep(100);
             }
 
-            Thread.Sleep(1000);
+        LOOP:
+            Thread.Sleep(5000);
         }
     }
 

@@ -175,10 +175,10 @@ public static class Globals
     /// </summary>
     public static List<LifeCache> PlayerLifeCaches = new();
 
-    ///// <summary>
-    ///// 保存违规玩家列表信息
-    ///// </summary>
-    //public static List<BreakRuleInfo> BreakRuleInfo_PlayerList = new();
+    /// <summary>
+    /// 保存违规玩家列表信息
+    /// </summary>
+    public static List<BreakRuleInfo> BreakRuleInfo_PlayerList = new();
 
     ///// <summary>
     ///// 踢出玩家CD缓存

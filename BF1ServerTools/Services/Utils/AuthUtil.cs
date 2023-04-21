@@ -10,36 +10,15 @@ public static class AuthUtil
     /// <returns></returns>
     public static bool CheckPlayerSesId()
     {
-        if (Globals.GameId == 0)
+        if (!GameUtil.IsInGame())
         {
             NotifierHelper.Show(NotifierType.Warning, "GameId为空，请先进入服务器");
             return false;
         }
 
-        if (string.IsNullOrEmpty(Globals.SessionId))
+        if (!GameUtil.IsValidSessionId())
         {
             NotifierHelper.Show(NotifierType.Warning, "请先获取玩家SessionId后，再执行本操作");
-            return false;
-        }
-
-        return true;
-    }
-
-    /// <summary>
-    /// 检查SessionId1
-    /// </summary>
-    /// <returns></returns>
-    public static bool CheckPlayerSesId1()
-    {
-        if (Globals.GameId == 0)
-        {
-            NotifierHelper.Show(NotifierType.Warning, "GameId为空，请先进入服务器");
-            return false;
-        }
-
-        if (string.IsNullOrEmpty(Globals.SessionId1))
-        {
-            NotifierHelper.Show(NotifierType.Warning, "请先获取玩家SessionId1后，再执行本操作");
             return false;
         }
 
@@ -73,7 +52,7 @@ public static class AuthUtil
         if (!CheckPlayerAuth())
             return false;
 
-        if (Globals.ServerId == 0)
+        if (!GameUtil.IsValidServerId())
         {
             NotifierHelper.Show(NotifierType.Warning, "ServerId为空，请重新获取服务器详细信息");
             return false;

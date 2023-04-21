@@ -3,7 +3,6 @@ using BF1ServerTools.Data;
 using BF1ServerTools.Helpers;
 using BF1ServerTools.Models;
 using BF1ServerTools.Services;
-using System.Xml.Linq;
 
 namespace BF1ServerTools.Views;
 
@@ -78,7 +77,7 @@ public partial class DetailView : UserControl
             });
         });
 
-        NotifierHelper.Show(NotifierType.Notification, "刷新当前服务器详情操作结束");
+        NotifierHelper.Show(NotifierType.Information, "刷新当前服务器详情操作结束");
     }
 
     /// <summary>
@@ -88,7 +87,7 @@ public partial class DetailView : UserControl
     /// <param name="e"></param>
     private async void Button_LeaveCurrentGame_Click(object sender, RoutedEventArgs e)
     {
-        if (!AuthUtil.CheckPlayerSesId1())
+        if (!AuthUtil.CheckPlayerSesId())
             return;
 
         NotifierHelper.Show(NotifierType.Information, $"正在离开服务器 {Globals.GameId} 中...");

@@ -161,9 +161,11 @@ public static class GameService
                 switch (item.TeamId)
                 {
                     case 0:
-                        if (item.Spectator == 0x01)
+                        if (GameUtil.IsSpectator(item.Spectator))
+                            // 观战
                             PlayerList_Team01.Add(item);
-                        else if (ServerData.GameId != 0)
+                        else if (GameUtil.IsInGame())
+                            // 载入中（排除在大厅情况）
                             PlayerList_Team02.Add(item);
                         break;
                     case 1:

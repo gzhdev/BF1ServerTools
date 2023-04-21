@@ -1,9 +1,47 @@
 ﻿using BF1ServerTools.Data;
+using NStandard;
 
 namespace BF1ServerTools.Services;
 
 public static class GameUtil
 {
+    /// <summary>
+    /// 判断是否为观战玩家
+    /// </summary>
+    /// <param name="flag"></param>
+    /// <returns></returns>
+    public static bool IsSpectator(byte flag)
+    {
+        return flag == 0x01;
+    }
+
+    /// <summary>
+    /// 判断是否进入游戏
+    /// </summary>
+    /// <returns></returns>
+    public static bool IsInGame()
+    {
+        return Globals.GameId != 0;
+    }
+
+    /// <summary>
+    /// 判断SessionId是否有效
+    /// </summary>
+    /// <returns></returns>
+    public static bool IsValidSessionId()
+    {
+        return !string.IsNullOrWhiteSpace(Globals.SessionId);
+    }
+
+    /// <summary>
+    /// 判断ServerId是否有效
+    /// </summary>
+    /// <returns></returns>
+    public static bool IsValidServerId()
+    {
+        return Globals.ServerId != 0;
+    }
+
     /// <summary>
     /// 转为mm:ss字符串格式，传入时间为秒
     /// </summary>
