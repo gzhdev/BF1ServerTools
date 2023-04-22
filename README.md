@@ -1,21 +1,25 @@
-# Õ½µØ1·şÎñÆ÷¹ÜÀí¹¤¾ß
+# æˆ˜åœ°1æœåŠ¡å™¨ç®¡ç†å·¥å…·
 
-Ò»¸ö·½±ã·şÖ÷ºÍ¹ÜÀíÔ±¹ÜÀí·şÎñÆ÷µÄ×ÛºÏ¹¤¾ß
+ä¸€ä¸ªæ–¹ä¾¿æœä¸»å’Œç®¡ç†å‘˜ç®¡ç†æœåŠ¡å™¨çš„ç»¼åˆå·¥å…·
 
-* [½»Á÷Èº£º710801277](https://jq.qq.com/?_wv=1027&amp;k=ajEymecs)  
+* [äº¤æµç¾¤ï¼š710801277](https://jq.qq.com/?_wv=1027&amp;k=ajEymecs)  
 
-## ±àÒë
+## ç¼–è¯‘
 
-* Windows 10 ×¨Òµ°æ 22H2 x64
-* Visual Studio 2022 ÆóÒµ°æ
+* Windows 10 ä¸“ä¸šç‰ˆ 22H2 x64
+* Visual Studio 2022 ä¼ä¸šç‰ˆ
 * .NET 7.0.5
 
-## »·¾³
+## ç¯å¢ƒ
 
 * [SDK](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/sdk-7.0.203-windows-x64-installer)
 * [Runtime](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-7.0.5-windows-x64-installer)
 
-## ¼¼Êõ
+## æŠ€æœ¯
 
 * WPF
 * CSharp
+
+## é¢„è§ˆ
+
+![image](https://user-images.githubusercontent.com/28080853/233769416-16ef9cf9-665d-4b2f-ba17-a814fe4412d5.png)
