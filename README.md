@@ -22,4 +22,4 @@
 
 ## 预览
 
-![image](https://user-images.githubusercontent.com/28080853/233769536-b39cd4d5-2a23-4ce5-a673-e922dd65ae2f.png)
+![image](https://user-images.githubusercontent.com/28080853/233769652-692af0dc-e43e-4e6f-b04e-8fb3bb576624.png)
