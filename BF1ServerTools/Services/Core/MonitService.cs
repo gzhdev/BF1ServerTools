@@ -1,12 +1,22 @@
-﻿using BF1ServerTools.Data;
-using BF1ServerTools.SDK;
-using System;
-using System.Windows.Controls;
+﻿using BF1ServerTools.SDK;
+using BF1ServerTools.Data;
 
 namespace BF1ServerTools.Services;
 
 public static class MonitService
 {
+    public static event Action UpdateBreakPlayerEvent;
+
+    ///////////////////////////////////////////////////////
+
+    private static List<PlayerData> PlayerList_Team1 = new();
+    private static List<PlayerData> PlayerList_Team2 = new();
+
+    private static List<PlayerData> PlayerList_Team1_Swap = new();
+    private static List<PlayerData> PlayerList_Team2_Swap = new();
+
+    ///////////////////////////////////////////////////////
+
     /// <summary>
     /// 更新当前服务器违规玩家信息线程
     /// </summary>
@@ -16,6 +26,15 @@ public static class MonitService
         {
             if (ServiceApp.IsDispose)
                 return;
+
+            /////////////////////////////////////////////
+
+            PlayerList_Team1.Clear();
+            PlayerList_Team2.Clear();
+
+            Globals.BreakRuleInfo_PlayerList.Clear();
+
+            /////////////////////////////////////////////
 
             var second = Server.GetServerTime();
 
@@ -44,22 +63,34 @@ public static class MonitService
                     case 0:
                         // 检查队伍0违规玩家
                         if (GameUtil.IsSpectator(item.Spectator))
-                            CheckTeam0PlayerIsBreakRule(item);
+                            CheckTeam0BreakRuleInfo(item);
                         break;
                     case 1:
                         PlayerList_Team1.Add(item);
                         // 检查队伍1违规玩家
-                        CheckTeam12GeneralRuleBreakInfo(item, Globals.ServerRule_Team1, Globals.CustomWeapons_Team1);
-                        CheckTeam12LifeRuleBreakInfo(item, Globals.ServerRule_Team1);
+                        CheckTeam12BreakRuleInfo(item, Globals.ServerRule_Team1, Globals.CustomWeapons_Team1);
+                        CheckTeam12BreakRuleInfo(item, Globals.ServerRule_Team1);
                         break;
                     case 2:
                         PlayerList_Team2.Add(item);
                         // 检查队伍2违规玩家
-                        CheckTeam12GeneralRuleBreakInfo(item, Globals.ServerRule_Team2, Globals.CustomWeapons_Team2);
-                        CheckTeam12LifeRuleBreakInfo(item, Globals.ServerRule_Team1);
+                        CheckTeam12BreakRuleInfo(item, Globals.ServerRule_Team2, Globals.CustomWeapons_Team2);
+                        CheckTeam12BreakRuleInfo(item, Globals.ServerRule_Team1);
                         break;
                 }
             }
+
+            // 填充默认规则
+            foreach (var item in Globals.BreakRuleInfo_PlayerList)
+            {
+                item.Reason = item.BreakInfos[0].Reason;
+            }
+
+            /////////////////////////////////////////////
+
+            UpdateBreakPlayerEvent?.Invoke();
+
+            /////////////////////////////////////////////
 
             Thread.Sleep(1000);
         }
@@ -107,10 +138,10 @@ public static class MonitService
     }
 
     /// <summary>
-    /// 检查队伍0玩家是否违规
+    /// 检查队伍0 限制观战 违规信息
     /// </summary>
     /// <param name="playerData"></param>
-    private static void CheckTeam0PlayerIsBreakRule(PlayerData playerData)
+    private static void CheckTeam0BreakRuleInfo(PlayerData playerData)
     {
         // 限制观战
         if (Globals.IsAutoKickSpectator)
@@ -126,7 +157,7 @@ public static class MonitService
     /// <param name="playerData"></param>
     /// <param name="serverRule"></param>
     /// <param name="customWeapons"></param>
-    private static void CheckTeam12GeneralRuleBreakInfo(PlayerData playerData, ServerRule serverRule, List<string> customWeapons)
+    private static void CheckTeam12BreakRuleInfo(PlayerData playerData, ServerRule serverRule, List<string> customWeapons)
     {
         // 限制玩家击杀
         if (playerData.Kill > serverRule.MaxKill &&
@@ -240,7 +271,7 @@ public static class MonitService
     /// </summary>
     /// <param name="playerData"></param>
     /// <param name="serverRule"></param>
-    private static void CheckTeam12LifeRuleBreakInfo(PlayerData playerData, ServerRule serverRule)
+    private static void CheckTeam12BreakRuleInfo(PlayerData playerData, ServerRule serverRule)
     {
         // 先查找玩家生涯缓存
         var lifeCache = GameUtil.FindPlayerLifeCache(playerData.PersonaId);

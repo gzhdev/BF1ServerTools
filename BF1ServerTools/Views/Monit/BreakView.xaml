@@ -13,7 +13,7 @@
     <ListView
         x:Name="ListView_Break"
         Margin="5"
-        ItemsSource="{Binding ListView_PlayerList_BreakRuleInfo}"
+        ItemsSource="{Binding ListView_MonitBreakModels}"
         Style="{StaticResource ListViewStyle_Normal}">
         <ListView.ContextMenu>
             <ContextMenu>
@@ -45,42 +45,14 @@
             <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle_Normal}">
                 <GridViewColumn DisplayMemberBinding="{Binding Index}" Header="序号" />
                 <GridViewColumn DisplayMemberBinding="{Binding Rank}" Header="等级" />
-                <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="玩家ID" />
+                <GridViewColumn Header="玩家ID">
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Style="{StaticResource TextBlockStyle_IsAdmin}" Text="{Binding Name}" />
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
                 <GridViewColumn DisplayMemberBinding="{Binding PersonaId}" Header="数字ID" />
-                <GridViewColumn Header="管理员">
-                    <GridViewColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock>
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Admin}" Value="True">
-                                                <Setter Property="Text" Value="✔" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                        </DataTemplate>
-                    </GridViewColumn.CellTemplate>
-                </GridViewColumn>
-                <GridViewColumn Header="白名单">
-                    <GridViewColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock>
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding White}" Value="True">
-                                                <Setter Property="Text" Value="✔" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                        </DataTemplate>
-                    </GridViewColumn.CellTemplate>
-                </GridViewColumn>
                 <GridViewColumn DisplayMemberBinding="{Binding Reason}" Header="违规原因" />
                 <GridViewColumn DisplayMemberBinding="{Binding Count}" Header="违规数" />
                 <GridViewColumn DisplayMemberBinding="{Binding AllReason}" Header="全部违规原因" />

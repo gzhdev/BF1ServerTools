@@ -276,7 +276,7 @@ public static class WeaponDB
         ///////////////////////////////////////////////////////////////////////////////////
 
         // 载具
-        new() { Guid="4723A26F-98AE-55BA-7B3F-3AE7E0E3B0C7", Kind="坦克", English="ID_P_VNAME_MARKV", Chinese="巡航坦克 Mark V 巡航 坦克", ShortName="Mark V", ImageName="GBRMarkV-bf3b1d1a.png" },
+        new() { Guid="4723A26F-98AE-55BA-7B3F-3AE7E0E3B0C7", Kind="坦克", English="ID_P_VNAME_MARKV", Chinese="巡航坦克 Mark V 巡航坦克", ShortName="Mark V", ImageName="GBRMarkV-bf3b1d1a.png" },
         new() { Guid="4723A26F-98AE-55BA-7B3F-3AE7E0E3B0C7", Kind="巡航坦克1", English="U_GBR_MarkV_Package_Mortar", Chinese="迫击炮巡航坦克", ShortName="Mark V PJP", ImageName="GBRMarkV-bf3b1d1a.png" },
         new() { Guid="4723A26F-98AE-55BA-7B3F-3AE7E0E3B0C7", Kind="巡航坦克2", English="U_GBR_MarkV_Package_AntiTank", Chinese="坦克猎手巡航坦克", ShortName="Mark V TKLS", ImageName="GBRMarkV-bf3b1d1a.png" },
         new() { Guid="4723A26F-98AE-55BA-7B3F-3AE7E0E3B0C7", Kind="巡航坦克3", English="U_GBR_MarkV_Package_SquadSupport", Chinese="小队支援巡航坦克", ShortName="Mark V XDZY", ImageName="GBRMarkV-bf3b1d1a.png" },
@@ -291,7 +291,7 @@ public static class WeaponDB
         new() { Guid="A79071D2-5C4F-0BA8-0ECC-FCB1376E2FBA", Kind="轻型坦克2", English="U_FRA_FT_Package_20mm", Chinese="轻型侧翼攻击坦克", ShortName="FT-17 CYGJ", ImageName="FRARenaultFt-17-aea9e5e7.png" },
         new() { Guid="A79071D2-5C4F-0BA8-0ECC-FCB1376E2FBA", Kind="轻型坦克3", English="U_FRA_FT_Package_75mm", Chinese="轻型榴弹炮坦克", ShortName="FT-17 LDP", ImageName="FRARenaultFt-17-aea9e5e7.png" },
 
-        new() { Guid="A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78", Kind="坦克", English="ID_P_VNAME_ARTILLERYTRUCK", Chinese="装甲车 火炮 装甲车", ShortName="ARTILLERYTRUCK", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
+        new() { Guid="A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78", Kind="坦克", English="ID_P_VNAME_ARTILLERYTRUCK", Chinese="装甲车 火炮装甲车", ShortName="ARTILLERYTRUCK", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
         new() { Guid="A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78", Kind="火炮装甲车1", English="U_GBR_PierceArrow_Package_Artillery", Chinese="火炮装甲车", ShortName="ATruck HP", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
         new() { Guid="A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78", Kind="火炮装甲车2", English="U_GBR_PierceArrow_Package_AntiAircraft", Chinese="防空装甲车", ShortName="ATruck AA", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
         new() { Guid="A92386FB-7D4B-0E8A-6F2B-CC63FC2A8D78", Kind="火炮装甲车3", English="U_GBR_PierceArrow_Package_Mortar", Chinese="迫击炮装甲车", ShortName="ATruck Mortar", ImageName="GBRPierceArrowAALorry-6e6d8d9f.png" },
@@ -310,7 +310,7 @@ public static class WeaponDB
 
         new() { Guid="EB79DB6E-8A05-9618-3368-34DCBE3C3C17", Kind="飞机", English="ID_P_VNAME_HALBERSTADT", Chinese="攻击机 哈尔伯施塔特 CL.II 攻击机", ShortName="HALBERSTADT", ImageName="GERHalberstadtCLII-c1cb8257.png" },
         new() { Guid="33A894B8-BCE1-8689-3064-7308BBC781CC", Kind="飞机", English="ID_P_VNAME_BRISTOL", Chinese="攻击机 布里斯托 F2.B 攻击机", ShortName="BRISTOL", ImageName="GBRBristolF2B-141b8daa.png" },
-        new() { Guid="189D43F5-E653-416B-B6D6-D0137C28375D", Kind="飞机", English="ID_P_VNAME_SALMSON", Chinese="攻击机 A.E.F 2-A2  攻击机", ShortName="SALMSON", ImageName="FRA_Salmson_2-05f47b5c.png" },
+        new() { Guid="189D43F5-E653-416B-B6D6-D0137C28375D", Kind="飞机", English="ID_P_VNAME_SALMSON", Chinese="攻击机 A.E.F 2-A2 攻击机", ShortName="SALMSON", ImageName="FRA_Salmson_2-05f47b5c.png" },
         new() { Guid="C3272C97-B92E-4E2A-B842-06EF06DC2CB0", Kind="飞机", English="ID_P_VNAME_RUMPLER", Chinese="攻击机 Rumpler C.I 攻击机", ShortName="RUMPLER", ImageName="AHU_Rumpler_CI-eb45a6be.png" },
 
         new() { Guid="??????", Kind="攻击机1", English="U_2Seater_Package_GroundSupport", Chinese="地面支援攻击机", ShortName="2Seater DMZY", ImageName="AHU_Rumpler_CI-eb45a6be.png" },

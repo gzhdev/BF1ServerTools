@@ -15,6 +15,10 @@
     <SolidColorBrush x:Key="Color_BF1_Green" Color="#FF4A9B2C" />
     <SolidColorBrush x:Key="Color_BF1_Gray" Color="#FFC5C5C5" />
 
+    <SolidColorBrush x:Key="Color_Admin" Color="#FFA400" />
+    <SolidColorBrush x:Key="Color_VIP" Color="#0AA344" />
+    <SolidColorBrush x:Key="Color_White" Color="#801DAE" />
+
     <SolidColorBrush x:Key="BlueColor" Color="#2196F3" />
     <SolidColorBrush x:Key="PinkColor" Color="#E91E63" />
 
