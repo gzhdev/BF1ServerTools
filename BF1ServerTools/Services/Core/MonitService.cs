@@ -1,5 +1,6 @@
 ﻿using BF1ServerTools.SDK;
 using BF1ServerTools.Data;
+using BF1ServerTools.SQLite;
 
 namespace BF1ServerTools.Services;
 
@@ -7,7 +8,14 @@ public static class MonitService
 {
     public static event Action UpdateBreakPlayerEvent;
 
+    public static event Action<ChangeTeamSheet> ChangeTeamSheetEvent;
+
     ///////////////////////////////////////////////////////
+
+    private static readonly ServerData ServerData = new();
+
+    private static readonly TeamData Team1Data = new();
+    private static readonly TeamData Team2Data = new();
 
     private static List<PlayerData> PlayerList_Team1 = new();
     private static List<PlayerData> PlayerList_Team2 = new();
@@ -32,7 +40,11 @@ public static class MonitService
             PlayerList_Team1.Clear();
             PlayerList_Team2.Clear();
 
-            Globals.BreakRuleInfo_PlayerList.Clear();
+            Globals.PlayerBreakRuleInfos.Clear();
+
+            /////////////////////////////////////////////
+
+            GameService.GetServerData(ServerData, Team1Data, Team2Data);
 
             /////////////////////////////////////////////
 
@@ -81,10 +93,13 @@ public static class MonitService
             }
 
             // 填充默认规则
-            foreach (var item in Globals.BreakRuleInfo_PlayerList)
+            foreach (var item in Globals.PlayerBreakRuleInfos)
             {
                 item.Reason = item.BreakInfos[0].Reason;
             }
+
+            // 检测换边玩家
+            CheckChangeTeam();
 
             /////////////////////////////////////////////
 
@@ -105,11 +120,11 @@ public static class MonitService
     private static void AddBreakRulePlayerInfo(PlayerData playerData, BreakType breakType, string reason)
     {
         // 查询这个玩家在违规列表是否已经存在
-        var index = Globals.BreakRuleInfo_PlayerList.FindIndex(val => val.PersonaId == playerData.PersonaId);
+        var index = Globals.PlayerBreakRuleInfos.FindIndex(val => val.PersonaId == playerData.PersonaId);
         if (index == -1)
         {
             // 如果不存在就添加到列表
-            Globals.BreakRuleInfo_PlayerList.Add(new()
+            Globals.PlayerBreakRuleInfos.Add(new()
             {
                 Rank = playerData.Rank,
                 Name = playerData.Name,
@@ -129,7 +144,7 @@ public static class MonitService
         else
         {
             // 如果存在就仅增加违规信息
-            Globals.BreakRuleInfo_PlayerList[index].BreakInfos.Add(new()
+            Globals.PlayerBreakRuleInfos[index].BreakInfos.Add(new()
             {
                 BreakType = breakType,
                 Reason = reason
@@ -336,5 +351,115 @@ public static class MonitService
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// 检测换边玩家
+    /// </summary>
+    private static void CheckChangeTeam()
+    {
+        // 如果玩家没有进入服务器，不检测换边情况
+        if (!GameUtil.IsInGame())
+            return;
+
+        // 如果双方玩家人数都为0，不检测换边情况
+        if (PlayerList_Team1.Count == 0 && PlayerList_Team2.Count == 0)
+        {
+            if (PlayerList_Team1_Swap.Count != 0)
+                PlayerList_Team1_Swap.Clear();
+            if (PlayerList_Team2_Swap.Count != 0)
+                PlayerList_Team2_Swap.Clear();
+
+            return;
+        }
+
+        // 第一次初始化
+        if (PlayerList_Team1_Swap.Count == 0 && PlayerList_Team2_Swap.Count == 0)
+        {
+            PlayerList_Team1_Swap = CopyPlayerDataList(PlayerList_Team1);
+            PlayerList_Team2_Swap = CopyPlayerDataList(PlayerList_Team2);
+
+            return;
+        }
+
+        // 检测换边
+        CheckTeamChangeTeam(PlayerList_Team2, PlayerList_Team1_Swap, 1);
+        CheckTeamChangeTeam(PlayerList_Team1, PlayerList_Team2_Swap, 2);
+
+        // 更新临时数据
+        PlayerList_Team1_Swap = CopyPlayerDataList(PlayerList_Team1);
+        PlayerList_Team2_Swap = CopyPlayerDataList(PlayerList_Team2);
+    }
+
+    /// <summary>
+    /// 检测队伍换边情况，并通知
+    /// </summary>
+    /// <param name="playerDataList"></param>
+    /// <param name="playerDataListSwap"></param>
+    /// <param name="teamId"></param>
+    private static void CheckTeamChangeTeam(List<PlayerData> playerDataList, List<PlayerData> playerDataListSwap, int teamId)
+    {
+        string changeFlag;
+        if (teamId == 1)
+            changeFlag = ">>>";
+        else if (teamId == 2)
+            changeFlag = "<<<";
+        else
+            changeFlag = string.Empty;
+
+        // 临时保存的队伍玩家列表
+        foreach (var item in playerDataListSwap)
+        {
+            // 查询这个玩家是否在目前的队伍中
+            var result = playerDataList.Find(var => var.PersonaId == item.PersonaId);
+            if (result != null)
+            {
+                // 队伍换边日志
+                var changeTeamSheet = new ChangeTeamSheet()
+                {
+                    ServerName = ServerData.Name,
+                    GameId = ServerData.GameId,
+                    GameTime = ServerData.GameTime,
+
+                    Rank = item.Rank,
+                    Name = item.Name,
+                    PersonaId = item.PersonaId,
+
+                    GameMode = ServerData.GameMode,
+                    MapName = ServerData.MapName,
+
+                    Team1Name = Team1Data.TeamName,
+                    Team2Name = Team2Data.TeamName,
+                    TeamScore = $"{Team1Data.AllScore} - {Team2Data.AllScore}",
+
+                    State = $"{Team1Data.TeamName} {changeFlag} {Team2Data.TeamName}",
+
+                    CreateTime = DateTime.Now
+                };
+                // 通知事件
+                ChangeTeamSheetEvent?.Invoke(changeTeamSheet);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 玩家列表深复制
+    /// </summary>
+    /// <param name="originalList"></param>
+    /// <returns></returns>
+    private static List<PlayerData> CopyPlayerDataList(List<PlayerData> originalList)
+    {
+        var list = new List<PlayerData>();
+        foreach (var item in originalList)
+        {
+            var data = new PlayerData()
+            {
+                Rank = item.Rank,
+                Name = item.Name,
+                PersonaId = item.PersonaId
+            };
+            list.Add(data);
+        }
+        return list;
     }
 }

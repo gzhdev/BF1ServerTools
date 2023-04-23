@@ -34,20 +34,20 @@ public partial class BreakView : UserControl
     private void UpdateListViewBreakRule()
     {
         // 如果玩家列表为空，则清空UI数据
-        if (Globals.BreakRuleInfo_PlayerList.Count == 0 &&
+        if (Globals.PlayerBreakRuleInfos.Count == 0 &&
             ListView_MonitBreakModels.Count != 0)
         {
             ListView_MonitBreakModels.Clear();
         }
 
         // 如果玩家列表为空，则退出
-        if (Globals.BreakRuleInfo_PlayerList.Count == 0)
+        if (Globals.PlayerBreakRuleInfos.Count == 0)
             return;
 
         // 更新ListView中现有的玩家数据，并把ListView中已经不在服务器的玩家清除
         for (int i = 0; i < ListView_MonitBreakModels.Count; i++)
         {
-            var breakData = Globals.BreakRuleInfo_PlayerList.Find(val => val.PersonaId == ListView_MonitBreakModels[i].PersonaId);
+            var breakData = Globals.PlayerBreakRuleInfos.Find(val => val.PersonaId == ListView_MonitBreakModels[i].PersonaId);
             if (breakData != null)
             {
                 ListView_MonitBreakModels[i].Rank = breakData.Rank;
@@ -72,26 +72,26 @@ public partial class BreakView : UserControl
         }
 
         // 增加ListView没有的玩家数据
-        for (int i = 0; i < Globals.BreakRuleInfo_PlayerList.Count; i++)
+        for (int i = 0; i < Globals.PlayerBreakRuleInfos.Count; i++)
         {
-            var breakData = ListView_MonitBreakModels.ToList().Find(val => val.PersonaId == Globals.BreakRuleInfo_PlayerList[i].PersonaId);
+            var breakData = ListView_MonitBreakModels.ToList().Find(val => val.PersonaId == Globals.PlayerBreakRuleInfos[i].PersonaId);
             if (breakData == null)
             {
                 var builder = new StringBuilder();
-                foreach (var item in Globals.BreakRuleInfo_PlayerList[i].BreakInfos)
+                foreach (var item in Globals.PlayerBreakRuleInfos[i].BreakInfos)
                 {
                     builder.Append($"{item.BreakType}, ");
                 }
 
                 ListView_MonitBreakModels.Add(new()
                 {
-                    Rank = Globals.BreakRuleInfo_PlayerList[i].Rank,
-                    Name = Globals.BreakRuleInfo_PlayerList[i].Name,
-                    PersonaId = Globals.BreakRuleInfo_PlayerList[i].PersonaId,
-                    IsAdmin = Globals.BreakRuleInfo_PlayerList[i].IsAdmin,
-                    IsWhite = Globals.BreakRuleInfo_PlayerList[i].IsWhite,
-                    Reason = Globals.BreakRuleInfo_PlayerList[i].Reason,
-                    Count = Globals.BreakRuleInfo_PlayerList[i].BreakInfos.Count,
+                    Rank = Globals.PlayerBreakRuleInfos[i].Rank,
+                    Name = Globals.PlayerBreakRuleInfos[i].Name,
+                    PersonaId = Globals.PlayerBreakRuleInfos[i].PersonaId,
+                    IsAdmin = Globals.PlayerBreakRuleInfos[i].IsAdmin,
+                    IsWhite = Globals.PlayerBreakRuleInfos[i].IsWhite,
+                    Reason = Globals.PlayerBreakRuleInfos[i].Reason,
+                    Count = Globals.PlayerBreakRuleInfos[i].BreakInfos.Count,
                     AllReason = builder.ToString()
                 });
             }

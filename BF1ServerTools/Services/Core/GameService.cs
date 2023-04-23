@@ -49,60 +49,9 @@ public static class GameService
             PlayerList_Team1.Clear();
             PlayerList_Team2.Clear();
 
-            Team1Data.Reset();
-            Team2Data.Reset();
-
             ////////////////////// 服务器数据 //////////////////////
 
-            // 服务器名称
-            ServerData.Name = Server.GetServerName();
-            // 修正名称
-            ServerData.Name = string.IsNullOrEmpty(ServerData.Name) ? "未知" : ServerData.Name;
-
-            // 服务器数字Id
-            ServerData.GameId = Server.GetGameId();
-
-            // 服务器地图名称
-            ServerData.MapName = Server.GetMapName();
-
-            Team1Data.TeamImg = ClientUtil.GetTeam1Image(ServerData.MapName);
-            Team1Data.TeamName = ClientUtil.GetTeam1ChsName(ServerData.MapName);
-
-            Team2Data.TeamImg = ClientUtil.GetTeam2Image(ServerData.MapName);
-            Team2Data.TeamName = ClientUtil.GetTeam2ChsName(ServerData.MapName);
-
-            // 服务器地图预览图
-            ServerData.MapImg = ClientUtil.GetMapImage(ServerData.MapName);
-
-            // 服务器地图中文名称
-            ServerData.MapName = ClientUtil.GetMapChsName(ServerData.MapName);
-            // 修正名称
-            ServerData.MapName = string.IsNullOrEmpty(ServerData.MapName) ? "未知" : ServerData.MapName;
-
-            // 服务器游戏模式
-            ServerData.GameMode = Server.GetGameMode();
-            // 服务器游戏模式中文名称
-            ServerData.GameMode = ClientUtil.GetGameMode(ServerData.GameMode);
-            // 修正名称
-            ServerData.GameMode = ServerData.MapName == "未知" || ServerData.MapName == "大厅菜单" ? "未知" : ServerData.GameMode;
-
-            // 服务器时间
-            ServerData.Time = Server.GetServerTime();
-            // 服务器时间 - 字符串
-            ServerData.GameTime = GameUtil.GetMMSSStrBySecond(ServerData.Time);
-
-            // 最大比分
-            Team1Data.MaxScore = Server.GetServerMaxScore();
-            Team2Data.MaxScore = Server.GetServerMaxScore();
-
-            // 队伍1分数
-            Team1Data.AllScore = Server.GetTeamScore(1);
-            Team1Data.ScoreKill = Server.GetTeamKillScore(1);
-            Team1Data.ScoreFlag = Server.GetTeamFlagScore(1);
-            // 队伍2分数
-            Team2Data.AllScore = Server.GetTeamScore(2);
-            Team2Data.ScoreKill = Server.GetTeamKillScore(2);
-            Team2Data.ScoreFlag = Server.GetTeamFlagScore(2);
+            GetServerData(ServerData, Team1Data, Team2Data);
 
             ////////////////////// 全局数据 //////////////////////
 
@@ -205,6 +154,68 @@ public static class GameService
 
             Thread.Sleep(1000);
         }
+    }
+
+    /// <summary>
+    /// 获取服务器数据
+    /// </summary>
+    /// <param name="serverData"></param>
+    /// <param name="team1Data"></param>
+    /// <param name="team2Data"></param>
+    public static void GetServerData(ServerData serverData, TeamData team1Data, TeamData team2Data)
+    {
+        team1Data.Reset();
+        team2Data.Reset();
+
+        // 服务器名称
+        serverData.Name = Server.GetServerName();
+        // 修正名称
+        serverData.Name = string.IsNullOrEmpty(serverData.Name) ? "未知" : serverData.Name;
+
+        // 服务器数字Id
+        serverData.GameId = Server.GetGameId();
+
+        // 服务器地图名称
+        serverData.MapName = Server.GetMapName();
+
+        team1Data.TeamImg = ClientUtil.GetTeam1Image(serverData.MapName);
+        team1Data.TeamName = ClientUtil.GetTeam1ChsName(serverData.MapName);
+
+        team2Data.TeamImg = ClientUtil.GetTeam2Image(serverData.MapName);
+        team2Data.TeamName = ClientUtil.GetTeam2ChsName(serverData.MapName);
+
+        // 服务器地图预览图
+        serverData.MapImg = ClientUtil.GetMapImage(serverData.MapName);
+
+        // 服务器地图中文名称
+        serverData.MapName = ClientUtil.GetMapChsName(serverData.MapName);
+        // 修正名称
+        serverData.MapName = string.IsNullOrEmpty(serverData.MapName) ? "未知" : serverData.MapName;
+
+        // 服务器游戏模式
+        serverData.GameMode = Server.GetGameMode();
+        // 服务器游戏模式中文名称
+        serverData.GameMode = ClientUtil.GetGameMode(serverData.GameMode);
+        // 修正名称
+        serverData.GameMode = serverData.MapName == "未知" || serverData.MapName == "大厅菜单" ? "未知" : serverData.GameMode;
+
+        // 服务器时间
+        serverData.Time = Server.GetServerTime();
+        // 服务器时间 - 字符串
+        serverData.GameTime = GameUtil.GetMMSSStrBySecond(serverData.Time);
+
+        // 最大比分
+        team1Data.MaxScore = Server.GetServerMaxScore();
+        team2Data.MaxScore = Server.GetServerMaxScore();
+
+        // 队伍1分数
+        team1Data.AllScore = Server.GetTeamScore(1);
+        team1Data.ScoreKill = Server.GetTeamKillScore(1);
+        team1Data.ScoreFlag = Server.GetTeamFlagScore(1);
+        // 队伍2分数
+        team2Data.AllScore = Server.GetTeamScore(2);
+        team2Data.ScoreKill = Server.GetTeamKillScore(2);
+        team2Data.ScoreFlag = Server.GetTeamFlagScore(2);
     }
 
     /// <summary>
