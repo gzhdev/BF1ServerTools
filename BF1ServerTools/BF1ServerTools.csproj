@@ -43,6 +43,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\SharpConfig\SharpConfig.csproj" />
         <ProjectReference Include="..\VirtualizingWrapPanel\VirtualizingWrapPanel.csproj" />
     </ItemGroup>
 
