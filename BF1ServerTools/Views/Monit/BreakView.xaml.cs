@@ -74,24 +74,26 @@ public partial class BreakView : UserControl
         // 增加ListView没有的玩家数据
         for (int i = 0; i < Globals.PlayerBreakRuleInfos.Count; i++)
         {
-            var breakData = ListView_MonitBreakModels.ToList().Find(val => val.PersonaId == Globals.PlayerBreakRuleInfos[i].PersonaId);
+            var item = Globals.PlayerBreakRuleInfos[i];
+
+            var breakData = ListView_MonitBreakModels.ToList().Find(val => val.PersonaId == item.PersonaId);
             if (breakData == null)
             {
                 var builder = new StringBuilder();
-                foreach (var item in Globals.PlayerBreakRuleInfos[i].BreakInfos)
+                foreach (var info in item.BreakInfos)
                 {
-                    builder.Append($"{item.BreakType}, ");
+                    builder.Append($"{info.BreakType}, ");
                 }
 
                 ListView_MonitBreakModels.Add(new()
                 {
-                    Rank = Globals.PlayerBreakRuleInfos[i].Rank,
-                    Name = Globals.PlayerBreakRuleInfos[i].Name,
-                    PersonaId = Globals.PlayerBreakRuleInfos[i].PersonaId,
-                    IsAdmin = Globals.PlayerBreakRuleInfos[i].IsAdmin,
-                    IsWhite = Globals.PlayerBreakRuleInfos[i].IsWhite,
-                    Reason = Globals.PlayerBreakRuleInfos[i].Reason,
-                    Count = Globals.PlayerBreakRuleInfos[i].BreakInfos.Count,
+                    Rank = item.Rank,
+                    Name = item.Name,
+                    PersonaId = item.PersonaId,
+                    IsAdmin = item.IsAdmin,
+                    IsWhite = item.IsWhite,
+                    Reason = item.Reason,
+                    Count = item.BreakInfos.Count,
                     AllReason = builder.ToString()
                 });
             }
